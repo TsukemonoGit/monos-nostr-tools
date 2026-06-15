@@ -1,0 +1,52 @@
+{
+    "name": "Lumilumi",
+    "category": "client",
+    "usage": "web-open",
+    "difficulty": "beginner",
+    "websiteUrl": "https://lumilumi.app",
+    "githubRepo": "TsukemonGit/lumilumi",
+    "nostrNoteId": "note1xxx",
+    "nextTools": [
+        "shosai",
+        "nfo2"
+    ],
+    "screenshots": [],
+    "ja": {
+        "tagline": "低通信量で使える機能豊富な Nostr Web クライアント",
+        "description": "Nostr を Web ブラウザで使えるクライアント（SNS アプリ）。インストール不要で、URL を開けばすぐに使えます。",
+        "whatFor": [
+            "モバイル回線で通信量を抑えて Nostr を使いたい人",
+            "poll（投票）機能を使いたい人",
+            "位置情報（geohash）を投稿・閲覧したい人",
+            "Nostr の長文記事（Kind 30023）を読みたい人",
+            "機能が豊富な Web クライアントが欲しい人"
+        ],
+        "difficultyReason": "nsec 管理不要、開いたらすぐ使える",
+        "features": [
+            "低通信量モード",
+            "poll 対応",
+            "geohash 対応",
+            "長文記事対応",
+            "PWA 対応"
+        ]
+    },
+    "en": {
+        "tagline": "A feature-rich Nostr web client with low data usage",
+        "description": "A browser-based Nostr client (SNS app). No installation required — just open the URL.",
+        "whatFor": [
+            "People who want to use Nostr with low mobile data consumption",
+            "People who want to use the poll feature",
+            "People who want to post or browse location info (geohash)",
+            "People who want to read long-form Nostr articles (Kind 30023)",
+            "People who want a feature-rich web client"
+        ],
+        "difficultyReason": "No nsec management needed, ready to use immediately",
+        "features": [
+            "Low data mode",
+            "Poll support",
+            "Geohash support",
+            "Long-form articles",
+            "PWA support"
+        ]
+    }
+}
