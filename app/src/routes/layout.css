@@ -1,1 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap');
+
 @import 'tailwindcss';
+
+
+@theme {
+    --font-main: "IBM Plex Sans JP", sans-serif;
+    --font-klee: "Klee One", cursive;
+    --font-maru: "Zen Maru Gothic", sans-serif;
+
+
+
+    --color-gray-50: oklch(0.985 0.002 264.542);
+    --color-gray-100: oklch(0.967 0.003 264.542);
+    --color-gray-200: oklch(0.928 0.006 264.531);
+    --color-gray-300: oklch(0.872 0.01 264.542);
+    --color-gray-400: oklch(0.707 0.022 264.568);
+    --color-gray-500: oklch(0.553 0.027 264.665);
+    --color-gray-600: oklch(0.442 0.03 264.664);
+    --color-gray-700: oklch(0.371 0.034 264.687);
+    --color-gray-800: oklch(0.278 0.033 264.768);
+    --color-gray-900: oklch(0.205 0.031 264.69);
+    --color-gray-950: oklch(0.12 0.028 261.632);
+}
+
+
+body {
+    font-family: theme(--font-main);
+}
