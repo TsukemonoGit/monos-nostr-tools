@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<section class="mt-10">₍ ･ᴗ･ ₎ ふぉんと めいん font-main</section>
+<section class="h-60">₍ ･ᴗ･ ₎ ふぉんと めいん font-main</section>
