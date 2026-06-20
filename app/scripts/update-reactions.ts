@@ -9,7 +9,7 @@ async function main() {
 
     fs.writeFileSync(filePath, raw);
   } catch (error) {
-    fs.writeFileSync(filePath, {});
+    fs.writeFileSync(filePath, JSON.stringify({}, null, 2));
   }
 
 
