@@ -19,7 +19,7 @@
 	</h2>
 	<div class="myContainer flex gap-2">
 		{#each featuredi18n as tool}
-			<ToolCard {...tool} />
+			<ToolCard {tool} />
 		{/each}
 	</div>
 </section>

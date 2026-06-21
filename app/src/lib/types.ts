@@ -1,6 +1,10 @@
 // ロケール定義。増やす場合はここに追加する。
 export type Locale = 'ja' | 'en';
 
+
+// tools.json 用（id をキーとした辞書）
+export type ToolsMap = Record<string, Pick<ToolEntry, 'en' | 'ja'>>;
+
 // ツール本体のロケール別コンテンツ
 export interface ToolContent {
     name: string;

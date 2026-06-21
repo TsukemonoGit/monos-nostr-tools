@@ -4,19 +4,21 @@
 	import needsData from '$lib/data/needs.json';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import toolsData from '$lib/data/tools.json';
-	import type { NeedEntry } from '$lib/types';
+	import type { NeedEntry, ToolsMap } from '$lib/types';
+	import NeedModal from './NeedModal.svelte';
 
 	let locale = $derived(getLocale());
+	let needModalOpen = $state(false);
 
 	const needs = needsData as NeedEntry[];
-	const tools = toolsData as any;
+	const tools = toolsData as ToolsMap;
 
-	const toolList = needsData.map((need) => need.toolList);
-
-	let displayList;
+	let displayNeed: NeedEntry | null = $state(null);
 
 	const openModal = (need: NeedEntry) => {
 		console.log(need.toolList);
+		displayNeed = need;
+		needModalOpen = true;
 	};
 	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.[locale]));
 </script>
@@ -32,3 +34,5 @@
 		{/each}
 	</div>
 </section>
+
+<NeedModal need={displayNeed} bind:open={needModalOpen} />

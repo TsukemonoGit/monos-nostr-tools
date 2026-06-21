@@ -28,5 +28,15 @@
 			"name": "NFO2",
 			"description": "フォローリストを整理整頓"
 		}
+	},
+	"bookmark-recovery": {
+		"en": {
+			"name": "Bookmark Recovery Tool",
+			"description": ""
+		},
+		"ja": {
+			"name": "Bookmark Recovery Tool",
+			"description": "複数種類あるブックマークのリストのどこになにがあるかわからないけど消失した!"
+		}
 	}
 }

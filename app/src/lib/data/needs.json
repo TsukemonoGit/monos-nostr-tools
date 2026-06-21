@@ -23,7 +23,7 @@
         },
         "toolList": [
             "luminostr",
-            "nostr-bookmark-recovery"
+            "bookmark-recovery"
         ]
     }
 ]
