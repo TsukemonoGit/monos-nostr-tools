@@ -34,8 +34,13 @@
 					{/each}
 				</div>
 			</div>
-			<Dialog.Footer class="sm:justify-start">
-				<Dialog.Close class={buttonVariants({ variant: 'secondary' })}>Close</Dialog.Close>
+			<Dialog.Footer c>
+				<Dialog.Close
+					class={[
+						buttonVariants({ variant: 'secondary' }),
+						'justify-center w-fit mx-auto hover:shadow rounded-full!'
+					]}>Close</Dialog.Close
+				>
 			</Dialog.Footer>{/if}
 	</Dialog.Content>
 </Dialog.Root>

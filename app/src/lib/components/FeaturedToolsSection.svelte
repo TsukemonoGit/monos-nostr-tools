@@ -13,11 +13,11 @@
 	let featuredi18n: ToolContent[] = $derived(featured.map((id) => tools?.[id]?.[locale]));
 </script>
 
-<section class="my-12">
+<section class="my-18">
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.featured_title()}
 	</h2>
-	<div class="myContainer flex gap-4">
+	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4">
 		{#each featuredi18n as tool}
 			<ToolCard {tool} />
 		{/each}

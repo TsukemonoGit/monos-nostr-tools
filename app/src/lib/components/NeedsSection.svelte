@@ -23,11 +23,11 @@
 	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.[locale]));
 </script>
 
-<section class="my-12">
+<section class="my-18">
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.needs_title()}
 	</h2>
-	<div class="myContainer flex gap-4 my-2">
+	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-2">
 		{#each needs as need}
 			{@const needData = need?.[locale]}
 			<NeedCard data={needData} onclick={() => openModal(need)} icon={need.icon} />

@@ -14,10 +14,10 @@
 </script>
 
 <button
-	class="rounded-md shadow-md bg-gray-50 p-6 flex items-center gap-2 hover:scale-102 transition hover:shadow-gray-500/50"
+	class="rounded-md shadow bg-gray-50 p-6 flex items-center gap-2 hover:scale-102 transition hover:shadow-md w-full"
 	{onclick}
 >
 	{#if Icon}<Icon />{/if}
 	<h3>{data.title}</h3>
-	<ChevronRight class="text-gray-400" />
+	<ChevronRight class="text-gray-400 ml-auto" />
 </button>
