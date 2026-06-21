@@ -34,4 +34,11 @@
 
 body {
     font-family: theme(--font-main);
+    @apply bg-gray-100
+}
+
+.myContainer {
+
+    @apply max-w-3xl mx-auto px-4;
+
 }

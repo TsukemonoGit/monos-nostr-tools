@@ -3,10 +3,10 @@
 </script>
 
 <header class="font-klee">
-	<div class="max-w-3xl mx-auto px-4 py-2">
-		<h1 class="font-title3 text-2xl">Mono's Nostr Tools ･ᴗ･</h1>
+	<div class="myContainer py-2 flex justify-between">
+		<h1 class="font-title3 text-xl">Mono's Nostr Tools ･ᴗ･</h1>
+		<LocaleSelect />
 	</div>
-	<LocaleSelect />
 </header>
 
 <style lang="postcss">

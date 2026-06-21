@@ -1,3 +1,18 @@
+
+
+
+export interface ToolData {
+    name: string;
+    id: string;
+    description: string;
+}
+
+export interface NeedData {
+    title: string;
+    description: string;
+}
+
+//---------------------------
 /** tools/[slug].json — 翻訳不要。URL・ID・enum を書く */
 export type ToolShared = {
     name: string           // 固有名詞。全言語共通（例: "Lumilumi"）

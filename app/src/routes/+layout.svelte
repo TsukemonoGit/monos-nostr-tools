@@ -10,8 +10,6 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <Header />
-<div class="max-w-3xl mx-auto px-4">
-	{@render children()}
-</div>
+{@render children()}
 
 <Footer />
