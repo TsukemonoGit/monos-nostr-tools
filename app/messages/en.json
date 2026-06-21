@@ -2,5 +2,6 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "needs_title": "Tools to meet your needs",
   "featured_title": "Featured Tools",
-  "hero_title": "Enjoy the freedom of Nostr \neven more freely and comfortably"
+  "hero_title": "Enjoy the freedom of Nostr \neven more freely and comfortably",
+  "browseTools": "View All Tools"
 }

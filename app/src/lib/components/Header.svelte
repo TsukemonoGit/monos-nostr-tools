@@ -2,7 +2,7 @@
 	import LocaleSelect from './LocaleSelect.svelte';
 </script>
 
-<header class="font-klee">
+<header class="font-klee z-10">
 	<div class="myContainer py-2 flex justify-between">
 		<h1 class="font-title3 text-xl">Mono's Nostr Tools ･ᴗ･</h1>
 		<LocaleSelect />
