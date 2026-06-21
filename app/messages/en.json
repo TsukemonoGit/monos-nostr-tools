@@ -1,6 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Hello world {username}",
   "needs_title": "Tools to meet your needs",
   "featured_title": "Featured Tools"
 }

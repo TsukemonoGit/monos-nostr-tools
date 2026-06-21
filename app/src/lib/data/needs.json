@@ -1,6 +1,7 @@
 [
     {
         "id": "start-nostr",
+        "icon": "Rocket",
         "ja": {
             "title": "Nostrを始めたい"
         },
@@ -13,6 +14,7 @@
     },
     {
         "id": "data-lost",
+        "icon": "Skull",
         "ja": {
             "title": "データが消えた!"
         },

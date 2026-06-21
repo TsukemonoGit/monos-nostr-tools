@@ -4,7 +4,7 @@
 	let { name, description }: ToolContent = $props();
 </script>
 
-<article class="rounded-md shadow-md p-4 bg-gray-50">
-	<h3>{name}</h3>
-	<p>{description}</p>
+<article class="rounded-md shadow-md p-6 bg-gray-50">
+	<h3 class="font-klee text-xl my-1">{name}</h3>
+	<p class="text-sm text-gray-400 whitespace-pre-wrap">{description}</p>
 </article>

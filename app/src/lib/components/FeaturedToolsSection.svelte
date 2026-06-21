@@ -14,7 +14,7 @@
 </script>
 
 <section class="my-12">
-	<h2 class="text-xl font-title3 font-bold myContainer">
+	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.featured_title()}
 	</h2>
 	<div class="myContainer flex gap-2">

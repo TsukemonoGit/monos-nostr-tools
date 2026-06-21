@@ -23,6 +23,7 @@ export interface NeedContent {
 // toolList は ToolEntry.id への外部キー的参照
 export interface NeedEntry {
     id: string;
+    icon: string;
     en: NeedContent;
     ja: NeedContent;
     toolList: string[];
