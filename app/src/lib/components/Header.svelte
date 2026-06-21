@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import LocaleSelect from './LocaleSelect.svelte';
 </script>
 
 <header class="font-klee z-10">
 	<div class="myContainer py-2 flex justify-between">
-		<h1 class="font-title3 text-xl">Mono's Nostr Tools ･ᴗ･</h1>
+		<a class="font-title3 text-xl" href={'/'}>Mono's Nostr Tools ･ᴗ･</a>
 		<LocaleSelect />
 	</div>
 </header>
