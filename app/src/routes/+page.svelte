@@ -1,5 +1,11 @@
 <script lang="ts">
-	import Hero from '$lib/components/Hero.svelte';
+	import BrowseToolsSection from '$lib/components/BrowseToolsSection.svelte';
+	import FeaturedToolsSection from '$lib/components/FeaturedToolsSection.svelte';
+	import HeroSection from '$lib/components/HeroSection.svelte';
+	import NeedsSection from '$lib/components/NeedsSection.svelte';
 </script>
 
-<Hero />
+<HeroSection />
+<NeedsSection />
+<FeaturedToolsSection />
+<BrowseToolsSection />

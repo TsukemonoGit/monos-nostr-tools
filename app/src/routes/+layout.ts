@@ -1,1 +1,1 @@
-//jsonデータを読み込む
+export const prerender = true;
