@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { ToolContent } from '$lib/types';
 	import { ChevronRight } from '@lucide/svelte';
 
-	let { tool }: { tool: ToolContent } = $props();
+	let { id, tool }: { id: string; tool: ToolContent } = $props();
 </script>
 
-<article
+<button
+	onclick={() => goto(`/tools/${id}`)}
 	class="rounded-md shadow p-6 bg-gray-50 hover:scale-101 transition hover:shadow-md flex justify-center items-center active:scale-99 active:shadow"
 >
 	<div>
@@ -13,4 +15,4 @@
 		<p class="text-sm text-gray-400 whitespace-pre-wrap">{tool.description}</p>
 	</div>
 	<ChevronRight class="text-gray-400 ml-auto" />
-</article>
+</button>
