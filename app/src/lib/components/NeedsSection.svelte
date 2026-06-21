@@ -27,7 +27,7 @@
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.needs_title()}
 	</h2>
-	<div class="myContainer flex gap-2 my-2">
+	<div class="myContainer flex gap-4 my-2">
 		{#each needs as need}
 			{@const needData = need?.[locale]}
 			<NeedCard data={needData} onclick={() => openModal(need)} icon={need.icon} />

@@ -1,5 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "needs_title": "あなたのニーズに、ぴったりのツールを",
-  "featured_title": "注目のツール"
+  "featured_title": "注目のツール",
+  "hero_title": "自由なNostrを\nもっと自由に快適に"
 }

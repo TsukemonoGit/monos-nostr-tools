@@ -20,14 +20,12 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Trigger class={buttonVariants({ variant: 'outline' })}>Share</Dialog.Trigger>
 	<Dialog.Content class="sm:max-w-md p-6">
 		{#if needData}
 			<Dialog.Header>
-				<Dialog.Title class="flex items-center gap-2"
+				<Dialog.Title class="flex items-center gap-2 py-2"
 					>{#if Icon}<Icon />{/if}{needData.title}</Dialog.Title
 				>
-				<Dialog.Description>Anyone who has this link will be able to view this.</Dialog.Description>
 			</Dialog.Header>
 			<div class="flex items-center gap-2">
 				<div class="grid flex-1 gap-2">

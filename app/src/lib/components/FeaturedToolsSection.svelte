@@ -17,7 +17,7 @@
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.featured_title()}
 	</h2>
-	<div class="myContainer flex gap-2">
+	<div class="myContainer flex gap-4">
 		{#each featuredi18n as tool}
 			<ToolCard {tool} />
 		{/each}
