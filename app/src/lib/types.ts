@@ -1,57 +1,39 @@
+// ロケール定義。増やす場合はここに追加する。
+export type Locale = 'ja' | 'en';
 
-
-
-export interface ToolData {
+// ツール本体のロケール別コンテンツ
+export interface ToolContent {
     name: string;
+    description: string;
+}
+
+// tools.json の1要素
+export interface ToolEntry {
     id: string;
-    description: string;
+    en: ToolContent;
+    ja: ToolContent;
 }
 
-export interface NeedData {
+// ニーズカードのロケール別コンテンツ
+export interface NeedContent {
     title: string;
-    description: string;
 }
 
-//---------------------------
-/** tools/[slug].json — 翻訳不要。URL・ID・enum を書く */
-export type ToolShared = {
-    name: string           // 固有名詞。全言語共通（例: "Lumilumi"）
-    category: string       // enum: "client" | "backup" | "relay" | ...
-    usage: string          // enum: "web-open" | "app-download" | "cli" | ...
-    difficulty: string     // enum: "beginner" | "intermediate" | "advanced"
-    websiteUrl: string
-    githubRepo?: string    // "owner/repo" 形式
-    nostrNoteId?: string   // Nostr から星数フェッチに使う
-    nextTools: string[]    // slug の配列
-    screenshots: string[]  // ⚠ 管理方法未決定（パス or URL）
+// needs.json の1要素
+// toolList は ToolEntry.id への外部キー的参照
+export interface NeedEntry {
+    id: string;
+    en: NeedContent;
+    ja: NeedContent;
+    toolList: string[];
 }
 
-/** tools/[slug].{locale}.json — ロケール別テキスト */
-export type ToolLocale = {
-    tagline: string        // 1行キャッチコピー
-    description: string    // 「これは何？」欄。1〜2文
-    whatFor: string[]      // 「こんな人におすすめ」。各項目「〜したい人」形式
-    difficultyReason: string  // 難易度の補足（例: "nsec 管理不要、開いたらすぐ使える"）
-    features: string[]     // 機能タグ（例: ["低通信量モード", "poll 対応"]）
+// features.json は ToolEntry.id の配列そのもの
+export type FeatureEntry = string;
+
+// 参照整合性チェックの結果
+export interface ValidationError {
+    source: 'needs' | 'features';
+    sourceId: string;
+    missingToolId: string;
 }
-
-/** ページで扱う結合済み型 */
-export type Tool = ToolShared & ToolLocale & {
-    slug: string
-    stars?: number         // Nostr からフェッチ（nostrNoteId 経由）
-}
-
-/** Nostr からフェッチした星のノートIDリスト key:atag */
-export type StarCounts = Map<string, string[]>
-
-export type SaveStarList = {
-    "reactions": StarCounts,
-    "until": number //チェック済みのcreated_at
-}
-
-/* なにこれ
-export type Need = {
-    id: string
-    label: string
-    toolIds: string[]
-} */

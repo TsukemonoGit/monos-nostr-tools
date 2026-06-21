@@ -1,0 +1,27 @@
+[
+    {
+        "id": "start-nostr",
+        "ja": {
+            "title": "Nostrを始めたい"
+        },
+        "en": {
+            "title": "Want to start Nostr"
+        },
+        "toolList": [
+            "lumilumi"
+        ]
+    },
+    {
+        "id": "data-lost",
+        "ja": {
+            "title": "データが消えた!"
+        },
+        "en": {
+            "title": "Lost my data!"
+        },
+        "toolList": [
+            "luminostr",
+            "nostr-bookmark-recovery"
+        ]
+    }
+]

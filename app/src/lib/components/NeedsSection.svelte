@@ -1,18 +1,24 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import type { NeedData } from '$lib/types';
 	import NeedCard from './NeedCard.svelte';
+	import needsData from '$lib/data/needs.json';
+	import { getLocale } from '$lib/paraglide/runtime';
+	import toolsData from '$lib/data/tools.json';
+	import type { NeedEntry } from '$lib/types';
 
-	const needs: NeedData[] = [
-		{
-			title: '認証',
-			description: 'ログインしたい'
-		},
-		{
-			title: '投稿',
-			description: '投稿したい'
-		}
-	];
+	let locale = $derived(getLocale());
+
+	const needs = needsData as NeedEntry[];
+	const tools = toolsData as any;
+
+	const toolList = needsData.map((need) => need.toolList);
+
+	let displayList;
+
+	const openModal = (need: NeedEntry) => {
+		console.log(need.toolList);
+	};
+	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.[locale]));
 </script>
 
 <section class="my-12">
@@ -21,7 +27,8 @@
 	</h2>
 	<div class="myContainer flex gap-2">
 		{#each needs as need}
-			<NeedCard data={need} />
+			{@const needData = need?.[locale]}
+			<NeedCard data={needData} onclick={() => openModal(need)} />
 		{/each}
 	</div>
 </section>

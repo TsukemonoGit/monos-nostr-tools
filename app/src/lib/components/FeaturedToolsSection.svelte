@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import type { ToolData } from '$lib/types';
+	import { getLocale } from '$lib/paraglide/runtime';
 	import ToolCard from './ToolCard.svelte';
+	import toolsData from '$lib/data/tools.json';
+	import featuredData from '$lib/data/features.json';
+	import type { ToolContent } from '$lib/types';
 
-	const tools: ToolData[] = [
-		{
-			name: 'Lumilumi',
-			description: 'Nostr Client',
-			id: 'lumilumi' //href
-		}
-	];
+	let locale = $derived(getLocale());
+
+	const featured = featuredData as string[];
+	const tools = toolsData as any;
+	let featuredi18n: ToolContent[] = $derived(featured.map((id) => tools?.[id]?.[locale]));
 </script>
 
 <section class="my-12">
@@ -17,7 +18,7 @@
 		{m.featured_title()}
 	</h2>
 	<div class="myContainer flex gap-2">
-		{#each tools as tool}
+		{#each featuredi18n as tool}
 			<ToolCard {...tool} />
 		{/each}
 	</div>

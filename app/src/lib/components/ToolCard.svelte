@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { ToolData } from '$lib/types';
+	import type { ToolContent } from '$lib/types';
 
-	let { name, description }: ToolData = $props();
+	let { name, description }: ToolContent = $props();
 </script>
 
-<article class="rounded-md shadow-md p-4">
+<article class="rounded-md shadow-md p-4 bg-gray-50">
 	<h3>{name}</h3>
 	<p>{description}</p>
 </article>

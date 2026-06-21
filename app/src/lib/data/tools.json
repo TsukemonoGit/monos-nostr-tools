@@ -1,0 +1,32 @@
+{
+	"lumilumi": {
+		"en": {
+			"name": "Lumilumi",
+			"description": "Nostr Client"
+		},
+		"ja": {
+			"name": "Lumilumi",
+			"description": "Nostrクライアント"
+		}
+	},
+	"luminostr": {
+		"en": {
+			"name": "Luminostr",
+			"description": "Recovering lost Nostr data"
+		},
+		"ja": {
+			"name": "Luminostr",
+			"description": "消えたNostrデータを復元"
+		}
+	},
+	"nfo2": {
+		"en": {
+			"name": "NFO2",
+			"description": "Organize and tidy up follow data"
+		},
+		"ja": {
+			"name": "NFO2",
+			"description": "フォローリストを整理整頓"
+		}
+	}
+}
