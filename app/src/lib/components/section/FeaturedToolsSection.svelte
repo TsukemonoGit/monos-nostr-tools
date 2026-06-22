@@ -4,13 +4,12 @@
 	import ToolCard from '$lib/components/ToolCard.svelte';
 	import toolsData from '$lib/data/tools.json';
 	import featuredData from '$lib/data/features.json';
-	import type { ToolContent, ToolsMap } from '$lib/types';
+	import type {  ToolsMap } from '$lib/types';
 
 	let locale = $derived(getLocale());
 
 	const featured = featuredData as string[];
 	const tools = toolsData as ToolsMap;
-	let featuredi18n: ToolContent[] = $derived(featured.map((id) => tools?.[id]?.[locale]));
 </script>
 
 <section class="my-20">

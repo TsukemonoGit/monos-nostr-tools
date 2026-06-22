@@ -1,5 +1,6 @@
 {
 	"lumilumi": {
+		"category":"webapp",
 		"en": {
 			"name": "Lumilumi",
 			"description": "Nostr Client"
@@ -10,6 +11,7 @@
 		}
 	},
 	"luminostr": {
+		"category":"webapp",
 		"en": {
 			"name": "Luminostr",
 			"description": "Recovering lost Nostr data"
@@ -20,6 +22,7 @@
 		}
 	},
 	"nfo2": {
+		"category":"webapp",
 		"en": {
 			"name": "NFO2",
 			"description": "Organize and tidy up follow data"
@@ -30,6 +33,7 @@
 		}
 	},
 	"bookmark-recovery": {
+		"category":"webapp",
 		"en": {
 			"name": "Bookmark Recovery Tool",
 			"description": ""

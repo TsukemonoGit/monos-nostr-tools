@@ -1,9 +1,11 @@
 // ロケール定義。増やす場合はここに追加する。
 export type Locale = 'ja' | 'en';
 
+// ツールの種類、ツールテンプレ選択にもつかう。増やす場合はここに追加する。
+export type Category="webapp"|"library";
 
 // tools.json 用（id をキーとした辞書）
-export type ToolsMap = Record<string, Pick<ToolEntry, 'en' | 'ja'>>;
+export type ToolsMap = Record<string, ToolEntry>;
 
 // ツール本体のロケール別コンテンツ
 export interface ToolContent {
@@ -13,7 +15,7 @@ export interface ToolContent {
 
 // tools.json の1要素
 export interface ToolEntry {
-    id: string;
+    category: Category,
     en: ToolContent;
     ja: ToolContent;
 }
