@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import ToolCard from './ToolCard.svelte';
+	import ToolCard from '$lib/components/ToolCard.svelte';
 	import toolsData from '$lib/data/tools.json';
 	import featuredData from '$lib/data/features.json';
 	import type { ToolContent, ToolsMap } from '$lib/types';
@@ -13,11 +13,11 @@
 	let featuredi18n: ToolContent[] = $derived(featured.map((id) => tools?.[id]?.[locale]));
 </script>
 
-<section class="my-18">
+<section class="my-20">
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.featured_title()}
 	</h2>
-	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4">
+	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-2">
 		{#each featured as id}
 			{@const tool = tools?.[id]?.[locale]}
 			<ToolCard {id} {tool} />

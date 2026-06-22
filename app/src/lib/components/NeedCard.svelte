@@ -14,7 +14,7 @@
 </script>
 
 <button
-	class="rounded-md shadow bg-gray-50 p-6 flex items-center gap-2 hover:scale-101 transition hover:shadow-md w-full active:scale-99 active:shadow"
+	class="button-animation rounded-md  bg-gray-50 p-6 flex items-center gap-2  w-full "
 	{onclick}
 >
 	{#if Icon}<Icon />{/if}

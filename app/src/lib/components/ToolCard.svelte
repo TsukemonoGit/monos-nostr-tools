@@ -8,7 +8,7 @@
 
 <button
 	onclick={() => goto(`/tools/${id}`)}
-	class="rounded-md shadow p-6 bg-gray-50 hover:scale-101 transition hover:shadow-md flex justify-center items-center active:scale-99 active:shadow text-left"
+	class="button-animation  rounded-md  p-6 bg-gray-50  flex justify-center items-center  text-left"
 	><div>
 		<h3 class="font-klee text-xl my-1">{tool.name}</h3>
 		<p class="text-sm text-gray-400 whitespace-pre-wrap">{tool.description}</p>

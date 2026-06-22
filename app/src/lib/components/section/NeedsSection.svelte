@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import NeedCard from './NeedCard.svelte';
+	import NeedCard from '$lib/components/NeedCard.svelte';
 	import needsData from '$lib/data/needs.json';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import toolsData from '$lib/data/tools.json';
 	import type { NeedEntry, ToolsMap } from '$lib/types';
-	import NeedModal from './NeedModal.svelte';
+	import NeedModal from '$lib/components/NeedModal.svelte';
 
 	let locale = $derived(getLocale());
 	let needModalOpen = $state(false);
 
 	const needs = needsData as NeedEntry[];
-	const tools = toolsData as ToolsMap;
 
 	let displayNeed: NeedEntry | null = $state(null);
 
@@ -23,7 +22,7 @@
 	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.[locale]));
 </script>
 
-<section class="my-18">
+<section class="my-20">
 	<h2 class="text-lg font-title3 font-bold myContainer">
 		{m.needs_title()}
 	</h2>
