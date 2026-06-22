@@ -1,11 +1,15 @@
 // ロケール定義。増やす場合はここに追加する。
-export type Locale = 'ja' | 'en';
+export const LOCALES = ['ja', 'en'] as const;
+
+export type Locale =  (typeof LOCALES)[number]
 
 // ツールの種類、ツールテンプレ選択にもつかう。増やす場合はここに追加する。
 export type Category="webapp"|"library"| "extension";
 
 //一覧表示のグループわけ
-export type Audience="enduser"| "developer";
+export const AUDIENCES = ['enduser', 'developer'] as const;
+
+export type Audience = (typeof AUDIENCES)[number];
 
 // tools.json 用（id をキーとした辞書）
 export type ToolsMap = Record<string, ToolEntry>;
@@ -48,3 +52,5 @@ export interface ValidationError {
     sourceId: string;
     missingToolId: string;
 }
+
+export type AudienceI18n = Record<Locale, Record<Audience, string>>;
