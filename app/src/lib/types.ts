@@ -2,7 +2,10 @@
 export type Locale = 'ja' | 'en';
 
 // ツールの種類、ツールテンプレ選択にもつかう。増やす場合はここに追加する。
-export type Category="webapp"|"library";
+export type Category="webapp"|"library"| "extension";
+
+//一覧表示のグループわけ
+export type Audience="enduser"| "developer";
 
 // tools.json 用（id をキーとした辞書）
 export type ToolsMap = Record<string, ToolEntry>;
@@ -16,6 +19,7 @@ export interface ToolContent {
 // tools.json の1要素
 export interface ToolEntry {
     category: Category,
+    audience: Audience,
     en: ToolContent;
     ja: ToolContent;
 }
