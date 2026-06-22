@@ -34,7 +34,7 @@
 					{/each}
 				</div>
 			</div>
-			<Dialog.Footer c>
+			<Dialog.Footer>
 				<Dialog.Close
 					class={[
 						buttonVariants({ variant: 'secondary' }),

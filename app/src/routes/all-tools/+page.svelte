@@ -28,7 +28,7 @@
 	<section class="myContainer">
 		<h2 class="font-title1">{audience_i18n[locale][audience]}</h2>
 
-		<div class="flex gap-4">
+		<div class="flex gap-4 flex-col">
 			{#each grouped[audience] as tool (tool.id)}
 				<ToolCard tool={tool[locale]} id={tool.id} />
 			{/each}
