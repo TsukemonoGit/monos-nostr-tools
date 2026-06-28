@@ -59,3 +59,13 @@ export interface ValidationError {
 }
 
 export type AudienceI18n = Record<Locale, Record<Audience, string>>;
+
+export interface FaqContent {
+	question: string;
+	answer: string;
+}
+export interface FaqEntry {
+	id: string;
+	ja: FaqContent;
+	en: FaqContent;
+}
