@@ -14,12 +14,20 @@ export type Audience = (typeof AUDIENCES)[number];
 // tools.json 用（id をキーとした辞書）
 export type ToolsMap = Record<string, ToolEntry>;
 
+export interface WhatsNewEntry {
+	date: string;
+	title: string;
+	description?: string;
+}
+
 // ツール本体のロケール別コンテンツ
 export interface ToolContent {
 	name: string;
 	description: string;
 	tagline: string;
-	whatFor: string[];
+	features: string[];
+	highlights: string[];
+	whatsNew: WhatsNewEntry[];
 }
 
 // tools.json の1要素

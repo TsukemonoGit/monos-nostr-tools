@@ -41,7 +41,9 @@
 
 	<!--FAQ-->
 	<DetailCard title="FAQ">
-		<div class=" divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full">
+		<div
+			class=" divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full -mt-2"
+		>
 			<FaqAccordion faqs={tool.faqs} />
 		</div>
 

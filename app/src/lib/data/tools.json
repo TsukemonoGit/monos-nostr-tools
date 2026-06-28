@@ -6,12 +6,14 @@
 
 		"screenshots": [
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
-
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp",
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/8c8569bbd48bb78ea20b9cda1c9ebe9ea4a46bcf82b23b8945658b79682079bf.webp"
 		],
 		"relatedLinks": [
-			{ "type": "source", "url": "https://github.com/TsukemonoGit/lumilumi" },
+			{
+				"type": "source",
+				"url": "https://github.com/TsukemonoGit/lumilumi"
+			},
 			{
 				"type": "related-tool",
 				"toolId": "luminostr"
@@ -21,24 +23,54 @@
 			"name": "Lumilumi",
 			"description": "Nostr Client",
 			"tagline": "Feature-rich Nostr client",
-			"whatFor": [
-				"People who want to use Nostr with low mobile data consumption",
-				"People who want to use the poll feature",
-				"People who want to post or browse location info (geohash)",
-				"People who want to read long-form Nostr articles (Kind 30023)",
-				"People who want a feature-rich web client"
+			"features": [
+				"Polls",
+				"Geohash",
+				"Long-form articles (Kind 30023)",
+				"Multiple relay support",
+				"Custom emoji support"
+			],
+			"highlights": [
+				"Optimized for low mobile data usage",
+				"Feature-rich web client",
+				"Supports multiple Nostr NIPs"
+			],
+			"whatsNew": [
+				{
+					"date": "2026-06-28",
+					"title": "Added support for custom emoji packs."
+				},
+				{
+					"date": "2026-06-20",
+					"title": "Improved relay management."
+				}
 			]
 		},
 		"ja": {
 			"name": "Lumilumi",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "機能豊富、データ節約もできるNostrクライアント",
-			"whatFor": [
-				"モバイル回線で通信量を抑えて Nostr を使いたい人",
-				"poll（投票）機能を使いたい人",
-				"位置情報（geohash）を投稿・閲覧したい人",
-				"Nostr の長文記事（Kind 30023）を読みたい人",
-				"機能が豊富な Web クライアントが欲しい人"
+			"features": [
+				"Poll（投票）",
+				"Geohash",
+				"長文記事（Kind 30023）",
+				"複数Relay対応",
+				"カスタム絵文字対応"
+			],
+			"highlights": [
+				"モバイル回線でも通信量を抑えやすい",
+				"機能が豊富なWebクライアント",
+				"さまざまなNostr NIPに対応"
+			],
+			"whatsNew": [
+				{
+					"date": "2026-06-28",
+					"title": "カスタム絵文字パックに対応しました。"
+				},
+				{
+					"date": "2026-06-20",
+					"title": "Relay管理を改善しました。"
+				}
 			]
 		},
 		"faqs": [
@@ -66,66 +98,78 @@
 			}
 		]
 	},
+
 	"luminostr": {
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-
 		"screenshots": [],
 		"relatedLinks": [],
 		"en": {
 			"name": "Luminostr",
 			"description": "Recovering lost Nostr data",
 			"tagline": "Recovering lost Nostr data",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"ja": {
 			"name": "Luminostr",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "消えたリストデータを復元するツール",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"faqs": []
 	},
+
 	"nfo2": {
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-
 		"screenshots": [],
 		"relatedLinks": [],
 		"en": {
 			"name": "NFO2",
 			"description": "Organize and tidy up follow data",
 			"tagline": "Organize your Nostr follow list",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"ja": {
 			"name": "NFO2",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "フォローリストを整理整頓するツール",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"faqs": []
 	},
+
 	"bookmark-recovery": {
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-
 		"screenshots": [],
 		"relatedLinks": [],
 		"en": {
 			"name": "Bookmark Recovery Tool",
 			"description": "",
 			"tagline": "Restore your lost bookmarks",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"ja": {
 			"name": "Bookmark Recovery Tool",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "消えたブックマークリストを復元する",
-			"whatFor": []
+			"features": [],
+			"highlights": [],
+			"whatsNew": []
 		},
 		"faqs": []
 	}

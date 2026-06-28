@@ -1,11 +1,14 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"needs_title": "Tools to meet your needs",
+	"needs_title": "Find the tool for your needs",
 	"featured_title": "Featured Tools",
-	"hero_title": "Enjoy the freedom of Nostr \neven more freely and comfortably",
+	"hero_title": "Make Nostr\nmore free and more comfortable",
 	"faq_title": "FAQ",
 	"faq_main": "General FAQ",
-	"browseTools": "View All Tools",
-	"detail_whatFor": "What For",
+	"browseTools": "Browse Tools",
+
+	"detail_features": "Features",
+	"detail_highlights": "Highlights",
+	"detail_whatsNew": "What's New",
 	"links_title": "Related Links"
 }

@@ -5,7 +5,10 @@
 	"hero_title": "自由なNostrを\nもっと自由に快適に",
 	"faq_title": "FAQ",
 	"faq_main": "全体FAQ",
-	"browseTools": " ツール一覧を見る",
-	"detail_whatFor": "こんな人におすすめ",
+	"browseTools": "ツール一覧を見る",
+
+	"detail_features": "Features",
+	"detail_highlights": "Highlights",
+	"detail_whatsNew": "What's New",
 	"links_title": "関連リンク"
 }

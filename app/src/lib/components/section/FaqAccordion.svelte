@@ -20,7 +20,7 @@
 	{@const content = faq?.[locale]}
 	<div class="w-full">
 		<button
-			class="flex items-center justify-between w-full py-4 px-6 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+			class="flex items-center justify-between w-full py-4 px-4 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
 			onclick={() => toggleFaq(index)}
 		>
 			<span class=" font-medium pr-4">{content.question}</span>
