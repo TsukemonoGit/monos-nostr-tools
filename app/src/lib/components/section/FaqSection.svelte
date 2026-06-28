@@ -4,6 +4,7 @@
 	import { slide } from 'svelte/transition';
 	import type { FaqEntry } from '$lib/types';
 	import faqData from '$lib/data/faq.json';
+	import { ChevronDown, ChevronUp } from '@lucide/svelte';
 
 	let locale = $derived(getLocale());
 
@@ -29,12 +30,8 @@
 					onclick={() => toggleFaq(index)}
 				>
 					<span class="text-lg font-medium pr-4">{content.question}</span>
-					<span class="text-2xl flex-shrink-0">
-						{#if openIndex === index}
-							−
-						{:else}
-							+
-						{/if}
+					<span class="shrink-0 text-gray-700">
+						<ChevronDown class={`${openIndex === index ? 'rotate-180' : ''} transition-all `} />
 					</span>
 				</button>
 				{#if openIndex === index}
