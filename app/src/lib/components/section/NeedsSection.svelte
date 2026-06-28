@@ -3,8 +3,7 @@
 	import NeedCard from '$lib/components/NeedCard.svelte';
 	import needsData from '$lib/data/needs.json';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import toolsData from '$lib/data/tools.json';
-	import type { NeedEntry, ToolsMap } from '$lib/types';
+	import type { NeedEntry } from '$lib/types';
 	import NeedModal from '$lib/components/NeedModal.svelte';
 
 	let locale = $derived(getLocale());
@@ -23,11 +22,11 @@
 </script>
 
 <section class="my-20">
-	<h2 class="text-lg font-title3 font-bold myContainer">
+	<h2 class="text-2xl section-title myContainer">
 		{m.needs_title()}
 	</h2>
-	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-2">
-		{#each needs as need}
+	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-4">
+		{#each needs as need (need)}
 			{@const needData = need?.[locale]}
 			<NeedCard data={needData} onclick={() => openModal(need)} icon={need.icon} />
 		{/each}

@@ -4,7 +4,7 @@
 	import ToolCard from '$lib/components/ToolCard.svelte';
 	import toolsData from '$lib/data/tools.json';
 	import featuredData from '$lib/data/features.json';
-	import type {  ToolsMap } from '$lib/types';
+	import type { ToolsMap } from '$lib/types';
 
 	let locale = $derived(getLocale());
 
@@ -13,11 +13,11 @@
 </script>
 
 <section class="my-20">
-	<h2 class="text-lg font-title3 font-bold myContainer">
+	<h2 class="text-2xl section-title myContainer">
 		{m.featured_title()}
 	</h2>
-	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-2">
-		{#each featured as id}
+	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-4">
+		{#each featured as id (id)}
 			{@const tool = tools?.[id]?.[locale]}
 			<ToolCard {id} {tool} />
 		{/each}

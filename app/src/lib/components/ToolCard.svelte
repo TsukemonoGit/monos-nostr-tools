@@ -10,9 +10,9 @@
 	onclick={() => goto(`/tools/${id}`)}
 	class="button-animation font-title rounded-md p-6 bg-gray-50 grid grid-cols-[1fr_auto] gap-2 justify-center items-center text-left w-full"
 	><div>
-		<h3 class=" font-bold text-lg my-1">{tool.tagline}</h3>
+		<h3 class=" font-semibold my-1">{tool.tagline}</h3>
 		<p class="text-xs text-gray-400 whitespace-pre-wrap">{tool.description}</p>
-		<p class="text-sm font-klee text-end">{tool.name}</p>
+		<p class="text-sm mt-8 font-klee">{tool.name}</p>
 	</div>
 	<ChevronRight class="text-gray-400 ml-auto" />
 </button>

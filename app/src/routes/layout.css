@@ -21,7 +21,7 @@
 	--font-maru: 'Zen Maru Gothic', sans-serif;
 	--font-title: 'Oswald', 'Bebas Neue', 'Space Grotesk', 'M Plus 1 Code', sans-serif;
 	--font-title2: 'Bebas Neue', sans-serif;
-	--font-title3: 'Space Grotesk', 'M Plus 1 Code', sans-serif;
+	--section-title: 'Space Grotesk', sans-serif;
 
 	--color-gray-50: oklch(0.985 0.002 264.542);
 	--color-gray-100: oklch(0.967 0.003 264.542);

@@ -8,17 +8,17 @@
 	import type { ToolsMap } from '$lib/types';
 
 	const tools = toolsData as ToolsMap;
-
-	const category = tools[page.params.slug ?? '']?.category;
+	const tool = tools[page.params.slug ?? ''];
+	const category = tool?.category;
 </script>
 
 {#if category}
 	{#if category === 'webapp'}
-		<WebAppTool />
+		<WebAppTool {tool} />
 	{:else if category === 'library'}
-		<LibraryTool />
+		<LibraryTool {tool} />
 	{:else if category == 'extension'}
-		<ExtensionTool />
+		<ExtensionTool {tool} />
 	{:else}
 		atode
 	{/if}

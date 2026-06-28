@@ -5,7 +5,7 @@
 
 <header class="font-klee z-10">
 	<div class="myContainer py-2 flex justify-between">
-		<a class="font-title3 text-xl" href={'/'}>Mono's Nostr Tools ･ᴗ･</a>
+		<a class="section-title text-xl" href={'/'}>Mono's Nostr Tools ･ᴗ･</a>
 		<LocaleSelect />
 	</div>
 </header>
