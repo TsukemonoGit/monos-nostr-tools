@@ -45,6 +45,17 @@
 					"question": "あとで",
 					"answer": "あとで"
 				}
+			},
+			{
+				"id": "lumilumi-are",
+				"ja": {
+					"question": "あとで",
+					"answer": "あとで"
+				},
+				"en": {
+					"question": "あとで",
+					"answer": "あとで"
+				}
 			}
 		]
 	},

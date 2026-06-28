@@ -18,18 +18,21 @@
 
 {#each faqs as faq, index (faq.id)}
 	{@const content = faq?.[locale]}
-	<div class="border-b border-gray-200 dark:border-gray-700">
+	<div class="w-full">
 		<button
 			class="flex items-center justify-between w-full py-4 px-6 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
 			onclick={() => toggleFaq(index)}
 		>
-			<span class="text-lg font-medium pr-4">{content.question}</span>
-			<span class="shrink-0 text-gray-700">
+			<span class=" font-medium pr-4">{content.question}</span>
+			<span class="shrink-0 text-gray-500">
 				<ChevronDown class={`${openIndex === index ? 'rotate-180' : ''} transition-all `} />
 			</span>
 		</button>
 		{#if openIndex === index}
-			<div class="px-6 pb-4 text-gray-600 dark:text-gray-300" transition:slide={{ duration: 200 }}>
+			<div
+				class="mx-6 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
+				transition:slide={{ duration: 200 }}
+			>
 				<p>{content.answer}</p>
 			</div>
 		{/if}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getLocale } from '$lib/paraglide/runtime';
 	import type { ToolEntry } from '$lib/types';
-	import { ChevronRight } from '@lucide/svelte';
+
 	import Carousel from './Carousel.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import DetailCard from './DetailCard.svelte';
@@ -20,9 +20,9 @@
 <Carousel screenshots={tool.screenshots} />
 
 <DetailCard title={m.detail_whatFor()}>
-	<ul class="list-disc list-inside">
+	<ul class="list-disc list-inside mx-4 font-medium">
 		{#each toolLocal.whatFor as li (li)}
-			<li class="my-2">{li}</li>
+			<li class="my-4">{li}</li>
 		{/each}
 	</ul>
 </DetailCard>

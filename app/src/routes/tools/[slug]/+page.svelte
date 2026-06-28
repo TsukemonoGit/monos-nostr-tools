@@ -38,7 +38,9 @@
 	{/if}
 
 	<DetailCard title="FAQ">
-		<FaqAccordion faqs={tool.faqs} />
+		<div class=" divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full">
+			<FaqAccordion faqs={tool.faqs} />
+		</div>
 
 		<a
 			href="/#faq"
@@ -46,7 +48,7 @@
 		>
 			{m.faq_main()}
 
-			<ChevronRight class="text-gray-600" />
+			<ChevronRight class="text-gray-500" />
 		</a>
 	</DetailCard>
 {/if}
