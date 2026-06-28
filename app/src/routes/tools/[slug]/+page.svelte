@@ -10,6 +10,8 @@
 	import { ChevronRight } from '@lucide/svelte';
 	import { m } from '$lib/paraglide/messages';
 	import DetailCard from '$lib/components/tool/DetailCard.svelte';
+
+	import RelatedLink from '$lib/components/tool/RelatedLink.svelte';
 	const tools = toolsData as ToolsMap;
 	const tool = tools[page.params.slug ?? ''];
 	const category = tool?.category;
@@ -37,6 +39,7 @@
 		atode
 	{/if}
 
+	<!--FAQ-->
 	<DetailCard title="FAQ">
 		<div class=" divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full">
 			<FaqAccordion faqs={tool.faqs} />
@@ -51,4 +54,14 @@
 			<ChevronRight class="text-gray-500" />
 		</a>
 	</DetailCard>
+
+	{#if tool.relatedLinks.length > 0}
+		<!--関連リンク-->
+		<DetailCard title={m.links_title()}>
+			<div class="flex flex-col gap-4">
+				{#each tool.relatedLinks as link (link)}
+					<RelatedLink relatedLink={link} />
+				{/each}
+			</div>
+		</DetailCard>{/if}
 {/if}

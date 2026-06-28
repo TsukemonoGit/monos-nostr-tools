@@ -27,10 +27,12 @@ export interface ToolEntry {
 	category: Category;
 	audience: Audience;
 	websiteUrl: string;
-	githubRepo: string;
-	screenshots: string[];
+	screenshots?: string[];
+	relatedLinks: RelatedLink[];
+
 	en: ToolContent;
 	ja: ToolContent;
+
 	faqs: FaqEntry[];
 }
 
@@ -69,4 +71,52 @@ export interface FaqEntry {
 	id: string;
 	ja: FaqContent;
 	en: FaqContent;
+}
+
+// 関連リンクの種類。増やす場合はここに追加する。
+export const RELATEDLINK = [
+	// ソースコードを閲覧できるページ
+	'source',
+
+	// ドキュメント・マニュアル・APIリファレンスなど
+	'docs',
+
+	// 登壇資料・発表スライド
+	'slides',
+
+	// 書籍・記事・インタビューなど
+	'publication',
+
+	// 寄付・スポンサー・OpenSatsなどの支援ページ
+	'support',
+
+	// サイト内の別ツールへのリンク
+	'related-tool',
+
+	// 上記以外の任意の外部サイト
+	'external'
+] as const;
+
+export type RelatedLinkType = (typeof RELATEDLINK)[number];
+
+// 関連リンクのロケール別コンテンツ
+// external の場合のみ使用
+export interface RelatedLinkContent {
+	title: string;
+	description?: string;
+}
+
+// 関連リンク
+export interface RelatedLink {
+	type: RelatedLinkType;
+
+	// source / docs / slides / publication / support / external で使用
+	url?: string;
+
+	// related-tool で使用
+	toolId?: string;
+
+	// external の場合のみ使用
+	ja?: RelatedLinkContent;
+	en?: RelatedLinkContent;
 }

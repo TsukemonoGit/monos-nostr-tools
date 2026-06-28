@@ -3,12 +3,19 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "https://lumilumi.app",
-		"githubRepo": "TsukemonGit/lumilumi",
+
 		"screenshots": [
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
 
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp",
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/8c8569bbd48bb78ea20b9cda1c9ebe9ea4a46bcf82b23b8945658b79682079bf.webp"
+		],
+		"relatedLinks": [
+			{ "type": "source", "url": "https://github.com/TsukemonoGit/lumilumi" },
+			{
+				"type": "related-tool",
+				"toolId": "luminostr"
+			}
 		],
 		"en": {
 			"name": "Lumilumi",
@@ -63,8 +70,9 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-		"githubRepo": "",
+
 		"screenshots": [],
+		"relatedLinks": [],
 		"en": {
 			"name": "Luminostr",
 			"description": "Recovering lost Nostr data",
@@ -83,8 +91,9 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-		"githubRepo": "",
+
 		"screenshots": [],
+		"relatedLinks": [],
 		"en": {
 			"name": "NFO2",
 			"description": "Organize and tidy up follow data",
@@ -103,8 +112,9 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
-		"githubRepo": "",
+
 		"screenshots": [],
+		"relatedLinks": [],
 		"en": {
 			"name": "Bookmark Recovery Tool",
 			"description": "",

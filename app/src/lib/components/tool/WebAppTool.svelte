@@ -17,8 +17,9 @@
 <h2 class="text-4xl font-klee myContainer mt-4">{toolLocal.name}</h2>
 
 <p class="myContainer mt-2">{toolLocal.description}</p>
-<Carousel screenshots={tool.screenshots} />
-
+{#if tool.screenshots}
+	<Carousel screenshots={tool.screenshots} />
+{/if}
 <DetailCard title={m.detail_whatFor()}>
 	<ul class="list-disc list-inside mx-4 font-medium">
 		{#each toolLocal.whatFor as li (li)}

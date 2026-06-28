@@ -30,7 +30,7 @@
 		</button>
 		{#if openIndex === index}
 			<div
-				class="mx-6 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
+				class="mx-7 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
 				transition:slide={{ duration: 200 }}
 			>
 				<p>{content.answer}</p>
