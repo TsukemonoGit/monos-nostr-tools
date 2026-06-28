@@ -31,6 +31,7 @@ export interface ToolEntry {
 	screenshots: string[];
 	en: ToolContent;
 	ja: ToolContent;
+	faqs: FaqEntry[];
 }
 
 // ニーズカードのロケール別コンテンツ

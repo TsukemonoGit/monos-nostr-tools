@@ -9,7 +9,7 @@
 	const faqs = faqData as FaqEntry[];
 </script>
 
-<section class="my-20">
+<section class="my-20" id="faq">
 	<h2 class="text-2xl section-title myContainer">
 		{m.faq_title()}
 	</h2>

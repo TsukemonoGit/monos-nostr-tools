@@ -33,7 +33,20 @@
 				"Nostr の長文記事（Kind 30023）を読みたい人",
 				"機能が豊富な Web クライアントが欲しい人"
 			]
-		}
+		},
+		"faqs": [
+			{
+				"id": "lumilumi-login",
+				"ja": {
+					"question": "アカウント作成方法を教えてください",
+					"answer": "あとで"
+				},
+				"en": {
+					"question": "あとで",
+					"answer": "あとで"
+				}
+			}
+		]
 	},
 	"luminostr": {
 		"category": "webapp",
@@ -52,7 +65,8 @@
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "消えたリストデータを復元するツール",
 			"whatFor": []
-		}
+		},
+		"faqs": []
 	},
 	"nfo2": {
 		"category": "webapp",
@@ -71,7 +85,8 @@
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "フォローリストを整理整頓するツール",
 			"whatFor": []
-		}
+		},
+		"faqs": []
 	},
 	"bookmark-recovery": {
 		"category": "webapp",
@@ -90,6 +105,7 @@
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 			"tagline": "消えたブックマークリストを復元する",
 			"whatFor": []
-		}
+		},
+		"faqs": []
 	}
 }
