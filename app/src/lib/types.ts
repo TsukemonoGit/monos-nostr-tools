@@ -25,6 +25,7 @@ export interface ToolContent {
 export interface ToolEntry {
 	category: Category;
 	audience: Audience;
+	screenshots: string[];
 	en: ToolContent;
 	ja: ToolContent;
 }

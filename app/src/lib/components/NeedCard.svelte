@@ -13,10 +13,7 @@
 	let Icon = $derived(getIcon(icon));
 </script>
 
-<button
-	class="button-animation rounded-md  bg-gray-50 p-6 flex items-center gap-2  w-full "
-	{onclick}
->
+<button class="button-animation rounded-md bg-gray-50 p-6 flex items-center gap-2 w-full" {onclick}>
 	{#if Icon}<Icon />{/if}
 	<h3>{data.title}</h3>
 	<ChevronRight class="text-gray-400 ml-auto" />
