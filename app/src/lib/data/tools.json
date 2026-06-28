@@ -2,6 +2,8 @@
 	"lumilumi": {
 		"category": "webapp",
 		"audience": "enduser",
+		"websiteUrl": "https://lumilumi.app",
+		"githubRepo": "TsukemonGit/lumilumi",
 		"screenshots": [
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
 
@@ -11,57 +13,83 @@
 		"en": {
 			"name": "Lumilumi",
 			"description": "Nostr Client",
-			"tagline": "Feature-rich Nostr client"
+			"tagline": "Feature-rich Nostr client",
+			"whatFor": [
+				"People who want to use Nostr with low mobile data consumption",
+				"People who want to use the poll feature",
+				"People who want to post or browse location info (geohash)",
+				"People who want to read long-form Nostr articles (Kind 30023)",
+				"People who want a feature-rich web client"
+			]
 		},
 		"ja": {
 			"name": "Lumilumi",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "機能豊富、データ節約もできるNostrクライアント"
+			"tagline": "機能豊富、データ節約もできるNostrクライアント",
+			"whatFor": [
+				"モバイル回線で通信量を抑えて Nostr を使いたい人",
+				"poll（投票）機能を使いたい人",
+				"位置情報（geohash）を投稿・閲覧したい人",
+				"Nostr の長文記事（Kind 30023）を読みたい人",
+				"機能が豊富な Web クライアントが欲しい人"
+			]
 		}
 	},
 	"luminostr": {
 		"category": "webapp",
 		"audience": "enduser",
+		"websiteUrl": "",
+		"githubRepo": "",
 		"screenshots": [],
 		"en": {
 			"name": "Luminostr",
 			"description": "Recovering lost Nostr data",
-			"tagline": "Recovering lost Nostr data"
+			"tagline": "Recovering lost Nostr data",
+			"whatFor": []
 		},
 		"ja": {
 			"name": "Luminostr",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "消えたリストデータを復元するツール"
+			"tagline": "消えたリストデータを復元するツール",
+			"whatFor": []
 		}
 	},
 	"nfo2": {
 		"category": "webapp",
 		"audience": "enduser",
+		"websiteUrl": "",
+		"githubRepo": "",
 		"screenshots": [],
 		"en": {
 			"name": "NFO2",
 			"description": "Organize and tidy up follow data",
-			"tagline": "Organize your Nostr follow list"
+			"tagline": "Organize your Nostr follow list",
+			"whatFor": []
 		},
 		"ja": {
 			"name": "NFO2",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "フォローリストを整理整頓するツール"
+			"tagline": "フォローリストを整理整頓するツール",
+			"whatFor": []
 		}
 	},
 	"bookmark-recovery": {
 		"category": "webapp",
 		"audience": "enduser",
+		"websiteUrl": "",
+		"githubRepo": "",
 		"screenshots": [],
 		"en": {
 			"name": "Bookmark Recovery Tool",
 			"description": "",
-			"tagline": "Restore your lost bookmarks"
+			"tagline": "Restore your lost bookmarks",
+			"whatFor": []
 		},
 		"ja": {
 			"name": "Bookmark Recovery Tool",
 			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "消えたブックマークリストを復元する"
+			"tagline": "消えたブックマークリストを復元する",
+			"whatFor": []
 		}
 	}
 }

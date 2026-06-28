@@ -19,12 +19,15 @@ export interface ToolContent {
 	name: string;
 	description: string;
 	tagline: string;
+	whatFor: string[];
 }
 
 // tools.json の1要素
 export interface ToolEntry {
 	category: Category;
 	audience: Audience;
+	websiteUrl: string;
+	githubRepo: string;
 	screenshots: string[];
 	en: ToolContent;
 	ja: ToolContent;

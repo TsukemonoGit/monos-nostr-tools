@@ -18,7 +18,16 @@
 	function goTo(index: number) {
 		if (index === currentIndex) return;
 		currentIndex = index;
-		slideEls[index]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+
+		const target = slideEls[index];
+		if (!target || !trackEl) return;
+
+		// scrollIntoView は縦方向（ページ全体）のスクロールも動かしてしまうため使用しない。
+		// trackEl 自身の横スクロール位置のみを算出して動かす。
+		const trackRect = trackEl.getBoundingClientRect();
+		const targetRect = target.getBoundingClientRect();
+		const offset = trackEl.scrollLeft + (targetRect.left - trackRect.left);
+		trackEl.scrollTo({ left: offset, behavior: 'smooth' });
 	}
 
 	function goNext() {
@@ -103,7 +112,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div class="bg-gray-300">
 	<div
-		class="relative w-full overflow-hidden h-64 md:h-96 my-16 myContainer"
+		class="relative w-full overflow-hidden h-64 sm:h-96 my-16 myContainer"
 		role="region"
 		aria-roledescription="carousel"
 		aria-label="carousel"
