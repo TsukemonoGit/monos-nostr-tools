@@ -4,11 +4,13 @@
 		"audience": "enduser",
 		"en": {
 			"name": "Lumilumi",
-			"description": "Nostr Client"
+			"description": "Nostr Client",
+			"tagline": "Feature-rich Nostr client"
 		},
 		"ja": {
 			"name": "Lumilumi",
-			"description": "低通信料設定有\n機能豊富なNostrクライアント"
+			"description": "低通信料設定有\n機能豊富なNostrクライアント",
+			"tagline": "機能豊富、データ節約もできるNostrクライアント"
 		}
 	},
 	"luminostr": {
@@ -16,11 +18,13 @@
 		"audience": "enduser",
 		"en": {
 			"name": "Luminostr",
-			"description": "Recovering lost Nostr data"
+			"description": "Recovering lost Nostr data",
+			"tagline": "Recovering lost Nostr data"
 		},
 		"ja": {
 			"name": "Luminostr",
-			"description": "消えたNostrデータを復元"
+			"description": "消えたNostrデータを復元",
+			"tagline": "消えたリストデータを復元するツール"
 		}
 	},
 	"nfo2": {
@@ -28,11 +32,13 @@
 		"audience": "enduser",
 		"en": {
 			"name": "NFO2",
-			"description": "Organize and tidy up follow data"
+			"description": "Organize and tidy up follow data",
+			"tagline": "Organize your Nostr follow list"
 		},
 		"ja": {
 			"name": "NFO2",
-			"description": "フォローリストを整理整頓"
+			"description": "フォローリストを整理整頓",
+			"tagline": "フォローリストを整理整頓するツール"
 		}
 	},
 	"bookmark-recovery": {
@@ -40,11 +46,13 @@
 		"audience": "enduser",
 		"en": {
 			"name": "Bookmark Recovery Tool",
-			"description": ""
+			"description": "",
+			"tagline": "Restore your lost bookmarks"
 		},
 		"ja": {
 			"name": "Bookmark Recovery Tool",
-			"description": "複数種類あるブックマークのリストのどこになにがあるかわからないけど消失した!"
+			"description": "複数種類あるブックマークのリストのどこになにがあるかわからないけど消失した!",
+			"tagline": "消えたブックマークリストを復元する"
 		}
 	}
 }
