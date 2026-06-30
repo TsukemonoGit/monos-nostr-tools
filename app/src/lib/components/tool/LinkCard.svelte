@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronRight } from '@lucide/svelte';
+	import { ChevronRight, ExternalLink } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 
 	interface Props {
@@ -7,8 +7,9 @@
 		title: string;
 		description: string;
 		link: string;
+		external?: boolean;
 	}
-	let { Icon, title, description, link }: Props = $props();
+	let { Icon, title, description, link, external = true }: Props = $props();
 </script>
 
 <a
@@ -20,6 +21,8 @@
 		<h3 class="text-lg">{title}</h3>
 		<p>{description}</p>
 	</div>
-
-	<ChevronRight class="text-gray-600 my-auto" />
+	{#if external}
+		<ExternalLink class="text-gray-600 my-auto" />
+	{:else}<ChevronRight class="text-gray-600 my-auto" />
+	{/if}
 </a>

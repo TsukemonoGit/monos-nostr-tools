@@ -1,35 +1,41 @@
 [
 	{
 		"id": "what-is-nostr",
-		"ja": {
-			"question": "Nostrとは何ですか？",
-			"answer": "Nostrは分散型のオープンなソーシャルプロトコルです。中央サーバーに依存せず、relayと呼ばれるノードを通じてメッセージを配信します。誰でも参与でき、検閲に強い仕組みが特徴です。"
-		},
-		"en": {
-			"question": "What is Nostr?",
-			"answer": "Nostr is a decentralized open-source social protocol. It doesn't rely on central servers and distributes messages through nodes called relays. Anyone can participate, and it's designed to be resistant to censorship."
+		"i18n": {
+			"ja": {
+				"question": "Nostrとは何ですか？",
+				"answer": "Nostrは分散型のオープンなソーシャルプロトコルです。中央サーバーに依存せず、relayと呼ばれるノードを通じてメッセージを配信します。誰でも参与でき、検閲に強い仕組みが特徴です。"
+			},
+			"en": {
+				"question": "What is Nostr?",
+				"answer": "Nostr is a decentralized open-source social protocol. It doesn't rely on central servers and distributes messages through nodes called relays. Anyone can participate, and it's designed to be resistant to censorship."
+			}
 		}
 	},
 	{
 		"id": "how-to-create-account",
-		"ja": {
-			"question": "アカウントはどのように作成しますか？",
-			"answer": "Nostrでは公開鍵・秘密鍵のキーペアがアカウントになります。アプリ内でキーペアを生成する機能があり、それを秘密鍵として保存するだけでアカウントが作成できます。秘密鍵を大切に管理してください。"
-		},
-		"en": {
-			"question": "How do I create an account?",
-			"answer": "In Nostr, a public/private key pair serves as your account. You can generate a keypair within the app, and simply saving the private key creates your account. Be sure to keep your private key secure."
+		"i18n": {
+			"ja": {
+				"question": "アカウントはどのように作成しますか？",
+				"answer": "Nostrでは公開鍵・秘密鍵のキーペアがアカウントになります。アプリ内でキーペアを生成する機能があり、それを秘密鍵として保存するだけでアカウントが作成できます。秘密鍵を大切に管理してください。"
+			},
+			"en": {
+				"question": "How do I create an account?",
+				"answer": "In Nostr, a public/private key pair serves as your account. You can generate a keypair within the app, and simply saving the private key creates your account. Be sure to keep your private key secure."
+			}
 		}
 	},
 	{
 		"id": "what-is-relay",
-		"ja": {
-			"question": "relayとは何ですか？",
-			"answer": "relayはNostrメッセージの配信サーバーです。投稿やメッセージをrelayに送信し、他のユーザーがrelayから取得することでコミュニケーションが成り立ちます。複数のrelayに接続することで、より広範なネットワークと同期できます。"
-		},
-		"en": {
-			"question": "What is a relay?",
-			"answer": "Relays are messaging servers for Nostr. You post messages to relays, and other users retrieve them from relays to communicate. Connecting to multiple relays allows you to sync with a broader network."
+		"i18n": {
+			"ja": {
+				"question": "relayとは何ですか？",
+				"answer": "relayはNostrメッセージの配信サーバーです。投稿やメッセージをrelayに送信し、他のユーザーがrelayから取得することでコミュニケーションが成り立ちます。複数のrelayに接続することで、より広範なネットワークと同期できます。"
+			},
+			"en": {
+				"question": "What is a relay?",
+				"answer": "Relays are messaging servers for Nostr. You post messages to relays, and other users retrieve them from relays to communicate. Connecting to multiple relays allows you to sync with a broader network."
+			}
 		}
 	}
 ]

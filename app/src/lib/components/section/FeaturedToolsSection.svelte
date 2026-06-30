@@ -18,7 +18,7 @@
 	</h2>
 	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-4">
 		{#each featured as id (id)}
-			{@const tool = tools?.[id]?.[locale]}
+			{@const tool = tools?.[id]?.i18n[locale]}
 			<ToolCard {id} {tool} />
 		{/each}
 	</div>

@@ -17,7 +17,7 @@
 </script>
 
 {#each faqs as faq, index (faq.id)}
-	{@const content = faq?.[locale]}
+	{@const content = faq?.i18n[locale]}
 	<div class="w-full">
 		<button
 			class="flex items-center justify-between w-full py-4 px-4 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"

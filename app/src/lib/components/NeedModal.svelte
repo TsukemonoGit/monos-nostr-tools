@@ -15,7 +15,7 @@
 	let locale = $derived(getLocale());
 	let toolList = $derived(need?.toolList);
 
-	let needData = $derived(need?.[locale]);
+	let needData = $derived(need?.i18n[locale]);
 	let Icon = $derived(getIcon(need?.icon || ''));
 </script>
 
@@ -30,7 +30,7 @@
 			<div class="flex items-center gap-2">
 				<div class="grid flex-1 gap-2">
 					{#each toolList as toolname (toolname)}
-						<ToolCard id={toolname} tool={tools[toolname]?.[locale]} />
+						<ToolCard id={toolname} tool={tools[toolname]?.i18n[locale]} />
 					{/each}
 				</div>
 			</div>

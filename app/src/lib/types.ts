@@ -1,18 +1,18 @@
 // ロケール定義。増やす場合はここに追加する。
 export const LOCALES = ['ja', 'en'] as const;
-
 export type Locale = (typeof LOCALES)[number];
 
-// ツールの種類、ツールテンプレ選択にもつかう。増やす場合はここに追加する。
+// ロケールごとに同じ形のコンテンツを持たせるための共通ヘルパー型
+export type Localized<T> = Record<Locale, T>;
+
+// ツールの種類。増やす場合はここに追加する。
 export type Category = 'webapp' | 'library' | 'extension';
 
-//一覧表示のグループわけ
+// 一覧表示のグループわけ
 export const AUDIENCES = ['enduser', 'developer'] as const;
-
 export type Audience = (typeof AUDIENCES)[number];
 
-// tools.json 用（id をキーとした辞書）
-export type ToolsMap = Record<string, ToolEntry>;
+// === コンテンツ ===
 
 export interface WhatsNewEntry {
 	date: string;
@@ -20,8 +20,8 @@ export interface WhatsNewEntry {
 	description?: string;
 }
 
-// ツール本体のロケール別コンテンツ
-export interface ToolContent {
+// ToolContent / LibraryContent の共通部分
+export interface ContentBase {
 	name: string;
 	description: string;
 	tagline: string;
@@ -30,44 +30,84 @@ export interface ToolContent {
 	whatsNew: WhatsNewEntry[];
 }
 
-// tools.json の1要素
-export interface ToolEntry {
+// ツール本体のロケール別コンテンツ
+export type ToolContent = ContentBase;
+
+// ライブラリ固有のコンテンツ
+export interface LibraryContent extends ContentBase {
+	install: string;
+	example: string;
+	api: ApiEntry[];
+}
+
+export interface ApiEntry {
+	name: string;
+	description: string;
+}
+
+// === ツールエントリ（Discriminated Union）===
+
+// 共通フィールドのベース型（直接は使わない）
+interface ToolEntryBase {
 	category: Category;
 	audience: Audience;
 	websiteUrl: string;
-	screenshots?: string[];
 	relatedLinks: RelatedLink[];
-
-	en: ToolContent;
-	ja: ToolContent;
-
 	faqs: FaqEntry[];
 }
 
-// ニーズカードのロケール別コンテンツ
+// Web アプリ
+export interface WebAppEntry extends ToolEntryBase {
+	category: 'webapp';
+	screenshots?: string[];
+	i18n: Localized<ToolContent>;
+}
+
+// ライブラリ
+export interface LibraryEntry extends ToolEntryBase {
+	category: 'library';
+	i18n: Localized<LibraryContent>;
+}
+
+// ブラウザ拡張など（今後増やす場合はここに追加）
+export interface ExtensionEntry extends ToolEntryBase {
+	category: 'extension';
+	i18n: Localized<ToolContent>;
+}
+
+// ツールの総合型（category で判別する）
+export type Tool = WebAppEntry | LibraryEntry | ExtensionEntry;
+
+// tools.json 用（id をキーとした辞書）
+export type ToolsMap = Record<string, Tool>;
+
+// === ニーズ ===
+
 export interface NeedContent {
 	title: string;
 }
 
 // needs.json の1要素
-// toolList は ToolEntry.id への外部キー的参照
+// toolList は Tool（の id）への外部キー的参照
 export interface NeedEntry {
 	id: string;
 	icon: string;
-	en: NeedContent;
-	ja: NeedContent;
+	i18n: Localized<NeedContent>;
 	toolList: string[];
 }
 
-// features.json は ToolEntry.id の配列そのもの
+// features.json は Tool（の id）の配列そのもの
 export type FeatureEntry = string;
 
-// 参照整合性チェックの結果
+// === 参照整合性チェック ===
+
 export interface ValidationError {
 	source: 'needs' | 'features';
 	sourceId: string;
 	missingToolId: string;
 }
+
+// === FAQ・関連リンク ===
 
 export type AudienceI18n = Record<Locale, Record<Audience, string>>;
 
@@ -75,56 +115,36 @@ export interface FaqContent {
 	question: string;
 	answer: string;
 }
+
 export interface FaqEntry {
 	id: string;
-	ja: FaqContent;
-	en: FaqContent;
+	i18n: Localized<FaqContent>;
 }
 
 // 関連リンクの種類。増やす場合はここに追加する。
 export const RELATEDLINK = [
-	// ソースコードを閲覧できるページ
 	'source',
-
-	// ドキュメント・マニュアル・APIリファレンスなど
 	'docs',
-
-	// 登壇資料・発表スライド
 	'slides',
-
-	// 書籍・記事・インタビューなど
 	'publication',
-
-	// 寄付・スポンサー・OpenSatsなどの支援ページ
 	'support',
-
-	// サイト内の別ツールへのリンク
 	'related-tool',
-
-	// 上記以外の任意の外部サイト
 	'external'
 ] as const;
 
 export type RelatedLinkType = (typeof RELATEDLINK)[number];
 
-// 関連リンクのロケール別コンテンツ
-// external の場合のみ使用
 export interface RelatedLinkContent {
 	title: string;
 	description?: string;
 }
 
-// 関連リンク
 export interface RelatedLink {
 	type: RelatedLinkType;
-
 	// source / docs / slides / publication / support / external で使用
 	url?: string;
-
 	// related-tool で使用
 	toolId?: string;
-
-	// external の場合のみ使用
-	ja?: RelatedLinkContent;
-	en?: RelatedLinkContent;
+	// external の場合のみ使用。両言語が揃うとは限らないため Partial。
+	i18n?: Partial<Localized<RelatedLinkContent>>;
 }

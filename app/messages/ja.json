@@ -1,14 +1,16 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"needs_title": "あなたのニーズに、ぴったりのツールを",
-	"featured_title": "注目のツール",
-	"hero_title": "自由なNostrを\nもっと自由に快適に",
-	"faq_title": "FAQ",
-	"faq_main": "全体FAQ",
 	"browseTools": "ツール一覧を見る",
-
+	"detail_api": "API",
+	"detail_example": "Example",
 	"detail_features": "Features",
 	"detail_highlights": "Highlights",
+	"detail_install": "Installation",
 	"detail_whatsNew": "What's New",
-	"links_title": "関連リンク"
+	"faq_main": "全体FAQ",
+	"faq_title": "FAQ",
+	"featured_title": "注目のツール",
+	"hero_title": "自由なNostrを\nもっと自由に快適に",
+	"links_title": "関連リンク",
+	"needs_title": "あなたのニーズに、ぴったりのツールを"
 }

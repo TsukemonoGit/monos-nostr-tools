@@ -36,15 +36,16 @@
 {:else if relatedLink.type === 'support'}
 	<LinkCard title="Support" description="" link={relatedLink.url!} Icon={HeartHandshake} />
 {:else if relatedLink.type === 'related-tool'}
-	{@const tool = tools?.[relatedLink.toolId!]?.[locale]}
+	{@const tool = tools?.[relatedLink.toolId!]?.i18n[locale]}
 	<LinkCard
+		external={false}
 		title={tool.name}
 		description={tool.tagline}
 		link={`./tools/${relatedLink.toolId}`}
 		Icon={LayoutGrid}
 	/>
 {:else}
-	{@const content = relatedLink[locale]}
+	{@const content = relatedLink.i18n?.[locale]}
 	<LinkCard
 		title={content!.title}
 		description={content!.description ?? ''}

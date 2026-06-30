@@ -1,14 +1,16 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"needs_title": "Find the tool for your needs",
-	"featured_title": "Featured Tools",
-	"hero_title": "Make Nostr\nmore free and more comfortable",
-	"faq_title": "FAQ",
-	"faq_main": "General FAQ",
 	"browseTools": "Browse Tools",
-
+	"detail_api": "API",
+	"detail_example": "Example",
 	"detail_features": "Features",
 	"detail_highlights": "Highlights",
+	"detail_install": "Installation",
 	"detail_whatsNew": "What's New",
-	"links_title": "Related Links"
+	"faq_main": "General FAQ",
+	"faq_title": "FAQ",
+	"featured_title": "Featured Tools",
+	"hero_title": "Make Nostr\nmore free and more comfortable",
+	"links_title": "Related Links",
+	"needs_title": "Find the tool for your needs"
 }

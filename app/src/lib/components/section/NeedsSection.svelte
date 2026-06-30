@@ -18,7 +18,7 @@
 		displayNeed = need;
 		needModalOpen = true;
 	};
-	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.[locale]));
+	// const toolListData = $derived(toolList.map((id) => tools?.[id]?.i18n[locale]));
 </script>
 
 <section class="my-20">
@@ -27,7 +27,7 @@
 	</h2>
 	<div class="myContainer grid md:grid-cols-2 grid-cols-1 gap-4 my-4">
 		{#each needs as need (need)}
-			{@const needData = need?.[locale]}
+			{@const needData = need?.i18n[locale]}
 			<NeedCard data={needData} onclick={() => openModal(need)} icon={need.icon} />
 		{/each}
 	</div>

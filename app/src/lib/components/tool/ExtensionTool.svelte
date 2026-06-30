@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ToolEntry } from '$lib/types';
+	import type { ExtensionEntry } from '$lib/types';
 
 	interface Props {
-		tool: ToolEntry;
+		tool: ExtensionEntry;
 	}
 	let { tool }: Props = $props();
 </script>

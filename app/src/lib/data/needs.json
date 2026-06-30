@@ -2,22 +2,26 @@
 	{
 		"id": "start-nostr",
 		"icon": "Rocket",
-		"ja": {
-			"title": "Nostrを始めたい"
-		},
-		"en": {
-			"title": "Want to start Nostr"
+		"i18n": {
+			"ja": {
+				"title": "Nostrを始めたい"
+			},
+			"en": {
+				"title": "Want to start Nostr"
+			}
 		},
 		"toolList": ["lumilumi"]
 	},
 	{
 		"id": "data-lost",
 		"icon": "Skull",
-		"ja": {
-			"title": "データが消えた!"
-		},
-		"en": {
-			"title": "Lost my data!"
+		"i18n": {
+			"ja": {
+				"title": "データが消えた!"
+			},
+			"en": {
+				"title": "Lost my data!"
+			}
 		},
 		"toolList": ["luminostr", "bookmark-recovery"]
 	}

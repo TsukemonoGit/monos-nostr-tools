@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { getLocale } from '$lib/paraglide/runtime';
-	import type { ToolEntry } from '$lib/types';
+	import type { WebAppEntry } from '$lib/types';
 
 	import Carousel from './Carousel.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import DetailCard from './DetailCard.svelte';
 
 	interface Props {
-		tool: ToolEntry;
+		tool: WebAppEntry;
 	}
 	let { tool }: Props = $props();
 	let locale = $derived(getLocale());
-	let toolLocal = $derived(tool?.[locale]);
+	let toolLocal = $derived(tool?.i18n[locale]);
 </script>
 
 <h2 class="text-3xl font-klee font-bold myContainer mt-8 text-gray-900">{toolLocal.name}</h2>

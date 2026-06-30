@@ -3,7 +3,6 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "https://lumilumi.app",
-
 		"screenshots": [
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp",
@@ -19,81 +18,87 @@
 				"toolId": "luminostr"
 			}
 		],
-		"en": {
-			"name": "Lumilumi",
-			"description": "Nostr Client",
-			"tagline": "Feature-rich Nostr client",
-			"features": [
-				"Polls",
-				"Geohash",
-				"Long-form articles (Kind 30023)",
-				"Multiple relay support",
-				"Custom emoji support"
-			],
-			"highlights": [
-				"Optimized for low mobile data usage",
-				"Feature-rich web client",
-				"Supports multiple Nostr NIPs"
-			],
-			"whatsNew": [
-				{
-					"date": "2026-06-28",
-					"title": "Added support for custom emoji packs."
-				},
-				{
-					"date": "2026-06-20",
-					"title": "Improved relay management."
-				}
-			]
-		},
-		"ja": {
-			"name": "Lumilumi",
-			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "機能豊富、データ節約もできるNostrクライアント",
-			"features": [
-				"Poll（投票）",
-				"Geohash",
-				"長文記事（Kind 30023）",
-				"複数Relay対応",
-				"カスタム絵文字対応"
-			],
-			"highlights": [
-				"モバイル回線でも通信量を抑えやすい",
-				"機能が豊富なWebクライアント",
-				"さまざまなNostr NIPに対応"
-			],
-			"whatsNew": [
-				{
-					"date": "2026-06-28",
-					"title": "カスタム絵文字パックに対応しました。"
-				},
-				{
-					"date": "2026-06-20",
-					"title": "Relay管理を改善しました。"
-				}
-			]
+		"i18n": {
+			"en": {
+				"name": "Lumilumi",
+				"description": "Nostr Client",
+				"tagline": "Feature-rich Nostr client",
+				"features": [
+					"Polls",
+					"Geohash",
+					"Long-form articles (Kind 30023)",
+					"Multiple relay support",
+					"Custom emoji support"
+				],
+				"highlights": [
+					"Optimized for low mobile data usage",
+					"Feature-rich web client",
+					"Supports multiple Nostr NIPs"
+				],
+				"whatsNew": [
+					{
+						"date": "2026-06-28",
+						"title": "Added support for custom emoji packs."
+					},
+					{
+						"date": "2026-06-20",
+						"title": "Improved relay management."
+					}
+				]
+			},
+			"ja": {
+				"name": "Lumilumi",
+				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
+				"tagline": "機能豊富、データ節約もできるNostrクライアント",
+				"features": [
+					"Poll（投票）",
+					"Geohash",
+					"長文記事（Kind 30023）",
+					"複数Relay対応",
+					"カスタム絵文字対応"
+				],
+				"highlights": [
+					"モバイル回線でも通信量を抑えやすい",
+					"機能が豊富なWebクライアント",
+					"さまざまなNostr NIPに対応"
+				],
+				"whatsNew": [
+					{
+						"date": "2026-06-28",
+						"title": "カスタム絵文字パックに対応しました。"
+					},
+					{
+						"date": "2026-06-20",
+						"title": "Relay管理を改善しました。"
+					}
+				]
+			}
 		},
 		"faqs": [
 			{
 				"id": "lumilumi-login",
-				"ja": {
-					"question": "アカウント作成方法を教えてください",
-					"answer": "あとで"
-				},
-				"en": {
-					"question": "あとで",
-					"answer": "あとで"
+				"i18n": {
+					"ja": {
+						"question": "アカウント作成方法を教えてください",
+						"answer": "あとで"
+					},
+					"en": {
+						"question": "あとで",
+						"answer": "あとで"
+					}
 				}
 			},
 			{
 				"id": "lumilumi-are",
-				"ja": {
-					"question": "あとで",
-					"answer": "あとで"
-				},
-				"en": {
-					"question": "あとで",
-					"answer": "あとで"
+				"i18n": {
+					"ja": {
+						"question": "あとで",
+						"answer": "あとで"
+					},
+					"en": {
+						"question": "あとで",
+						"answer": "あとで"
+					}
 				}
 			}
 		]
@@ -105,21 +110,23 @@
 		"websiteUrl": "",
 		"screenshots": [],
 		"relatedLinks": [],
-		"en": {
-			"name": "Luminostr",
-			"description": "Recovering lost Nostr data",
-			"tagline": "Recovering lost Nostr data",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
-		},
-		"ja": {
-			"name": "Luminostr",
-			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "消えたリストデータを復元するツール",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
+		"i18n": {
+			"en": {
+				"name": "Luminostr",
+				"description": "Recovering lost Nostr data",
+				"tagline": "Recovering lost Nostr data",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			},
+			"ja": {
+				"name": "Luminostr",
+				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
+				"tagline": "消えたリストデータを復元するツール",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			}
 		},
 		"faqs": []
 	},
@@ -130,21 +137,23 @@
 		"websiteUrl": "",
 		"screenshots": [],
 		"relatedLinks": [],
-		"en": {
-			"name": "NFO2",
-			"description": "Organize and tidy up follow data",
-			"tagline": "Organize your Nostr follow list",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
-		},
-		"ja": {
-			"name": "NFO2",
-			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "フォローリストを整理整頓するツール",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
+		"i18n": {
+			"en": {
+				"name": "NFO2",
+				"description": "Organize and tidy up follow data",
+				"tagline": "Organize your Nostr follow list",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			},
+			"ja": {
+				"name": "NFO2",
+				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
+				"tagline": "フォローリストを整理整頓するツール",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			}
 		},
 		"faqs": []
 	},
@@ -155,22 +164,204 @@
 		"websiteUrl": "",
 		"screenshots": [],
 		"relatedLinks": [],
-		"en": {
-			"name": "Bookmark Recovery Tool",
-			"description": "",
-			"tagline": "Restore your lost bookmarks",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
-		},
-		"ja": {
-			"name": "Bookmark Recovery Tool",
-			"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
-			"tagline": "消えたブックマークリストを復元する",
-			"features": [],
-			"highlights": [],
-			"whatsNew": []
+		"i18n": {
+			"en": {
+				"name": "Bookmark Recovery Tool",
+				"description": "",
+				"tagline": "Restore your lost bookmarks",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			},
+			"ja": {
+				"name": "Bookmark Recovery Tool",
+				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
+				"tagline": "消えたブックマークリストを復元する",
+				"features": [],
+				"highlights": [],
+				"whatsNew": []
+			}
 		},
 		"faqs": []
+	},
+
+	"nostr-content-parser": {
+		"category": "library",
+		"audience": "developer",
+		"websiteUrl": "https://github.com/konemono/nostr-content-parser",
+		"relatedLinks": [
+			{
+				"type": "source",
+				"url": "https://github.com/konemono/nostr-content-parser"
+			},
+			{
+				"type": "docs",
+				"url": "https://github.com/konemono/nostr-content-parser#readme"
+			}
+		],
+		"i18n": {
+			"en": {
+				"name": "Nostr Content Parser",
+				"description": "Parse Nostr content into structured tokens with full TypeScript support. Supports NIP-19 entities, URLs, custom emojis, hashtags, Lightning addresses, and more.",
+				"tagline": "Type-safe Nostr content parser with discriminated unions",
+				"features": [
+					"Parse NIP-19 entities (npub, nprofile, note, nevent, naddr, nsec)",
+					"URL detection with type inference (image, video, audio)",
+					"Custom emoji parsing with tag metadata",
+					"Hashtag validation against t tags",
+					"Lightning address and invoice detection",
+					"Legacy reference parsing (#[0] style)",
+					"Full TypeScript discriminated union support"
+				],
+				"highlights": [
+					"Zero-dependency, lightweight parser",
+					"Synchronous and asynchronous parsing modes",
+					"Type-safe token metadata access",
+					"Extensible token filtering utilities"
+				],
+				"whatsNew": [
+					{
+						"date": "2026-06-15",
+						"title": "Added RELAY token type for WebSocket URLs"
+					},
+					{
+						"date": "2026-06-01",
+						"title": "Complete TypeScript rewrite with discriminated unions"
+					}
+				],
+				"install": "npm install @konemono/nostr-content-parser",
+				"example": "import { parseContent, TokenType } from '@konemono/nostr-content-parser';\n\nconst tokens = parseContent('Hello npub1xyz... #nostr', tags);",
+				"api": [
+					{
+						"name": "parseContent(content, tags?, options?)",
+						"description": "Synchronous parsing with extension-based URL type detection"
+					},
+					{
+						"name": "parseContentAsync(content, tags?, options?)",
+						"description": "Asynchronous parsing with HTTP HEAD-based URL type detection"
+					},
+					{
+						"name": "getNip19Entities(tokens)",
+						"description": "Extract all NIP-19 tokens from parsed results"
+					},
+					{
+						"name": "getUrls(tokens)",
+						"description": "Extract URL tokens with optional type metadata"
+					},
+					{
+						"name": "getCustomEmojis(tokens)",
+						"description": "Extract custom emoji tokens with tag metadata"
+					}
+				]
+			},
+			"ja": {
+				"name": "Nostr Content Parser",
+				"description": "Nostrの投稿内容を構造化されたトークンにパースするTypeScriptライブラリ。NIP-19エンティティ、URL、カスタム絵文字、ハッシュタグ、Lightningアドレスなどに対応。",
+				"tagline": "判別可能なユニオン型による型安全なNostrコンテンツパーサー",
+				"features": [
+					"NIP-19エンティティのパース（npub, nprofile, note, nevent, naddr, nsec）",
+					"URL検出と種類推論（画像、動画、音声）",
+					"タグメタデータ付きカスタム絵文字パース",
+					"tタグに対するハッシュタグ検証",
+					"Lightningアドレスとインボイス検出",
+					"レガシー参照のパース（#[0]形式）",
+					"完全なTypeScript判別可能ユニオン型対応"
+				],
+				"highlights": [
+					"依存ゼロの軽量パーサー",
+					"同期・非同期の両方のパースモード",
+					"型安全なトークンメタデータアクセス",
+					"拡張可能なトークンフィルタリングユーティリティ"
+				],
+				"whatsNew": [
+					{
+						"date": "2026-06-15",
+						"title": "WebSocket URL用のRELAYトークンタイプを追加"
+					},
+					{
+						"date": "2026-06-01",
+						"title": "判別可能ユニオン型による完全なTypeScript書き直し"
+					}
+				],
+				"install": "npm install @konemono/nostr-content-parser",
+				"example": "import { parseContent, TokenType } from '@konemono/nostr-content-parser';\n\nconst tokens = parseContent('Hello npub1xyz... #nostr', tags);",
+				"api": [
+					{
+						"name": "parseContent(content, tags?, options?)",
+						"description": "拡張子ベースのURL種類検出を行う同期パース"
+					},
+					{
+						"name": "parseContentAsync(content, tags?, options?)",
+						"description": "HTTP HEADベースのURL種類検出を行う非同期パース"
+					},
+					{
+						"name": "getNip19Entities(tokens)",
+						"description": "パース結果からNIP-19トークンを抽出"
+					},
+					{
+						"name": "getUrls(tokens)",
+						"description": "オプションの種類メタデータ付きURLトークンを抽出"
+					},
+					{
+						"name": "getCustomEmojis(tokens)",
+						"description": "タグメタデータ付きカスタム絵文字トークンを抽出"
+					}
+				]
+			}
+		},
+		"faqs": [
+			{
+				"id": "nostr-content-parser-install",
+				"i18n": {
+					"ja": {
+						"question": "インストール方法を教えてください",
+						"answer": "npm install @konemono/nostr-content-parser でインストールできます。依存関係はゼロなので、追加のセットアップは不要です。"
+					},
+					"en": {
+						"question": "How do I install it?",
+						"answer": "Run npm install @konemono/nostr-content-parser. It has zero dependencies, so no additional setup is required."
+					}
+				}
+			},
+			{
+				"id": "nostr-content-parser-sync-async",
+				"i18n": {
+					"ja": {
+						"question": "parseContent と parseContentAsync の違いは何ですか？",
+						"answer": "parseContent は同期処理で、URLの種類は拡張子から判定します。parseContentAsync は非同期処理で、HTTP HEAD リクエストを使ってより正確にURLの種類を判定できます。"
+					},
+					"en": {
+						"question": "What is the difference between parseContent and parseContentAsync?",
+						"answer": "parseContent is synchronous and infers URL types from file extensions. parseContentAsync is asynchronous and uses HTTP HEAD requests for more accurate URL type detection."
+					}
+				}
+			},
+			{
+				"id": "nostr-content-parser-typescript",
+				"i18n": {
+					"ja": {
+						"question": "TypeScript の型安全性はどのように実現されていますか？",
+						"answer": "判別可能なユニオン型（Discriminated Unions）を採用しており、token.type をチェックするだけで、TypeScript が自動的に正しいメタデータ型を推論します。"
+					},
+					"en": {
+						"question": "How is TypeScript type safety achieved?",
+						"answer": "It uses discriminated unions. By checking token.type, TypeScript automatically infers the correct metadata shape for each token."
+					}
+				}
+			},
+			{
+				"id": "nostr-content-parser-tags",
+				"i18n": {
+					"ja": {
+						"question": "tags 引数は必須ですか？",
+						"answer": "必須ではありません。ただし、カスタム絵文字やレガシー参照（#[0]）を正しく解析するには、対応する tags 配列を渡す必要があります。"
+					},
+					"en": {
+						"question": "Is the tags argument required?",
+						"answer": "No, it is optional. However, you need to pass the tags array to correctly parse custom emojis and legacy references (#[0])."
+					}
+				}
+			}
+		]
 	}
 }
