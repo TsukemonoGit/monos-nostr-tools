@@ -3,6 +3,7 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "https://lumilumi.app",
+		"icon": "https://stok33.github.io/illust/lumirogo.png",
 		"screenshots": [
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp",
@@ -108,6 +109,7 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
+		"icon": "",
 		"screenshots": [],
 		"relatedLinks": [],
 		"i18n": {
@@ -135,6 +137,7 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
+		"icon": "",
 		"screenshots": [],
 		"relatedLinks": [],
 		"i18n": {
@@ -162,6 +165,7 @@
 		"category": "webapp",
 		"audience": "enduser",
 		"websiteUrl": "",
+		"icon": "",
 		"screenshots": [],
 		"relatedLinks": [],
 		"i18n": {
@@ -189,6 +193,7 @@
 		"category": "library",
 		"audience": "developer",
 		"websiteUrl": "https://github.com/konemono/nostr-content-parser",
+		"icon": "",
 		"relatedLinks": [
 			{
 				"type": "source",

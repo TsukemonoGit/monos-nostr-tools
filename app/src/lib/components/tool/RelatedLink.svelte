@@ -41,7 +41,7 @@
 		external={false}
 		title={tool.name}
 		description={tool.tagline}
-		link={`./tools/${relatedLink.toolId}`}
+		link={`./${relatedLink.toolId}`}
 		Icon={LayoutGrid}
 	/>
 {:else}

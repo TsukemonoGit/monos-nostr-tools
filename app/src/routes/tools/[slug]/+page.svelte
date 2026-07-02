@@ -15,7 +15,7 @@
 
 	// 1. Record<string, Tool>（ToolsMap）にする
 	const tools = toolsData as Record<string, Tool>;
-	const tool = tools[page.params.slug ?? ''];
+	let tool = $derived(tools[page.params.slug ?? '']);
 </script>
 
 <!-- 2. tool の存在を先にチェック -->

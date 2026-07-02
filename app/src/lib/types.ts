@@ -52,6 +52,7 @@ interface ToolEntryBase {
 	category: Category;
 	audience: Audience;
 	websiteUrl: string;
+	icon: string;
 	relatedLinks: RelatedLink[];
 	faqs: FaqEntry[];
 }

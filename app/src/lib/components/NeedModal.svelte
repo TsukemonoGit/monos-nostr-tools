@@ -30,7 +30,7 @@
 			<div class="flex items-center gap-2">
 				<div class="grid flex-1 gap-2">
 					{#each toolList as toolname (toolname)}
-						<ToolCard id={toolname} tool={tools[toolname]?.i18n[locale]} />
+						<ToolCard id={toolname} tool={tools[toolname]} />
 					{/each}
 				</div>
 			</div>

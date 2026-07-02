@@ -29,7 +29,7 @@
 
 		<div class="flex gap-4 flex-col">
 			{#each grouped[audience] as tool (tool.id)}
-				<ToolCard tool={tool.i18n[locale]} id={tool.id} />
+				<ToolCard {tool} id={tool.id} />
 			{/each}
 		</div>
 	</section>
