@@ -3,6 +3,8 @@
 	import { ChevronDown } from '@lucide/svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import { slide } from 'svelte/transition';
+	import markdownit from 'markdown-it';
+
 	interface Props {
 		faqs: FaqEntry[];
 	}
@@ -14,10 +16,18 @@
 	const toggleFaq = (index: number) => {
 		openIndex = openIndex === index ? null : index;
 	};
+
+	const md = markdownit({
+		html: false,
+		linkify: false,
+		typographer: false,
+		breaks: true
+	});
 </script>
 
 {#each faqs as faq, index (faq.id)}
 	{@const content = faq?.i18n[locale]}
+	{@const answer = md.render(content.answer)}
 	<div class="w-full">
 		<button
 			class="flex items-center justify-between w-full py-4 px-4 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
@@ -30,11 +40,20 @@
 		</button>
 		{#if openIndex === index}
 			<div
-				class="mx-7 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
+				class="answer mx-7 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
 				transition:slide={{ duration: 200 }}
 			>
-				<p>{content.answer}</p>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html answer}
 			</div>
 		{/if}
 	</div>
 {/each}
+
+<style lang="postcss">
+	@reference "tailwindcss";
+	.answer :global(a) {
+		@apply underline hover:brightness-120;
+		color: theme('--color-gray-500');
+	}
+</style>

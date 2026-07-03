@@ -27,6 +27,7 @@
 		"@sveltejs/kit": "^2.66.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.1",
+		"@types/markdown-it": "^14.1.2",
 		"@types/node": "^24.13.2",
 		"@vitest/browser-playwright": "^4.1.9",
 		"bits-ui": "^2.18.1",
@@ -54,6 +55,7 @@
 		"vitest-browser-svelte": "^2.1.1"
 	},
 	"dependencies": {
-		"@inlang/paraglide-js": "^2.20.0"
+		"@inlang/paraglide-js": "^2.20.0",
+		"markdown-it": "^14.3.0"
 	}
 }

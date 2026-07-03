@@ -90,15 +90,15 @@
 				}
 			},
 			{
-				"id": "lumilumi-are",
+				"id": "lumilumi-channel",
 				"i18n": {
 					"ja": {
-						"question": "あとで",
-						"answer": "あとで"
+						"question": "報告するほどでもないかもしれないが気になることがある...",
+						"answer": " [Lumilumiのユーザーチャンネル](https://lumilumi.app/channel/note10kw6pxzztsuvz4mqxfaze7jjwm44d4mcyt4xejdgdvtkqc5p80zs2ps8aj)にお気軽にご投稿ください！"
 					},
 					"en": {
-						"question": "あとで",
-						"answer": "あとで"
+						"question": "Not sure if it's worth reporting, but something feels off...",
+						"answer": "Feel free to post in the [Lumilumi user channel](https://lumilumi.app/channel/note10kw6pxzztsuvz4mqxfaze7jjwm44d4mcyt4xejdgdvtkqc5p80zs2ps8aj)!"
 					}
 				}
 			}
