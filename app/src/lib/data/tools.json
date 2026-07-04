@@ -201,7 +201,7 @@
 			},
 			{
 				"type": "docs",
-				"url": "https://github.com/konemono/nostr-content-parser#readme"
+				"url": "https://www.npmjs.com/package/@konemono/nostr-content-parser"
 			}
 		],
 		"i18n": {

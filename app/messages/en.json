@@ -1,7 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"browseTools": "Browse Tools",
-	"detail_api": "API",
+	"detail_api": "Key APIs",
 	"detail_example": "Example",
 	"detail_features": "Features",
 	"detail_highlights": "Highlights",

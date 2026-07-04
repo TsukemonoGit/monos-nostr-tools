@@ -4,6 +4,9 @@
 
 	import { m } from '$lib/paraglide/messages';
 	import DetailCard from './DetailCard.svelte';
+	import LibraryInstall from './library/LibraryInstall.svelte';
+	import LibraryExample from './library/LibraryExample.svelte';
+	import LibraryAPIs from './library/LibraryAPIs.svelte';
 
 	interface Props {
 		tool: LibraryEntry;
@@ -17,17 +20,13 @@
 
 <p class="myContainer mt-2 text-gray-500 leading-relaxed">{libraryLocal.description}</p>
 
-<DetailCard title={m.detail_install()}>
-	<pre class="bg-gray-900 text-gray-100 rounded-md p-4 mx-4 overflow-x-auto text-sm"><code
-			>{libraryLocal.install}</code
-		></pre>
-</DetailCard>
+{#if libraryLocal.install}
+	<LibraryInstall install={libraryLocal.install} />
+{/if}
 
-<DetailCard title={m.detail_example()}>
-	<pre class="bg-gray-900 text-gray-100 rounded-md p-4 mx-4 overflow-x-auto text-sm"><code
-			>{libraryLocal.example}</code
-		></pre>
-</DetailCard>
+{#if libraryLocal.example}
+	<LibraryExample example={libraryLocal.example} />
+{/if}
 
 <DetailCard title={m.detail_features()}>
 	<ul class="space-y-2 mx-4">
@@ -73,18 +72,12 @@
 	</ul>
 </DetailCard>
 
-<DetailCard title={m.detail_api()}>
-	<ul class="space-y-4 mx-4">
-		{#each libraryLocal.api as entry (entry.name)}
-			<li class="flex flex-col gap-1">
-				<code class="text-sm font-mono text-gray-900 bg-gray-100 rounded px-1.5 py-0.5 w-fit"
-					>{entry.name}</code
-				>
-				<span class="text-gray-700">{entry.description}</span>
-			</li>
-		{/each}
-	</ul>
-</DetailCard>
+{#if libraryLocal.api && libraryLocal.api.length > 0}
+	<LibraryAPIs
+		apis={libraryLocal.api}
+		link={tool.relatedLinks.find((link) => link.type === 'docs')}
+	/>
+{/if}
 
 <DetailCard title={m.detail_whatsNew()}>
 	<ul class="space-y-8 mx-4 mb-6">
