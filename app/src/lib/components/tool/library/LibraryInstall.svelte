@@ -33,7 +33,7 @@
 				<Copy size={16} />
 			{/if}
 		</button>
-		<pre class="bg-gray-800 text-gray-100 rounded-md p-4 pr-12 overflow-x-auto text-sm"><code
+		<pre class="bg-gray-200 text-gray-900 rounded-md p-6 pr-12 overflow-x-auto text-sm"><code
 				>{install}</code
 			></pre>
 	</div>

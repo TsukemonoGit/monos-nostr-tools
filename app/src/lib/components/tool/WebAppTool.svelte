@@ -16,7 +16,7 @@
 
 <h2 class="text-3xl font-klee font-bold myContainer mt-8 text-gray-900">{toolLocal.name}</h2>
 
-<p class="myContainer mt-2 text-gray-500 leading-relaxed">{toolLocal.description}</p>
+<p class="myContainer mt-2 text-gray-600 leading-relaxed">{toolLocal.description}</p>
 
 {#if tool.screenshots}
 	<Carousel screenshots={tool.screenshots} />

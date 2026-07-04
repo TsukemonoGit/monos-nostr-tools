@@ -5,8 +5,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import DetailCard from './DetailCard.svelte';
 	import LibraryInstall from './library/LibraryInstall.svelte';
-	import LibraryExample from './library/LibraryExample.svelte';
-	import LibraryAPIs from './library/LibraryAPIs.svelte';
+	import LibraryHowtouse from './library/LibraryHowtouse.svelte';
 
 	interface Props {
 		tool: LibraryEntry;
@@ -18,20 +17,20 @@
 
 <h2 class="text-3xl font-klee font-bold myContainer mt-8 text-gray-900">{libraryLocal.name}</h2>
 
-<p class="myContainer mt-2 text-gray-500 leading-relaxed">{libraryLocal.description}</p>
+<p class="myContainer mt-2 text-gray-600 leading-relaxed">{libraryLocal.description}</p>
 
 {#if libraryLocal.install}
 	<LibraryInstall install={libraryLocal.install} />
 {/if}
 
-{#if libraryLocal.example}
-	<LibraryExample example={libraryLocal.example} />
+{#if libraryLocal.howtouse}
+	<LibraryHowtouse howtouse={libraryLocal.howtouse} />
 {/if}
 
 <DetailCard title={m.detail_features()}>
 	<ul class="space-y-2 mx-4">
 		{#each libraryLocal.features as feature (feature)}
-			<li class="flex items-start gap-2.5 text-gray-700">
+			<li class="flex items-start gap-2.5">
 				<svg
 					class="size-4 mt-0.5 text-gray-500 shrink-0"
 					viewBox="0 0 20 20"
@@ -53,7 +52,7 @@
 <DetailCard title={m.detail_highlights()}>
 	<ul class="space-y-2 mx-4">
 		{#each libraryLocal.highlights as highlight (highlight)}
-			<li class="flex items-start gap-2.5 text-gray-700">
+			<li class="flex items-start gap-2.5">
 				<svg
 					class="size-4 mt-0.5 text-gray-500 shrink-0"
 					viewBox="0 0 20 20"
@@ -72,21 +71,14 @@
 	</ul>
 </DetailCard>
 
-{#if libraryLocal.api && libraryLocal.api.length > 0}
-	<LibraryAPIs
-		apis={libraryLocal.api}
-		link={tool.relatedLinks.find((link) => link.type === 'docs')}
-	/>
-{/if}
-
 <DetailCard title={m.detail_whatsNew()}>
 	<ul class="space-y-8 mx-4 mb-6">
 		{#each libraryLocal.whatsNew as entry (`${entry.date}-${entry.title}`)}
 			<li class="flex items-baseline gap-3 flex-wrap">
-				<span class="text-xs font-medium text-gray-600 bg-gray-50 rounded py-0.5 shrink-0"
+				<span class="text-xs font-medium text-gray-700 bg-gray-50 rounded py-0.5 shrink-0"
 					>{entry.date}</span
 				>
-				<span class="text-gray-700">{entry.title}</span>
+				<span>{entry.title}</span>
 			</li>
 		{/each}
 	</ul>

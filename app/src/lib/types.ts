@@ -36,13 +36,7 @@ export type ToolContent = ContentBase;
 // ライブラリ固有のコンテンツ
 export interface LibraryContent extends ContentBase {
 	install: string;
-	example: string;
-	api: ApiEntry[];
-}
-
-export interface ApiEntry {
-	name: string;
-	description: string;
+	howtouse: string; //Markdown
 }
 
 // === ツールエントリ（Discriminated Union）===
@@ -114,7 +108,7 @@ export type AudienceI18n = Record<Locale, Record<Audience, string>>;
 
 export interface FaqContent {
 	question: string;
-	answer: string;
+	answer: string; //Markdown
 }
 
 export interface FaqEntry {

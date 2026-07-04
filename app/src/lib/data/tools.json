@@ -104,7 +104,6 @@
 			}
 		]
 	},
-
 	"luminostr": {
 		"category": "webapp",
 		"audience": "enduser",
@@ -132,7 +131,6 @@
 		},
 		"faqs": []
 	},
-
 	"nfo2": {
 		"category": "webapp",
 		"audience": "enduser",
@@ -160,7 +158,6 @@
 		},
 		"faqs": []
 	},
-
 	"bookmark-recovery": {
 		"category": "webapp",
 		"audience": "enduser",
@@ -188,7 +185,6 @@
 		},
 		"faqs": []
 	},
-
 	"nostr-content-parser": {
 		"category": "library",
 		"audience": "developer",
@@ -235,29 +231,7 @@
 					}
 				],
 				"install": "npm install @konemono/nostr-content-parser",
-				"example": "import { parseContent, TokenType } from '@konemono/nostr-content-parser';\n\nconst tokens = parseContent('Hello npub1xyz... #nostr', tags);",
-				"api": [
-					{
-						"name": "parseContent(content, tags?, options?)",
-						"description": "Synchronous parsing with extension-based URL type detection"
-					},
-					{
-						"name": "parseContentAsync(content, tags?, options?)",
-						"description": "Asynchronous parsing with HTTP HEAD-based URL type detection"
-					},
-					{
-						"name": "getNip19Entities(tokens)",
-						"description": "Extract all NIP-19 tokens from parsed results"
-					},
-					{
-						"name": "getUrls(tokens)",
-						"description": "Extract URL tokens with optional type metadata"
-					},
-					{
-						"name": "getCustomEmojis(tokens)",
-						"description": "Extract custom emoji tokens with tag metadata"
-					}
-				]
+				"howtouse": "## Basic Parsing\n\n```typescript\nimport { parseContent, parseContentAsync, TokenType } from '@konemono/nostr-content-parser';\n\nconst content = 'Hello npub1xyz... Check :custom_emoji: #nostr';\nconst tags = [['emoji', 'custom_emoji', 'https://example.com/emoji.png']];\n\n// Synchronous parsing (recommended for most cases)\nconst tokens = parseContent(content, tags);\nconsole.log(tokens);\n\n// Asynchronous parsing with URL type detection\nconst tokensWithUrlTypes = await parseContentAsync(content, tags);\nconsole.log(tokensWithUrlTypes);\n```\n\n## Working with Tokens\n\n```typescript\n// Filter by type\nconst nip19Tokens = tokens.filter(t => t.type === TokenType.NIP19);\nconst urlTokens = tokens.filter(t => t.type === 'url');\n\n// Discriminated union (check token.type to narrow metadata type)\ntokens.forEach(token => {\n  if (token.type === 'url') {\n    // Handle URL\n  } else if (token.type === 'nip19') {\n    // Handle NIP-19 reference\n  } else if (token.type === TokenType.CUSTOM_EMOJI) {\n    // Handle custom emoji\n  } else {\n    // Handle plain text\n  }\n});\n```\n\n## Rendering Custom Emojis\n\n```typescript\n// Custom emoji with emoji tag\nconst content = 'Hello :custom_emoji:';\nconst tags = [['emoji', 'custom_emoji', 'https://example.com/emoji.png']];\nconst tokens = parseContent(content, tags);\n\nconst emojiTokens = tokens.filter(t => t.type === TokenType.CUSTOM_EMOJI);\n\nemojiTokens.forEach(token => {\n  // token.content → \":custom_emoji:\" (with colons)\n  // token.metadata.name → \"custom_emoji\" (shortcode)\n  // token.metadata.url → \"https://example.com/emoji.png\" (image URL)\n  // token.metadata.hasMetadata → true (image metadata fetched)\n\n  if (token.metadata.hasMetadata) {\n    // Example: create <img> tag\n    const img = document.createElement('img');\n    img.src = token.metadata.url;\n    img.alt = token.content;\n    img.title = token.metadata.name;\n    document.body.appendChild(img);\n  }\n});\n```"
 			},
 			"ja": {
 				"name": "Nostr Content Parser",
@@ -289,29 +263,7 @@
 					}
 				],
 				"install": "npm install @konemono/nostr-content-parser",
-				"example": "import { parseContent, TokenType } from '@konemono/nostr-content-parser';\n\nconst tokens = parseContent('Hello npub1xyz... #nostr', tags);",
-				"api": [
-					{
-						"name": "parseContent(content, tags?, options?)",
-						"description": "拡張子ベースのURL種類検出を行う同期パース"
-					},
-					{
-						"name": "parseContentAsync(content, tags?, options?)",
-						"description": "HTTP HEADベースのURL種類検出を行う非同期パース"
-					},
-					{
-						"name": "getNip19Entities(tokens)",
-						"description": "パース結果からNIP-19トークンを抽出"
-					},
-					{
-						"name": "getUrls(tokens)",
-						"description": "オプションの種類メタデータ付きURLトークンを抽出"
-					},
-					{
-						"name": "getCustomEmojis(tokens)",
-						"description": "タグメタデータ付きカスタム絵文字トークンを抽出"
-					}
-				]
+				"howtouse": "## 基本的な使い方\n\n```typescript\nimport { parseContent, parseContentAsync, TokenType } from '@konemono/nostr-content-parser';\n\nconst content = 'こんにちは npub1xyz... :custom_emoji: #nostr を確認';\nconst tags = [['emoji', 'custom_emoji', 'https://example.com/emoji.png']];\n\n// 同期パース（ほとんどのケースで推奨）\nconst tokens = parseContent(content, tags);\nconsole.log(tokens);\n\n// 非同期パース（URL種類の検出付き）\nconst tokensWithUrlTypes = await parseContentAsync(content, tags);\nconsole.log(tokensWithUrlTypes);\n```\n\n## トークンの基本操作\n\n```typescript\n// 型でフィルタリング\nconst nip19Tokens = tokens.filter(t => t.type === TokenType.NIP19);\nconst urlTokens = tokens.filter(t => t.type === 'url');\n\n// token.type で判別（Discriminated Union）\ntokens.forEach(token => {\n  if (token.type === 'url') {\n    // URL 表示\n  } else if (token.type === 'nip19') {\n    // NIP-19 リンク化\n  } else if (token.type === TokenType.CUSTOM_EMOJI) {\n    // カスタム絵文字\n  } else {\n    // テキスト表示\n  }\n});\n```\n\n## カスタム絵文字の表示\n\n```typescript\n// emoji タグ付きカスタム絵文字\nconst content = 'こんにちは :custom_emoji:';\nconst tags = [['emoji', 'custom_emoji', 'https://example.com/emoji.png']];\nconst tokens = parseContent(content, tags);\n\nconst emojiTokens = tokens.filter(t => t.type === TokenType.CUSTOM_EMOJI);\n\nemojiTokens.forEach(token => {\n  // token.content → \":custom_emoji:\"（コロン付き）\n  // token.metadata.name → \"custom_emoji\"（ショートコード）\n  // token.metadata.url → \"https://example.com/emoji.png\"（画像URL）\n  // token.metadata.hasMetadata → true（画像サイズなどの情報取得済み）\n\n  if (token.metadata.hasMetadata) {\n    // <img> タグ生成例\n    const img = document.createElement('img');\n    img.src = token.metadata.url;\n    img.alt = token.content;\n    img.title = token.metadata.name;\n    document.body.appendChild(img);\n  }\n});\n```"
 			}
 		},
 		"faqs": [

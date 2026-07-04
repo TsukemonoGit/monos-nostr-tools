@@ -3,7 +3,7 @@
 	import { ChevronDown } from '@lucide/svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import { slide } from 'svelte/transition';
-	import markdownit from 'markdown-it';
+	import { md } from '$lib/utils/utils';
 
 	interface Props {
 		faqs: FaqEntry[];
@@ -16,13 +16,6 @@
 	const toggleFaq = (index: number) => {
 		openIndex = openIndex === index ? null : index;
 	};
-
-	const md = markdownit({
-		html: false,
-		linkify: false,
-		typographer: false,
-		breaks: true
-	});
 </script>
 
 {#each faqs as faq, index (faq.id)}
