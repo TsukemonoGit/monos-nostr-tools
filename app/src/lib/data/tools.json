@@ -24,18 +24,8 @@
 				"name": "Lumilumi",
 				"description": "Nostr Client",
 				"tagline": "Feature-rich Nostr client",
-				"features": [
-					"Polls",
-					"Geohash",
-					"Long-form articles (Kind 30023)",
-					"Multiple relay support",
-					"Custom emoji support"
-				],
-				"highlights": [
-					"Optimized for low mobile data usage",
-					"Feature-rich web client",
-					"Supports multiple Nostr NIPs"
-				],
+
+				"highlights": "**A modern Nostr client built with Svelte 5 and rx-nostr v3.**\n\n- **Data-efficient** — Image-off mode, OGP toggle, adjustable image quality, and manual sync keep data usage low\n- **Rich features** — Polls, geohash, long-form articles (Kind 30023), ZAP (NIP-57), public chat, custom emojis, and more\n- **30+ kind support** — Dedicated event cards for a wide variety of event kinds\n- **3D viewer** — Display GLTF 3D models directly in notes\n- **Multi-NIP** — Supports 20+ NIPs including NIP-07/46/57/98 for wallet, remote signer, ZAP, and HTTP auth",
 				"whatsNew": [
 					{
 						"date": "2026-06-28",
@@ -51,18 +41,8 @@
 				"name": "Lumilumi",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "機能豊富、データ節約もできるNostrクライアント",
-				"features": [
-					"Poll（投票）",
-					"Geohash",
-					"長文記事（Kind 30023）",
-					"複数Relay対応",
-					"カスタム絵文字対応"
-				],
-				"highlights": [
-					"モバイル回線でも通信量を抑えやすい",
-					"機能が豊富なWebクライアント",
-					"さまざまなNostr NIPに対応"
-				],
+
+				"highlights": "**Svelte 5 と rx-nostr v3 で構築されたモダンなNostrクライアント。**\n\n- **データ節約** — 画像オフモード、OGP取得のオン/オフ、画像品質調整、手動同期で通信量を最小限に\n- **豊富な機能** — アンケート、Geohash、長文記事（Kind 30023）、ZAP（NIP-57）、公開チャット、カスタム絵文字など\n- **30種類以上のkind対応** — 多様なイベントKindに対応した個別カード表示\n- **3Dビューアー** — ノート内でGLTF 3Dモデルを直接表示\n- **多様なNIP対応** — NIP-07/46/57/98 等20以上のNIPに対応",
 				"whatsNew": [
 					{
 						"date": "2026-06-28",
@@ -116,16 +96,16 @@
 				"name": "Luminostr",
 				"description": "Recovering lost Nostr data",
 				"tagline": "Recovering lost Nostr data",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			},
 			"ja": {
 				"name": "Luminostr",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "消えたリストデータを復元するツール",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			}
 		},
@@ -143,16 +123,16 @@
 				"name": "NFO2",
 				"description": "Organize and tidy up follow data",
 				"tagline": "Organize your Nostr follow list",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			},
 			"ja": {
 				"name": "NFO2",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "フォローリストを整理整頓するツール",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			}
 		},
@@ -170,16 +150,16 @@
 				"name": "Bookmark Recovery Tool",
 				"description": "",
 				"tagline": "Restore your lost bookmarks",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			},
 			"ja": {
 				"name": "Bookmark Recovery Tool",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "消えたブックマークリストを復元する",
-				"features": [],
-				"highlights": [],
+
+				"highlights": "",
 				"whatsNew": []
 			}
 		},
@@ -188,12 +168,12 @@
 	"nostr-content-parser": {
 		"category": "library",
 		"audience": "developer",
-		"websiteUrl": "https://github.com/konemono/nostr-content-parser",
+		"websiteUrl": "",
 		"icon": "",
 		"relatedLinks": [
 			{
 				"type": "source",
-				"url": "https://github.com/konemono/nostr-content-parser"
+				"url": "https://github.com/TsukemonoGit/nostr-content-parser"
 			},
 			{
 				"type": "docs",
@@ -205,21 +185,7 @@
 				"name": "Nostr Content Parser",
 				"description": "Parse Nostr content into structured tokens with full TypeScript support. Supports NIP-19 entities, URLs, custom emojis, hashtags, Lightning addresses, and more.",
 				"tagline": "Type-safe Nostr content parser with discriminated unions",
-				"features": [
-					"Parse NIP-19 entities (npub, nprofile, note, nevent, naddr, nsec)",
-					"URL detection with type inference (image, video, audio)",
-					"Custom emoji parsing with tag metadata",
-					"Hashtag validation against t tags",
-					"Lightning address and invoice detection",
-					"Legacy reference parsing (#[0] style)",
-					"Full TypeScript discriminated union support"
-				],
-				"highlights": [
-					"Zero-dependency, lightweight parser",
-					"Synchronous and asynchronous parsing modes",
-					"Type-safe token metadata access",
-					"Extensible token filtering utilities"
-				],
+				"highlights": "**Zero-dependency, type-safe Nostr content parsing.**\n\n- **Zero dependencies** — Lightweight with no external libraries, fast to install and use\n- **14 token types** — Parses NIP-19, URLs, custom emojis, hashtags, Lightning addresses/URLs/invoices, email, Bitcoin addresses, Cashu tokens, and more\n- **Sync & async modes** — Synchronous parsing for most cases (extension-based URL detection), async for accurate HTTP HEAD-based type detection\n- **Discriminated unions** — Full TypeScript safety: check `token.type` and metadata types are automatically narrowed\n- **Helper functions** — Built-in filters for `getNip19Entities()`, `getCustomEmojis()`, `getHashtags()`, etc.",
 				"whatsNew": [
 					{
 						"date": "2026-06-15",
@@ -237,21 +203,8 @@
 				"name": "Nostr Content Parser",
 				"description": "Nostrの投稿内容を構造化されたトークンにパースするTypeScriptライブラリ。NIP-19エンティティ、URL、カスタム絵文字、ハッシュタグ、Lightningアドレスなどに対応。",
 				"tagline": "判別可能なユニオン型による型安全なNostrコンテンツパーサー",
-				"features": [
-					"NIP-19エンティティのパース（npub, nprofile, note, nevent, naddr, nsec）",
-					"URL検出と種類推論（画像、動画、音声）",
-					"タグメタデータ付きカスタム絵文字パース",
-					"tタグに対するハッシュタグ検証",
-					"Lightningアドレスとインボイス検出",
-					"レガシー参照のパース（#[0]形式）",
-					"完全なTypeScript判別可能ユニオン型対応"
-				],
-				"highlights": [
-					"依存ゼロの軽量パーサー",
-					"同期・非同期の両方のパースモード",
-					"型安全なトークンメタデータアクセス",
-					"拡張可能なトークンフィルタリングユーティリティ"
-				],
+
+				"highlights": "**ゼロ依存・型安全なNostrコンテンツパーサー。**\n\n- **ゼロ依存** — 外部ライブラリなし。軽量でインストール・使用が速い\n- **14種類のトークンタイプ** — NIP-19、URL、カスタム絵文字、ハッシュタグ、Lightningアドレス/URL/請求書、メール、Bitcoinアドレス、Cashuトークンなどをパース\n- **同期/非同期両対応** — 通常は同期パース（拡張子ベースのURL判定）、正確な判定には非同期パース（HTTP HEADリクエスト使用）\n- **判別可能ユニオン型** — 完全なTypeScript型安全性：`token.type` でチェックするとメタデータ型が自動的に推論される\n- **ヘルパー関数** — `getNip19Entities()`、`getCustomEmojis()`、`getHashtags()` などを内蔵",
 				"whatsNew": [
 					{
 						"date": "2026-06-15",

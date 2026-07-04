@@ -6,6 +6,7 @@
 	import DetailCard from './DetailCard.svelte';
 	import LibraryInstall from './library/LibraryInstall.svelte';
 	import LibraryHowtouse from './library/LibraryHowtouse.svelte';
+	import Highlights from './Highlights.svelte';
 
 	interface Props {
 		tool: LibraryEntry;
@@ -27,49 +28,7 @@
 	<LibraryHowtouse howtouse={libraryLocal.howtouse} />
 {/if}
 
-<DetailCard title={m.detail_features()}>
-	<ul class="space-y-2 mx-4">
-		{#each libraryLocal.features as feature (feature)}
-			<li class="flex items-start gap-2.5">
-				<svg
-					class="size-4 mt-0.5 text-gray-500 shrink-0"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					aria-hidden="true"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-				<span>{feature}</span>
-			</li>
-		{/each}
-	</ul>
-</DetailCard>
-
-<DetailCard title={m.detail_highlights()}>
-	<ul class="space-y-2 mx-4">
-		{#each libraryLocal.highlights as highlight (highlight)}
-			<li class="flex items-start gap-2.5">
-				<svg
-					class="size-4 mt-0.5 text-gray-500 shrink-0"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					aria-hidden="true"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-				<span>{highlight}</span>
-			</li>
-		{/each}
-	</ul>
-</DetailCard>
+<Highlights highlights={libraryLocal.highlights} />
 
 <DetailCard title={m.detail_whatsNew()}>
 	<ul class="space-y-8 mx-4 mb-6">

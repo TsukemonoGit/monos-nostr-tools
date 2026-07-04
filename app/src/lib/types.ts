@@ -25,18 +25,20 @@ export interface ContentBase {
 	name: string;
 	description: string;
 	tagline: string;
-	features: string[];
-	highlights: string[];
+	highlights: string; // ★Markdown
 	whatsNew: WhatsNewEntry[];
 }
 
-// ツール本体のロケール別コンテンツ
-export type ToolContent = ContentBase;
+// WebApp固有コンテンツ
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface WebAppContent extends ContentBase {
+	//features: string[];
+}
 
 // ライブラリ固有のコンテンツ
 export interface LibraryContent extends ContentBase {
 	install: string;
-	howtouse: string; //Markdown
+	howtouse: string; // ★Markdown
 }
 
 // === ツールエントリ（Discriminated Union）===
@@ -55,7 +57,7 @@ interface ToolEntryBase {
 export interface WebAppEntry extends ToolEntryBase {
 	category: 'webapp';
 	screenshots?: string[];
-	i18n: Localized<ToolContent>;
+	i18n: Localized<WebAppContent>;
 }
 
 // ライブラリ
@@ -67,7 +69,7 @@ export interface LibraryEntry extends ToolEntryBase {
 // ブラウザ拡張など（今後増やす場合はここに追加）
 export interface ExtensionEntry extends ToolEntryBase {
 	category: 'extension';
-	i18n: Localized<ToolContent>;
+	i18n: Localized<ContentBase>;
 }
 
 // ツールの総合型（category で判別する）
@@ -108,7 +110,7 @@ export type AudienceI18n = Record<Locale, Record<Audience, string>>;
 
 export interface FaqContent {
 	question: string;
-	answer: string; //Markdown
+	answer: string; // ★Markdown
 }
 
 export interface FaqEntry {

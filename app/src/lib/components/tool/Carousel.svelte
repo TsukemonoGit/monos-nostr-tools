@@ -112,7 +112,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div class="bg-gray-300">
 	<div
-		class="relative w-full overflow-hidden h-64 sm:h-96 my-16 myContainer"
+		class="relative w-full overflow-hidden h-80 sm:h-120 my-16 myContainer"
 		role="region"
 		aria-roledescription="carousel"
 		aria-label="carousel"
