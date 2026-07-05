@@ -332,13 +332,6 @@
 					tagline: '',
 					highlights: '',
 					whatsNew: []
-				},
-				en: {
-					name: newToolKey.trim(),
-					description: '',
-					tagline: '',
-					highlights: '',
-					whatsNew: []
 				}
 			}
 		};
@@ -358,7 +351,7 @@
 
 	function openToolEditor(key: string) {
 		editingKey = key;
-		editingTool = { ...(localData as ToolsMap)[key] };
+		editingTool = deepClone((localData as ToolsMap)[key]);
 	}
 
 	function saveTool() {
@@ -478,6 +471,83 @@
 		const [item] = arr.splice(from, 1);
 		arr.splice(to, 0, item);
 		editingTool.relatedLinks = arr;
+	}
+
+	function deepClone<T>(obj: T): T {
+		if (obj === null || typeof obj !== 'object') return obj;
+		if (Array.isArray(obj)) return obj.map(deepClone) as unknown as T;
+		const clone: Record<string, unknown> = {};
+		for (const key in obj) {
+			if (Object.prototype.hasOwnProperty.call(obj, key)) {
+				clone[key] = deepClone((obj as Record<string, unknown>)[key]);
+			}
+		}
+		return clone as T;
+	}
+
+	// RelatedLinks helpers
+	let editingRelatedLink = $state<{
+		idx: number | null;
+		entry: { type: string; url?: string; toolId?: string };
+	}>({
+		idx: null,
+		entry: { type: '', url: '', toolId: '' }
+	});
+
+	function addRelatedLink() {
+		if (!editingTool) return;
+		const arr = [...editingTool.relatedLinks, { type: '', url: '', toolId: '' }];
+		editingTool.relatedLinks = arr;
+		editingRelatedLink = { idx: arr.length - 1, entry: { type: '', url: '', toolId: '' } };
+	}
+
+	function removeRelatedLink(idx: number) {
+		if (!editingTool) return;
+		editingTool.relatedLinks = editingTool.relatedLinks.filter((_: unknown, i: number) => i !== idx);
+	}
+
+	function saveRelatedLinkEntry() {
+		if (!editingTool || editingRelatedLink.idx === null) return;
+		type RLink = { type: string; url?: string; toolId?: string };
+		editingTool.relatedLinks = (editingTool.relatedLinks as RLink[]).map((item: RLink, i: number) =>
+			i === editingRelatedLink.idx ? { ...editingRelatedLink.entry } : item
+		);
+		editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '' } };
+	}
+
+	// WhatsNew helpers
+	type WhatsNewEntry = { date: string; title: string };
+	let editingWhatsNew = $state<{
+		lang: 'ja' | 'en' | null;
+		idx: number | null;
+		entry: WhatsNewEntry;
+	}>({
+		lang: null,
+		idx: null,
+		entry: { date: '', title: '' }
+	});
+
+	function addWhatsNew(lang: 'ja' | 'en') {
+		if (!editingTool) return;
+		const i18nEntry = editingTool.i18n[lang];
+		const arr = [...(i18nEntry.whatsNew as WhatsNewEntry[]), { date: '', title: '' }];
+		i18nEntry.whatsNew = arr;
+		editingWhatsNew = { lang, idx: arr.length - 1, entry: { date: '', title: '' } };
+	}
+
+	function removeWhatsNew(lang: 'ja' | 'en', idx: number) {
+		if (!editingTool) return;
+		const i18nEntry = editingTool.i18n[lang];
+		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).filter((_: unknown, i: number) => i !== idx);
+	}
+
+	function saveWhatsNewEntry() {
+		if (!editingTool || !editingWhatsNew.lang || editingWhatsNew.idx === null) return;
+		const i18nEntry = editingTool.i18n[editingWhatsNew.lang];
+		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).map((item: WhatsNewEntry, i: number) =>
+			i === editingWhatsNew.idx ? { ...editingWhatsNew.entry } : item
+		);
+		editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } };
 	}
 
 	function saveToolFaq() {
@@ -953,12 +1023,39 @@
 									<Input bind:value={editingTool.i18n.ja.name} placeholder="Name" />
 									<Input bind:value={editingTool.i18n.ja.description} placeholder="Description" />
 									<Input bind:value={editingTool.i18n.ja.tagline} placeholder="Tagline" />
-									<Textarea
-										bind:value={editingTool.i18n.ja.highlights}
-										placeholder="Highlights (Markdown)"
-										rows={3}
-									/>
+								<Textarea
+									bind:value={editingTool.i18n.ja.highlights}
+									placeholder="Highlights (Markdown)"
+									rows={3}
+								/>
 								</div>
+							</div>
+							<div>
+								<Label class="font-bold mb-2 block">WhatsNew (JA)</Label>
+								{#if editingTool.i18n.ja.whatsNew}
+									{#each editingTool.i18n.ja.whatsNew as entry, idx}
+										<div class="flex gap-2 items-center mb-1">
+											<Input bind:value={entry.date} placeholder="Date" class="font-mono text-sm h-8 flex-1" />
+											<Input bind:value={entry.title} placeholder="Title" class="font-mono text-sm h-8 flex-2" />
+											<Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" onclick={() => removeWhatsNew('ja', idx)}>
+												<Trash2 class="h-3 w-3 text-red-500" />
+											</Button>
+										</div>
+									{/each}
+								{/if}
+								<Button variant="outline" size="sm" onclick={() => addWhatsNew('ja')}>
+									<Plus class="h-3 w-3 mr-1" /> Add
+								</Button>
+								{#if editingWhatsNew.lang === 'ja' && editingWhatsNew.entry.title !== ''}
+									<EditPanel
+										title="Edit WhatsNew (JA)"
+										onCancel={() => (editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
+										onSave={() => saveWhatsNewEntry()}
+									>
+										<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+										<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+									</EditPanel>
+								{/if}
 							</div>
 							<div>
 								<Label class="font-bold mb-2 block">English Content</Label>
@@ -966,12 +1063,39 @@
 									<Input bind:value={editingTool.i18n.en.name} placeholder="Name" />
 									<Input bind:value={editingTool.i18n.en.description} placeholder="Description" />
 									<Input bind:value={editingTool.i18n.en.tagline} placeholder="Tagline" />
-									<Textarea
-										bind:value={editingTool.i18n.en.highlights}
-										placeholder="Highlights (Markdown)"
-										rows={3}
-									/>
+								<Textarea
+									bind:value={editingTool.i18n.en.highlights}
+									placeholder="Highlights (Markdown)"
+									rows={3}
+								/>
 								</div>
+							</div>
+							<div>
+								<Label class="font-bold mb-2 block">WhatsNew (EN)</Label>
+								{#if editingTool.i18n.en.whatsNew}
+									{#each editingTool.i18n.en.whatsNew as entry, idx}
+										<div class="flex gap-2 items-center mb-1">
+											<Input bind:value={entry.date} placeholder="Date" class="font-mono text-sm h-8 flex-1" />
+											<Input bind:value={entry.title} placeholder="Title" class="font-mono text-sm h-8 flex-2" />
+											<Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" onclick={() => removeWhatsNew('en', idx)}>
+												<Trash2 class="h-3 w-3 text-red-500" />
+											</Button>
+										</div>
+									{/each}
+								{/if}
+								<Button variant="outline" size="sm" onclick={() => addWhatsNew('en')}>
+									<Plus class="h-3 w-3 mr-1" /> Add
+								</Button>
+								{#if editingWhatsNew.lang === 'en' && editingWhatsNew.entry.title !== ''}
+									<EditPanel
+										title="Edit WhatsNew (EN)"
+										onCancel={() => (editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
+										onSave={() => saveWhatsNewEntry()}
+									>
+										<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+										<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+									</EditPanel>
+								{/if}
 							</div>
 							<Separator />
 							<div>
@@ -1174,6 +1298,68 @@
 												/>
 											</div>
 										{/each}
+									</EditPanel>
+								{/if}
+							</div>
+							<Separator />
+							<div>
+								<div class="flex items-center justify-between mb-2">
+									<Label class="font-bold">Related Links</Label>
+									{#if !editingRelatedLink.idx && editingRelatedLink.entry.type === ''}
+										<Button variant="outline" size="sm" onclick={addRelatedLink}>
+											<Plus class="h-3 w-3 mr-1" /> Add
+										</Button>
+									{/if}
+								</div>
+								{#if editingTool.relatedLinks}
+									{#each editingTool.relatedLinks as entry, idx}
+										<div class="flex gap-1 items-center mb-1">
+											<MoveButtons
+												onUp={() => moveRelatedLinks(idx, idx - 1)}
+												onDown={() => moveRelatedLinks(idx, idx + 1)}
+												disabledUp={idx === 0}
+												disabledDown={idx === editingTool.relatedLinks.length - 1}
+											/>
+											<span class="flex-1 text-sm font-mono">{entry.type}</span>
+											{#if entry.toolId}
+												<span class="text-xs text-muted-foreground">→ {entry.toolId}</span>
+											{/if}
+											{#if entry.url}
+												<span class="text-xs text-muted-foreground truncate max-w-[150px]">{entry.url}</span>
+											{/if}
+											<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => { editingRelatedLink = { idx, entry: { ...entry } }; }}>
+												<Pencil class="h-3 w-3" />
+											</Button>
+											<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => removeRelatedLink(idx)}>
+												<Trash2 class="h-3 w-3 text-red-500" />
+											</Button>
+										</div>
+									{/each}
+								{/if}
+								{#if editingRelatedLink.entry.type || editingRelatedLink.idx !== null}
+									<EditPanel
+										title="Edit Related Link"
+										onCancel={() => (editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '' } })}
+										onSave={() => saveRelatedLinkEntry()}
+									>
+										<select
+											oninput={(e) => {
+												editingRelatedLink.entry.type = (e.target as HTMLSelectElement).value;
+											}}
+										>
+											<option value="source" selected={editingRelatedLink.entry.type === 'source'}
+												>source</option
+											>
+											<option value="related-tool" selected={editingRelatedLink.entry.type === 'related-tool'}
+												>related-tool</option
+											>
+										</select>
+										{#if editingRelatedLink.entry.type === 'source' || editingRelatedLink.entry.type === ''}
+											<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
+										{/if}
+										{#if editingRelatedLink.entry.type === 'related-tool'}
+											<Input bind:value={editingRelatedLink.entry.toolId} placeholder="Tool ID" class="font-mono" />
+										{/if}
 									</EditPanel>
 								{/if}
 							</div>
