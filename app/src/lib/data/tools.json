@@ -5,9 +5,9 @@
 		"websiteUrl": "https://lumilumi.app",
 		"icon": "https://stok33.github.io/illust/lumirogo.png",
 		"screenshots": [
+			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/8c8569bbd48bb78ea20b9cda1c9ebe9ea4a46bcf82b23b8945658b79682079bf.webp",
 			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/21be5e7245d7f6332d7f69125ec856d1532e618eae78751046ac7e3818b35e95.webp",
-			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp",
-			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/8c8569bbd48bb78ea20b9cda1c9ebe9ea4a46bcf82b23b8945658b79682079bf.webp"
+			"https://share.yabu.me/84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5/9d06fe64335388b865c30bc2cfde7cf57067608f82922d162e341cb132634ea4.webp"
 		],
 		"relatedLinks": [
 			{
@@ -24,7 +24,6 @@
 				"name": "Lumilumi",
 				"description": "Nostr Client",
 				"tagline": "Feature-rich Nostr client",
-
 				"highlights": "**A modern Nostr client built with Svelte 5 and rx-nostr v3.**\n\n- **Data-efficient** — Image-off mode, OGP toggle, adjustable image quality, and manual sync keep data usage low\n- **Rich features** — Polls, geohash, long-form articles (Kind 30023), ZAP (NIP-57), public chat, custom emojis, and more\n- **30+ kind support** — Dedicated event cards for a wide variety of event kinds\n- **3D viewer** — Display GLTF 3D models directly in notes\n- **Multi-NIP** — Supports 20+ NIPs including NIP-07/46/57/98 for wallet, remote signer, ZAP, and HTTP auth",
 				"whatsNew": [
 					{
@@ -38,10 +37,9 @@
 				]
 			},
 			"ja": {
-				"name": "Lumilumi",
+				"name": "Lumilumi てすうと",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "機能豊富、データ節約もできるNostrクライアント",
-
 				"highlights": "**Svelte 5 と rx-nostr v3 で構築されたモダンなNostrクライアント。**\n\n- **データ節約** — 画像オフモード、OGP取得のオン/オフ、画像品質調整、手動同期で通信量を最小限に\n- **豊富な機能** — アンケート、Geohash、長文記事（Kind 30023）、ZAP（NIP-57）、公開チャット、カスタム絵文字など\n- **30種類以上のkind対応** — 多様なイベントKindに対応した個別カード表示\n- **3Dビューアー** — ノート内でGLTF 3Dモデルを直接表示\n- **多様なNIP対応** — NIP-07/46/57/98 等20以上のNIPに対応",
 				"whatsNew": [
 					{
@@ -96,7 +94,6 @@
 				"name": "Luminostr",
 				"description": "Recovering lost Nostr data",
 				"tagline": "Recovering lost Nostr data",
-
 				"highlights": "",
 				"whatsNew": []
 			},
@@ -104,7 +101,6 @@
 				"name": "Luminostr",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "消えたリストデータを復元するツール",
-
 				"highlights": "",
 				"whatsNew": []
 			}
@@ -123,7 +119,6 @@
 				"name": "NFO2",
 				"description": "Organize and tidy up follow data",
 				"tagline": "Organize your Nostr follow list",
-
 				"highlights": "",
 				"whatsNew": []
 			},
@@ -131,7 +126,6 @@
 				"name": "NFO2",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "フォローリストを整理整頓するツール",
-
 				"highlights": "",
 				"whatsNew": []
 			}
@@ -150,7 +144,6 @@
 				"name": "Bookmark Recovery Tool",
 				"description": "",
 				"tagline": "Restore your lost bookmarks",
-
 				"highlights": "",
 				"whatsNew": []
 			},
@@ -158,7 +151,6 @@
 				"name": "Bookmark Recovery Tool",
 				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
 				"tagline": "消えたブックマークリストを復元する",
-
 				"highlights": "",
 				"whatsNew": []
 			}
@@ -198,7 +190,6 @@
 				"url": "https://makimono.lumilumi.app/"
 			}
 		],
-
 		"i18n": {
 			"en": {
 				"name": "Nostr Content Parser",
@@ -222,7 +213,6 @@
 				"name": "Nostr Content Parser",
 				"description": "Nostrの投稿内容を構造化されたトークンにパースするTypeScriptライブラリ。NIP-19エンティティ、URL、カスタム絵文字、ハッシュタグ、Lightningアドレスなどに対応。",
 				"tagline": "判別可能なユニオン型による型安全なNostrコンテンツパーサー",
-
 				"highlights": "**ゼロ依存・型安全なNostrコンテンツパーサー。**\n\n- **ゼロ依存** — 外部ライブラリなし。軽量でインストール・使用が速い\n- **14種類のトークンタイプ** — NIP-19、URL、カスタム絵文字、ハッシュタグ、Lightningアドレス/URL/請求書、メール、Bitcoinアドレス、Cashuトークンなどをパース\n- **同期/非同期両対応** — 通常は同期パース（拡張子ベースのURL判定）、正確な判定には非同期パース（HTTP HEADリクエスト使用）\n- **判別可能ユニオン型** — 完全なTypeScript型安全性：`token.type` でチェックするとメタデータ型が自動的に推論される\n- **ヘルパー関数** — `getNip19Entities()`、`getCustomEmojis()`、`getHashtags()` などを内蔵",
 				"whatsNew": [
 					{
