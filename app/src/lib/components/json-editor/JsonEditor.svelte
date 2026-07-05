@@ -8,6 +8,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import MoveButtons from './MoveButtons.svelte';
 	import EditPanel from './EditPanel.svelte';
+	import InlineArrayEditor from './InlineArrayEditor.svelte';
 	import {
 		Table,
 		TableBody,
@@ -30,6 +31,7 @@
 		FileJson,
 		AlertCircle
 	} from '@lucide/svelte';
+	import type { RelatedLink } from '$lib/types';
 
 	interface Props {
 		file: string;
@@ -313,6 +315,8 @@
 	let editingTool = $state<Tool | null>(null);
 	let newToolKey = $state('');
 	let editingScreenshot = $state<{ idx: number; url: string } | null>(null);
+	let editingInlineScreenshotIdx = $state<number | null>(null);
+	let inlineScreenshotValue = $state('');
 
 	function addTool() {
 		if (!newToolKey.trim()) return;
@@ -367,12 +371,39 @@
 	}
 
 	// Screenshots helpers
-	let newScreenshot = $state('');
-
 	function addScreenshot() {
-		if (!editingTool || editingTool.category !== 'webapp' || !newScreenshot.trim()) return;
-		editingTool.screenshots = [...editingTool.screenshots, newScreenshot.trim()];
-		newScreenshot = '';
+		if (!editingTool || editingTool.category !== 'webapp' || !editingScreenshot) return;
+		if (!editingScreenshot.url.trim()) return;
+		editingTool.screenshots = [...editingTool.screenshots, editingScreenshot.url.trim()];
+		editingScreenshot = { idx: -1, url: '' };
+	}
+
+	function startEditInlineScreenshot(idx: number) {
+		if (!editingTool || editingTool.category !== 'webapp') return;
+		editingInlineScreenshotIdx = idx;
+		inlineScreenshotValue = editingTool.screenshots[idx];
+	}
+
+	function saveInlineScreenshot() {
+		if (
+			!editingTool ||
+			editingTool.category !== 'webapp' ||
+			editingInlineScreenshotIdx === null ||
+			!inlineScreenshotValue.trim()
+		)
+			return;
+		editingTool.screenshots = [
+			...editingTool.screenshots.slice(0, editingInlineScreenshotIdx),
+			inlineScreenshotValue.trim(),
+			...editingTool.screenshots.slice(editingInlineScreenshotIdx + 1)
+		];
+		editingInlineScreenshotIdx = null;
+		inlineScreenshotValue = '';
+	}
+
+	function cancelEditInlineScreenshot() {
+		editingInlineScreenshotIdx = null;
+		inlineScreenshotValue = '';
 	}
 
 	function removeScreenshot(idx: number) {
@@ -503,14 +534,17 @@
 
 	function removeRelatedLink(idx: number) {
 		if (!editingTool) return;
-		editingTool.relatedLinks = editingTool.relatedLinks.filter((_: unknown, i: number) => i !== idx);
+		editingTool.relatedLinks = editingTool.relatedLinks.filter(
+			(_: unknown, i: number) => i !== idx
+		);
 	}
 
 	function saveRelatedLinkEntry() {
 		if (!editingTool || editingRelatedLink.idx === null) return;
 		type RLink = { type: string; url?: string; toolId?: string };
-		editingTool.relatedLinks = (editingTool.relatedLinks as RLink[]).map((item: RLink, i: number) =>
-			i === editingRelatedLink.idx ? { ...editingRelatedLink.entry } : item
+		editingTool.relatedLinks = (editingTool.relatedLinks as RLink[]).map(
+			(item: RLink, i: number) =>
+				i === editingRelatedLink.idx ? { ...editingRelatedLink.entry } : item
 		);
 		editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '' } };
 	}
@@ -538,14 +572,17 @@
 	function removeWhatsNew(lang: 'ja' | 'en', idx: number) {
 		if (!editingTool) return;
 		const i18nEntry = editingTool.i18n[lang];
-		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).filter((_: unknown, i: number) => i !== idx);
+		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).filter(
+			(_: unknown, i: number) => i !== idx
+		);
 	}
 
 	function saveWhatsNewEntry() {
 		if (!editingTool || !editingWhatsNew.lang || editingWhatsNew.idx === null) return;
 		const i18nEntry = editingTool.i18n[editingWhatsNew.lang];
-		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).map((item: WhatsNewEntry, i: number) =>
-			i === editingWhatsNew.idx ? { ...editingWhatsNew.entry } : item
+		i18nEntry.whatsNew = (i18nEntry.whatsNew as WhatsNewEntry[]).map(
+			(item: WhatsNewEntry, i: number) =>
+				i === editingWhatsNew.idx ? { ...editingWhatsNew.entry } : item
 		);
 		editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } };
 	}
@@ -626,47 +663,20 @@
 		{#if viewMode === 'structured'}
 			{#if file === 'features.json'}
 				<!-- Features: Simple string array -->
-				<Table>
-					<TableHeader>
-						<TableRow>
-							<TableHead class="w-12">#</TableHead>
-							<TableHead>Feature ID</TableHead>
-							<TableHead class="w-24">Actions</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{#if true}
-							{@const featuresList = localData as string[]}
-							{#each featuresList as feature, i}
-								<TableRow>
-									<TableCell class="font-mono text-sm">{i + 1}</TableCell>
-									<TableCell class="font-mono">{feature}</TableCell>
-									<TableCell>
-										<div class="flex gap-1">
-											<MoveButtons
-												onUp={() => moveFeature(i, i - 1)}
-												onDown={() => moveFeature(i, i + 1)}
-												disabledUp={i === 0}
-												disabledDown={i === featuresList.length - 1}
-											/>
-											<Button
-												variant="ghost"
-												size="icon"
-												onclick={() => removeFeature(i)}
-												title="Delete"
-											>
-												<Trash2 class="h-4 w-4 text-red-500" />
-											</Button>
-										</div>
-									</TableCell>
-								</TableRow>
-							{/each}
-						{/if}
-					</TableBody>
-				</Table>
-				<Separator class="my-4" />
+				<InlineArrayEditor
+					items={localData as string[]}
+					onAdd={() => (addingFeature = true)}
+					onRemove={removeFeature}
+					onEdit={() => {}}
+					onMove={moveFeature}
+					itemLabel="Features"
+				>
+					<svelte:fragment slot="item" let:item let:idx>
+						<span class="font-mono">{item}</span>
+					</svelte:fragment>
+				</InlineArrayEditor>
 				{#if addingFeature}
-					<div class="flex gap-2 items-center">
+					<div class="flex gap-2 items-center mt-2">
 						<Input
 							bind:value={newFeatureValue}
 							placeholder="feature-id"
@@ -683,10 +693,6 @@
 							}}>Cancel</Button
 						>
 					</div>
-				{:else}
-					<Button variant="outline" size="sm" onclick={() => (addingFeature = true)}>
-						<Plus class="h-4 w-4 mr-1" /> Add feature
-					</Button>
 				{/if}
 			{:else if file === 'faq.json'}
 				<!-- FAQ: Array of entries with i18n -->
@@ -793,7 +799,7 @@
 
 				{#if editingFaq.entry}
 					<Separator class="my-4" />
-					<div class="bg-muted/50 p-4 rounded-lg space-y-4">
+					<div class="bg-muted/50 p-4 rounded-lg space-y-4 shadow">
 						<div class="flex items-center justify-between">
 							<span class="font-bold">Edit FAQ Entry</span>
 							<Button
@@ -919,7 +925,7 @@
 
 				{#if editingNeed.entry}
 					<Separator class="my-4" />
-					<div class="bg-muted/50 p-4 rounded-lg space-y-4">
+					<div class="bg-muted/50 p-4 rounded-lg space-y-4 shadow">
 						<div class="flex items-center justify-between">
 							<span class="font-bold">Edit Need Entry</span>
 							<Button
@@ -963,7 +969,7 @@
 				<div class="space-y-4">
 					{#if editingKey && editingTool}
 						<!-- Tool editor form -->
-						<div class="bg-muted/50 p-4 rounded-lg space-y-4">
+						<div class="bg-muted/50 p-4 rounded-lg space-y-4 shadow">
 							<div class="flex items-center justify-between">
 								<span class="font-bold">Edit Tool: <span class="font-mono">{editingKey}</span></span
 								>
@@ -1023,11 +1029,11 @@
 									<Input bind:value={editingTool.i18n.ja.name} placeholder="Name" />
 									<Input bind:value={editingTool.i18n.ja.description} placeholder="Description" />
 									<Input bind:value={editingTool.i18n.ja.tagline} placeholder="Tagline" />
-								<Textarea
-									bind:value={editingTool.i18n.ja.highlights}
-									placeholder="Highlights (Markdown)"
-									rows={3}
-								/>
+									<Textarea
+										bind:value={editingTool.i18n.ja.highlights}
+										placeholder="Highlights (Markdown)"
+										rows={3}
+									/>
 								</div>
 							</div>
 							<div>
@@ -1035,9 +1041,22 @@
 								{#if editingTool.i18n.ja.whatsNew}
 									{#each editingTool.i18n.ja.whatsNew as entry, idx}
 										<div class="flex gap-2 items-center mb-1">
-											<Input bind:value={entry.date} placeholder="Date" class="font-mono text-sm h-8 flex-1" />
-											<Input bind:value={entry.title} placeholder="Title" class="font-mono text-sm h-8 flex-2" />
-											<Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" onclick={() => removeWhatsNew('ja', idx)}>
+											<Input
+												bind:value={entry.date}
+												placeholder="Date"
+												class="font-mono text-sm h-8 flex-1"
+											/>
+											<Input
+												bind:value={entry.title}
+												placeholder="Title"
+												class="font-mono text-sm h-8 flex-2"
+											/>
+											<Button
+												variant="ghost"
+												size="icon"
+												class="h-8 w-8 shrink-0"
+												onclick={() => removeWhatsNew('ja', idx)}
+											>
 												<Trash2 class="h-3 w-3 text-red-500" />
 											</Button>
 										</div>
@@ -1049,10 +1068,15 @@
 								{#if editingWhatsNew.lang === 'ja' && editingWhatsNew.entry.title !== ''}
 									<EditPanel
 										title="Edit WhatsNew (JA)"
-										onCancel={() => (editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
+										onCancel={() =>
+											(editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
 										onSave={() => saveWhatsNewEntry()}
 									>
-										<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+										<Input
+											bind:value={editingWhatsNew.entry.date}
+											placeholder="Date"
+											class="font-mono"
+										/>
 										<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
 									</EditPanel>
 								{/if}
@@ -1063,11 +1087,11 @@
 									<Input bind:value={editingTool.i18n.en.name} placeholder="Name" />
 									<Input bind:value={editingTool.i18n.en.description} placeholder="Description" />
 									<Input bind:value={editingTool.i18n.en.tagline} placeholder="Tagline" />
-								<Textarea
-									bind:value={editingTool.i18n.en.highlights}
-									placeholder="Highlights (Markdown)"
-									rows={3}
-								/>
+									<Textarea
+										bind:value={editingTool.i18n.en.highlights}
+										placeholder="Highlights (Markdown)"
+										rows={3}
+									/>
 								</div>
 							</div>
 							<div>
@@ -1075,9 +1099,22 @@
 								{#if editingTool.i18n.en.whatsNew}
 									{#each editingTool.i18n.en.whatsNew as entry, idx}
 										<div class="flex gap-2 items-center mb-1">
-											<Input bind:value={entry.date} placeholder="Date" class="font-mono text-sm h-8 flex-1" />
-											<Input bind:value={entry.title} placeholder="Title" class="font-mono text-sm h-8 flex-2" />
-											<Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" onclick={() => removeWhatsNew('en', idx)}>
+											<Input
+												bind:value={entry.date}
+												placeholder="Date"
+												class="font-mono text-sm h-8 flex-1"
+											/>
+											<Input
+												bind:value={entry.title}
+												placeholder="Title"
+												class="font-mono text-sm h-8 flex-2"
+											/>
+											<Button
+												variant="ghost"
+												size="icon"
+												class="h-8 w-8 shrink-0"
+												onclick={() => removeWhatsNew('en', idx)}
+											>
 												<Trash2 class="h-3 w-3 text-red-500" />
 											</Button>
 										</div>
@@ -1089,10 +1126,15 @@
 								{#if editingWhatsNew.lang === 'en' && editingWhatsNew.entry.title !== ''}
 									<EditPanel
 										title="Edit WhatsNew (EN)"
-										onCancel={() => (editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
+										onCancel={() =>
+											(editingWhatsNew = { lang: null, idx: null, entry: { date: '', title: '' } })}
 										onSave={() => saveWhatsNewEntry()}
 									>
-										<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+										<Input
+											bind:value={editingWhatsNew.entry.date}
+											placeholder="Date"
+											class="font-mono"
+										/>
 										<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
 									</EditPanel>
 								{/if}
@@ -1101,7 +1143,7 @@
 							<div>
 								<div class="flex items-center justify-between mb-2">
 									<Label class="font-bold">Screenshots</Label>
-									{#if !editingScreenshot && newScreenshot === ''}
+									{#if !editingScreenshot && editingInlineScreenshotIdx === null}
 										<Button
 											variant="outline"
 											size="sm"
@@ -1112,27 +1154,34 @@
 									{/if}
 								</div>
 								{#if editingTool?.category === 'webapp' && editingTool.screenshots}
-									{#each editingTool.screenshots as url, idx}
-										<div class="flex gap-1 items-center mb-1">
-											<MoveButtons
-												onUp={() => moveScreenshot(idx, idx - 1)}
-												onDown={() => moveScreenshot(idx, idx + 1)}
-												disabledUp={idx === 0}
-												disabledDown={idx === editingTool.screenshots.length - 1}
-											/>
-											<span class="flex-1 font-mono text-xs truncate">{url}</span>
-											<Button
-												variant="ghost"
-												size="icon"
-												class="h-5 w-5"
-												onclick={() => removeScreenshot(idx)}
-											>
-												<Trash2 class="h-3 w-3 text-red-500" />
-											</Button>
-										</div>
-									{/each}
+									<InlineArrayEditor
+										items={editingTool.screenshots}
+										onAdd={() => (editingScreenshot = { idx: -1, url: '' })}
+										onRemove={removeScreenshot}
+										onEdit={startEditInlineScreenshot}
+										onMove={moveScreenshot}
+										itemLabel="Screenshots"
+										showAddButton={false}
+									>
+										<svelte:fragment slot="item" let:item let:idx>
+											{#if editingInlineScreenshotIdx === idx}
+												<Input
+													bind:value={inlineScreenshotValue}
+													class="flex-1 font-mono text-xs h-6"
+													onkeydown={(e) => {
+														if (e.key === 'Enter') saveInlineScreenshot();
+														if (e.key === 'Escape') cancelEditInlineScreenshot();
+													}}
+												/>
+												<Button size="sm" class="h-6 px-2" onclick={saveInlineScreenshot}>OK</Button>
+												<Button size="sm" class="h-6 px-2" variant="outline" onclick={cancelEditInlineScreenshot}>Cancel</Button>
+											{:else}
+												<span class="flex-1 font-mono text-xs truncate">{item}</span>
+											{/if}
+										</svelte:fragment>
+									</InlineArrayEditor>
 								{/if}
-								{#if editingTool?.category === 'webapp' && editingTool.screenshots && editingScreenshot?.idx === -1}
+								{#if editingScreenshot?.idx === -1}
 									<div class="flex gap-2 items-center mt-2">
 										<Input
 											bind:value={editingScreenshot.url}
@@ -1140,26 +1189,8 @@
 											class="font-mono text-xs"
 											onkeydown={(e) => e.key === 'Enter' && addScreenshot()}
 										/>
-										<Button
-											size="sm"
-											onclick={() => {
-												if (
-													!editingTool ||
-													editingTool.category !== 'webapp' ||
-													!editingScreenshot ||
-													!editingScreenshot.url.trim()
-												)
-													return;
-												editingTool.screenshots = [
-													...editingTool.screenshots,
-													editingScreenshot.url.trim()
-												];
-												editingScreenshot = { idx: -1, url: '' };
-											}}>Add</Button
-										>
-										<Button size="sm" variant="outline" onclick={() => (editingScreenshot = null)}
-											>Cancel</Button
-										>
+										<Button size="sm" onclick={addScreenshot}>Add</Button>
+										<Button size="sm" variant="outline" onclick={() => (editingScreenshot = null)}>Cancel</Button>
 									</div>
 								{/if}
 							</div>
@@ -1167,42 +1198,23 @@
 							{#if editingTool?.category === 'library'}
 								<Separator />
 								<div>
-									<div class="flex items-center justify-between mb-2">
-										<Label class="font-bold">Used By</Label>
-										{#if !editingUsedBy.idx && editingUsedBy.entry.title === ''}
-											<Button
-												variant="outline"
-												size="sm"
-												onclick={() =>
-													(editingUsedBy = { idx: null, entry: { title: '', url: '' } })}
-											>
-												<Plus class="h-3 w-3 mr-1" /> Add
-											</Button>
-										{/if}
-									</div>
 									{#if editingTool.usedBy}
-										{#each editingTool.usedBy as entry, idx}
-											<div class="flex gap-1 items-center mb-1">
-												<MoveButtons
-													onUp={() => moveUsedBy(idx, idx - 1)}
-													onDown={() => moveUsedBy(idx, idx + 1)}
-													disabledUp={idx === 0}
-													disabledDown={idx === editingTool.usedBy.length - 1}
-												/>
-												<span class="flex-1 text-sm">{entry.title}</span>
-												{#if entry.author}
-													<span class="text-xs text-muted-foreground">by {entry.author}</span>
+										<InlineArrayEditor
+											items={editingTool.usedBy}
+											onAdd={() => (editingUsedBy = { idx: null, entry: { title: '', url: '' } })}
+											onRemove={removeUsedBy}
+											onEdit={(idx, item) =>
+												(editingUsedBy = { idx, entry: { ...item, i18n: { ...item.i18n } } })}
+											onMove={moveUsedBy}
+											itemLabel="Used By"
+										>
+											<svelte:fragment slot="item" let:item let:idx>
+												<span class="flex-1 text-sm">{item.title}</span>
+												{#if item.author}
+													<span class="text-xs text-muted-foreground">by {item.author}</span>
 												{/if}
-												<Button
-													variant="ghost"
-													size="icon"
-													class="h-5 w-5"
-													onclick={() => removeUsedBy(idx)}
-												>
-													<Trash2 class="h-3 w-3 text-red-500" />
-												</Button>
-											</div>
-										{/each}
+											</svelte:fragment>
+										</InlineArrayEditor>
 									{/if}
 									{#if editingUsedBy.idx !== null || editingUsedBy.entry.title === ''}
 										<EditPanel
@@ -1228,44 +1240,20 @@
 
 							<Separator />
 							<div>
-								<div class="flex items-center justify-between mb-2">
-									<Label class="font-bold">Tool FAQs</Label>
-									{#if !editingToolFaq.idx && editingToolFaq.entry.id === ''}
-										<Button variant="outline" size="sm" onclick={addToolFaq}>
-											<Plus class="h-3 w-3 mr-1" /> Add
-										</Button>
-									{/if}
-								</div>
 								{#if editingTool.faqs}
-									{#each editingTool.faqs as faq, idx}
-										<div class="flex gap-1 items-center mb-1">
-											<MoveButtons
-												onUp={() => moveToolFaq(idx, idx - 1)}
-												onDown={() => moveToolFaq(idx, idx + 1)}
-												disabledUp={idx === 0}
-												disabledDown={idx === editingTool.faqs.length - 1}
-											/>
-											<span class="flex-1 text-sm font-mono">{faq.id}</span>
-											<Button
-												variant="ghost"
-												size="icon"
-												class="h-5 w-5"
-												onclick={() => {
-													editingToolFaq = { idx, entry: { ...faq, i18n: { ...faq.i18n } } };
-												}}
-											>
-												<Pencil class="h-3 w-3" />
-											</Button>
-											<Button
-												variant="ghost"
-												size="icon"
-												class="h-5 w-5"
-												onclick={() => removeToolFaq(idx)}
-											>
-												<Trash2 class="h-3 w-3 text-red-500" />
-											</Button>
-										</div>
-									{/each}
+									<InlineArrayEditor
+										items={editingTool.faqs}
+										onAdd={addToolFaq}
+										onRemove={removeToolFaq}
+										onEdit={(idx, item) =>
+											(editingToolFaq = { idx, entry: { ...item, i18n: { ...item.i18n } } })}
+										onMove={moveToolFaq}
+										itemLabel="Tool FAQs"
+									>
+										<svelte:fragment slot="item" let:item let:idx>
+											<span class="flex-1 text-sm font-mono">{item.id}</span>
+										</svelte:fragment>
+									</InlineArrayEditor>
 								{/if}
 								{#if editingToolFaq.entry.id || editingToolFaq.idx !== null}
 									<EditPanel
@@ -1303,43 +1291,36 @@
 							</div>
 							<Separator />
 							<div>
-								<div class="flex items-center justify-between mb-2">
-									<Label class="font-bold">Related Links</Label>
-									{#if !editingRelatedLink.idx && editingRelatedLink.entry.type === ''}
-										<Button variant="outline" size="sm" onclick={addRelatedLink}>
-											<Plus class="h-3 w-3 mr-1" /> Add
-										</Button>
-									{/if}
-								</div>
 								{#if editingTool.relatedLinks}
-									{#each editingTool.relatedLinks as entry, idx}
-										<div class="flex gap-1 items-center mb-1">
-											<MoveButtons
-												onUp={() => moveRelatedLinks(idx, idx - 1)}
-												onDown={() => moveRelatedLinks(idx, idx + 1)}
-												disabledUp={idx === 0}
-												disabledDown={idx === editingTool.relatedLinks.length - 1}
-											/>
-											<span class="flex-1 text-sm font-mono">{entry.type}</span>
-											{#if entry.toolId}
-												<span class="text-xs text-muted-foreground">→ {entry.toolId}</span>
+									<InlineArrayEditor
+										items={editingTool.relatedLinks}
+										onAdd={addRelatedLink}
+										onRemove={removeRelatedLink}
+										onEdit={(idx, item) => (editingRelatedLink = { idx, entry: { ...item } })}
+										onMove={moveRelatedLinks}
+										itemLabel="Related Links"
+									>
+										<svelte:fragment slot="item" let:item let:idx>
+											<span class="flex-1 text-sm font-mono">{item.type}</span>
+											{#if item.toolId}
+												<span class="text-xs text-muted-foreground">→ {item.toolId}</span>
 											{/if}
-											{#if entry.url}
-												<span class="text-xs text-muted-foreground truncate max-w-[150px]">{entry.url}</span>
+											{#if item.url}
+												<span class="text-xs text-muted-foreground truncate max-w-[150px]"
+													>{item.url}</span
+												>
 											{/if}
-											<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => { editingRelatedLink = { idx, entry: { ...entry } }; }}>
-												<Pencil class="h-3 w-3" />
-											</Button>
-											<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => removeRelatedLink(idx)}>
-												<Trash2 class="h-3 w-3 text-red-500" />
-											</Button>
-										</div>
-									{/each}
+										</svelte:fragment>
+									</InlineArrayEditor>
 								{/if}
 								{#if editingRelatedLink.entry.type || editingRelatedLink.idx !== null}
 									<EditPanel
 										title="Edit Related Link"
-										onCancel={() => (editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '' } })}
+										onCancel={() =>
+											(editingRelatedLink = {
+												idx: null,
+												entry: { type: '', url: '', toolId: '' }
+											})}
 										onSave={() => saveRelatedLinkEntry()}
 									>
 										<select
@@ -1350,15 +1331,25 @@
 											<option value="source" selected={editingRelatedLink.entry.type === 'source'}
 												>source</option
 											>
-											<option value="related-tool" selected={editingRelatedLink.entry.type === 'related-tool'}
+											<option
+												value="related-tool"
+												selected={editingRelatedLink.entry.type === 'related-tool'}
 												>related-tool</option
 											>
 										</select>
 										{#if editingRelatedLink.entry.type === 'source' || editingRelatedLink.entry.type === ''}
-											<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
+											<Input
+												bind:value={editingRelatedLink.entry.url}
+												placeholder="URL"
+												class="font-mono"
+											/>
 										{/if}
 										{#if editingRelatedLink.entry.type === 'related-tool'}
-											<Input bind:value={editingRelatedLink.entry.toolId} placeholder="Tool ID" class="font-mono" />
+											<Input
+												bind:value={editingRelatedLink.entry.toolId}
+												placeholder="Tool ID"
+												class="font-mono"
+											/>
 										{/if}
 									</EditPanel>
 								{/if}
