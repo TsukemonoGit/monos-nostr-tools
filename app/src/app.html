@@ -8,6 +8,9 @@
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+		<nostr-container relays='["wss://relay.yabu.me", "wss://nos.lol","wss://nfrelay.app"]'>
+			<div style="display: contents">%sveltekit.body%</div></nostr-container
+		>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/@konemono/nostr-web-components@latest/dist/nostr-web-components.iife.js"></script>
 </html>

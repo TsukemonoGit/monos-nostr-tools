@@ -168,18 +168,37 @@
 	"nostr-content-parser": {
 		"category": "library",
 		"audience": "developer",
-		"websiteUrl": "",
+		"websiteUrl": "https://www.npmjs.com/package/@konemono/nostr-content-parser",
 		"icon": "",
 		"relatedLinks": [
 			{
 				"type": "source",
 				"url": "https://github.com/TsukemonoGit/nostr-content-parser"
-			},
-			{
-				"type": "docs",
-				"url": "https://www.npmjs.com/package/@konemono/nostr-content-parser"
 			}
 		],
+		"usedBy": [
+			{
+				"title": "Lumilumi",
+				"author": "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw",
+				"url": "https://lumilumi.app"
+			},
+			{
+				"title": "nostr-web-components",
+				"author": "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw",
+				"url": "https://tsukemonogit.github.io/nostr-web-components-demo/"
+			},
+			{
+				"title": "Shosai",
+				"author": "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw",
+				"url": "https://shosai.lumilumi.app/"
+			},
+			{
+				"title": "Makimono",
+				"author": "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw",
+				"url": "https://makimono.lumilumi.app/"
+			}
+		],
+
 		"i18n": {
 			"en": {
 				"name": "Nostr Content Parser",

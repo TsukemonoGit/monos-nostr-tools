@@ -7,6 +7,7 @@
 	import LibraryInstall from './library/LibraryInstall.svelte';
 	import LibraryHowtouse from './library/LibraryHowtouse.svelte';
 	import Highlights from './Highlights.svelte';
+	import UsedByCard from './library/UsedByCard.svelte';
 
 	interface Props {
 		tool: LibraryEntry;
@@ -42,3 +43,12 @@
 		{/each}
 	</ul>
 </DetailCard>
+
+{#if tool.usedBy}
+	<DetailCard title={'Used By'}>
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-wrap">
+			{#each tool.usedBy as usedBy (usedBy.title)}
+				<UsedByCard {usedBy} />
+			{/each}
+		</div>
+	</DetailCard>{/if}

@@ -22,7 +22,7 @@
 		<p>{description}</p>
 	</div>
 	{#if external}
-		<ExternalLink class="text-gray-600 my-auto" />
+		<ExternalLink class="text-gray-400 my-auto" />
 	{:else}<ChevronRight class="text-gray-600 my-auto" />
 	{/if}
 </a>

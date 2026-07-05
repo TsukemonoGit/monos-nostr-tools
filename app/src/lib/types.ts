@@ -64,6 +64,12 @@ export interface WebAppEntry extends ToolEntryBase {
 export interface LibraryEntry extends ToolEntryBase {
 	category: 'library';
 	i18n: Localized<LibraryContent>;
+	usedBy: UsedByEntry[]; //4つまで
+}
+export interface UsedByEntry {
+	title: string;
+	author?: string; //npubにする？
+	url: string;
 }
 
 // ブラウザ拡張など（今後増やす場合はここに追加）
