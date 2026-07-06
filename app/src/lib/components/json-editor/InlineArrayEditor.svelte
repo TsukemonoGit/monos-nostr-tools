@@ -2,6 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Label } from '$lib/components/ui/label';
 	import { Plus, Pencil, Trash2 } from '@lucide/svelte';
+	import type { Snippet } from 'svelte';
 	import MoveButtons from './MoveButtons.svelte';
 
 	interface Props {
@@ -12,6 +13,7 @@
 		onMove: (from: number, to: number) => void;
 		itemLabel: string;
 		showAddButton?: boolean;
+		slotItem: Snippet<[{ item: any; idx: number }]>;
 	}
 
 	let {
@@ -21,7 +23,8 @@
 		onEdit,
 		onMove,
 		itemLabel,
-		showAddButton = true
+		showAddButton = true,
+		slotItem
 	}: Props = $props();
 </script>
 
@@ -34,7 +37,7 @@
 	</div>
 {/if}
 
-{#each items as item, idx}
+{#each items as it, idx}
 	<div class="flex gap-1 items-center mb-1">
 		<MoveButtons
 			onUp={() => onMove(idx, idx - 1)}
@@ -42,8 +45,8 @@
 			disabledUp={idx === 0}
 			disabledDown={idx === items.length - 1}
 		/>
-		<slot name="item" {item} {idx} />
-		<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => onEdit(idx, { ...item })}>
+		{@render slotItem({ item: it, idx })}
+		<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => onEdit(idx, { ...it })}>
 			<Pencil class="h-3 w-3" />
 		</Button>
 		<Button variant="ghost" size="icon" class="h-5 w-5" onclick={() => onRemove(idx)}>
