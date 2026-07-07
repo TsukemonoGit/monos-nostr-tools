@@ -9,6 +9,7 @@
 	import EditPanel from '../EditPanel.svelte';
 	import { useToolDetail } from './useToolDetail.svelte.ts';
 	import type { Tool } from './useToolDetail.svelte.ts';
+import { RELATEDLINK } from '$lib/types';
 
 	interface Props {
 		tool: Tool | null;
@@ -19,52 +20,25 @@
 
 	let { tool, toolKey, onChange, onCancel }: Props = $props();
 
-	const {
-		tool: state,
-		setTool,
-		updateField,
-		editingScreenshot,
-		setEditingScreenshot,
-		editingInlineScreenshotIdx,
-		inlineScreenshotValue,
-		setInlineScreenshotValue,
-		addScreenshot,
-		startEditInlineScreenshot,
-		saveInlineScreenshot,
-		cancelEditInlineScreenshot,
-		removeScreenshot,
-		moveScreenshot,
-		editingUsedBy,
-		setEditingUsedBy,
-		addUsedBy,
-		removeUsedBy,
-		moveUsedBy,
-		editingToolFaq,
-		setEditingToolFaq,
-		addToolFaq,
-		removeToolFaq,
-		moveToolFaq,
-		saveToolFaq,
-		editingRelatedLink,
-		setEditingRelatedLink,
-		addRelatedLink,
-		removeRelatedLink,
-		moveRelatedLinks,
-		saveRelatedLinkEntry,
-		editingWhatsNew,
-		setEditingWhatsNew,
-		addWhatsNew,
-		removeWhatsNew,
-		saveWhatsNewEntry,
-		save
-	} = useToolDetail(tool);
+	const toolDetail = useToolDetail(tool);
+
+	// composable内部の$state変数はgetter経由でしか参照できないため、
+	// テンプレート内で使用する値は$derivedでラップし、参照の再計算を保証する。
+	let state = $derived(toolDetail.tool);
+	let editingScreenshot = $derived(toolDetail.editingScreenshot);
+	let editingInlineScreenshotIdx = $derived(toolDetail.editingInlineScreenshotIdx);
+	let inlineScreenshotValue = $derived(toolDetail.inlineScreenshotValue);
+	let editingUsedBy = $derived(toolDetail.editingUsedBy);
+	let editingToolFaq = $derived(toolDetail.editingToolFaq);
+	let editingRelatedLink = $derived(toolDetail.editingRelatedLink);
+	let editingWhatsNew = $derived(toolDetail.editingWhatsNew);
 
 	$effect(() => {
-		setTool(tool);
+		toolDetail.setTool(tool);
 	});
 
 	function handleSave() {
-		const result = save();
+		const result = toolDetail.save();
 		if (result) onChange(result);
 	}
 </script>
@@ -83,7 +57,7 @@
 				<Label>Category</Label>
 				<select
 					oninput={(e) =>
-						updateField('category', (e.target as HTMLSelectElement).value as Tool['category'])}
+						toolDetail.updateField('category', (e.target as HTMLSelectElement).value as Tool['category'])}
 				>
 					<option value="webapp" selected={state.category === 'webapp'}>webapp</option>
 					<option value="library" selected={state.category === 'library'}>library</option>
@@ -92,7 +66,7 @@
 			</div>
 			<div>
 				<Label>Audience</Label>
-				<select oninput={(e) => updateField('audience', (e.target as HTMLSelectElement).value)}>
+				<select oninput={(e) => toolDetail.updateField('audience', (e.target as HTMLSelectElement).value)}>
 					<option value="enduser" selected={state.audience === 'enduser'}>enduser</option>
 					<option value="developer" selected={state.audience === 'developer'}>developer</option>
 				</select>
@@ -161,22 +135,22 @@
 							variant="ghost"
 							size="icon"
 							class="h-8 w-8 shrink-0"
-							onclick={() => removeWhatsNew('ja', idx)}
+							onclick={() => toolDetail.removeWhatsNew('ja', idx)}
 						>
 							<X class="h-3 w-3 text-red-500" />
 						</Button>
 					</div>
 				{/each}
 			{/if}
-			<Button variant="outline" size="sm" onclick={() => addWhatsNew('ja')}>
+			<Button variant="outline" size="sm" onclick={() => toolDetail.addWhatsNew('ja')}>
 				<Plus class="h-3 w-3 mr-1" /> Add
 			</Button>
 			{#if editingWhatsNew.lang === 'ja' && editingWhatsNew.entry.title !== ''}
 				<EditPanel
 					title="Edit WhatsNew (JA)"
 					onCancel={() =>
-						setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
-					onSave={saveWhatsNewEntry}
+						toolDetail.setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
+					onSave={toolDetail.saveWhatsNewEntry}
 				>
 					<div class="space-y-1">
 						<Label class="text-xs">Date</Label>
@@ -242,22 +216,22 @@
 							variant="ghost"
 							size="icon"
 							class="h-8 w-8 shrink-0"
-							onclick={() => removeWhatsNew('en', idx)}
+							onclick={() => toolDetail.removeWhatsNew('en', idx)}
 						>
 							<X class="h-3 w-3 text-red-500" />
 						</Button>
 					</div>
 				{/each}
 			{/if}
-			<Button variant="outline" size="sm" onclick={() => addWhatsNew('en')}>
+			<Button variant="outline" size="sm" onclick={() => toolDetail.addWhatsNew('en')}>
 				<Plus class="h-3 w-3 mr-1" /> Add
 			</Button>
 			{#if editingWhatsNew.lang === 'en' && editingWhatsNew.entry.title !== ''}
 				<EditPanel
 					title="Edit WhatsNew (EN)"
 					onCancel={() =>
-						setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
-					onSave={saveWhatsNewEntry}
+						toolDetail.setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
+					onSave={toolDetail.saveWhatsNewEntry}
 				>
 					<div class="space-y-1">
 						<Label class="text-xs">Date</Label>
@@ -280,7 +254,7 @@
 					<Button
 						variant="outline"
 						size="sm"
-						onclick={() => setEditingScreenshot({ idx: -1, url: '' })}
+						onclick={() => toolDetail.setEditingScreenshot({ idx: -1, url: '' })}
 					>
 						<Plus class="h-3 w-3 mr-1" /> Add
 					</Button>
@@ -289,10 +263,10 @@
 			{#if state.category === 'webapp' && state.screenshots}
 				<InlineArrayEditor
 					items={state.screenshots}
-					onAdd={() => setEditingScreenshot({ idx: -1, url: '' })}
-					onRemove={removeScreenshot}
-					onEdit={startEditInlineScreenshot}
-					onMove={moveScreenshot}
+					onAdd={() => toolDetail.setEditingScreenshot({ idx: -1, url: '' })}
+					onRemove={toolDetail.removeScreenshot}
+					onEdit={toolDetail.startEditInlineScreenshot}
+					onMove={toolDetail.moveScreenshot}
 					itemLabel="Screenshots"
 					showAddButton={false}
 				>
@@ -301,18 +275,18 @@
 							<Input
 								value={inlineScreenshotValue}
 								class="flex-1 font-mono text-xs h-6"
-								oninput={(e) => setInlineScreenshotValue((e.target as HTMLInputElement).value)}
+								oninput={(e) => toolDetail.setInlineScreenshotValue((e.target as HTMLInputElement).value)}
 								onkeydown={(e) => {
-									if (e.key === 'Enter') saveInlineScreenshot();
-									if (e.key === 'Escape') cancelEditInlineScreenshot();
+									if (e.key === 'Enter') toolDetail.saveInlineScreenshot();
+									if (e.key === 'Escape') toolDetail.cancelEditInlineScreenshot();
 								}}
 							/>
-							<Button size="sm" class="h-6 px-2" onclick={saveInlineScreenshot}>OK</Button>
+							<Button size="sm" class="h-6 px-2" onclick={toolDetail.saveInlineScreenshot}>OK</Button>
 							<Button
 								size="sm"
 								class="h-6 px-2"
 								variant="outline"
-								onclick={cancelEditInlineScreenshot}>Cancel</Button
+								onclick={toolDetail.cancelEditInlineScreenshot}>Cancel</Button
 							>
 						{:else}
 							<span class="flex-1 font-mono text-xs truncate">{item}</span>
@@ -328,10 +302,10 @@
 							bind:value={editingScreenshot.url}
 							placeholder="Screenshot URL"
 							class="font-mono text-xs"
-							onkeydown={(e) => e.key === 'Enter' && addScreenshot()}
+							onkeydown={(e) => e.key === 'Enter' && toolDetail.addScreenshot()}
 						/>
-						<Button size="sm" onclick={addScreenshot}>Add</Button>
-						<Button size="sm" variant="outline" onclick={() => setEditingScreenshot(null)}
+						<Button size="sm" onclick={toolDetail.addScreenshot}>Add</Button>
+						<Button size="sm" variant="outline" onclick={() => toolDetail.setEditingScreenshot(null)}
 							>Cancel</Button
 						>
 					</div>
@@ -345,11 +319,11 @@
 				{#if state.usedBy}
 					<InlineArrayEditor
 						items={state.usedBy}
-						onAdd={() => setEditingUsedBy({ idx: null, entry: { title: '', url: '' } })}
-						onRemove={removeUsedBy}
+						onAdd={() => toolDetail.setEditingUsedBy({ idx: null, entry: { title: '', url: '' } })}
+						onRemove={toolDetail.removeUsedBy}
 						onEdit={(idx, item) =>
-							setEditingUsedBy({ idx, entry: { ...item } })}
-						onMove={moveUsedBy}
+							toolDetail.setEditingUsedBy({ idx, entry: { ...item } })}
+						onMove={toolDetail.moveUsedBy}
 						itemLabel="Used By"
 					>
 						{#snippet slotItem({ item }: { item: { title: string; author?: string } })}
@@ -363,8 +337,8 @@
 				{#if editingUsedBy.idx !== null || editingUsedBy.entry.title === ''}
 					<EditPanel
 						title={editingUsedBy.idx !== null ? 'Edit UsedBy Entry' : 'Add UsedBy Entry'}
-						onCancel={() => setEditingUsedBy({ idx: null, entry: { title: '', url: '' } })}
-						onSave={addUsedBy}
+						onCancel={() => toolDetail.setEditingUsedBy({ idx: null, entry: { title: '', url: '' } })}
+						onSave={toolDetail.addUsedBy}
 					>
 						<div class="space-y-1">
 							<Label class="text-xs">Title</Label>
@@ -388,11 +362,11 @@
 			{#if state.faqs}
 				<InlineArrayEditor
 					items={state.faqs}
-					onAdd={addToolFaq}
-					onRemove={removeToolFaq}
+					onAdd={toolDetail.addToolFaq}
+					onRemove={toolDetail.removeToolFaq}
 					onEdit={(idx, item) =>
-						setEditingToolFaq({ idx, entry: { ...item, i18n: { ...item.i18n } } })}
-					onMove={moveToolFaq}
+						toolDetail.setEditingToolFaq({ idx, entry: { ...item, i18n: { ...item.i18n } } })}
+					onMove={toolDetail.moveToolFaq}
 					itemLabel="Tool FAQs"
 				>
 					{#snippet slotItem({ item }: { item: { id: string } })}
@@ -404,11 +378,11 @@
 				<EditPanel
 					title="Edit Tool FAQ"
 					onCancel={() =>
-						setEditingToolFaq({
+						toolDetail.setEditingToolFaq({
 							idx: null,
 							entry: { id: '', i18n: { ja: {}, en: {} } }
 						})}
-					onSave={saveToolFaq}
+					onSave={toolDetail.saveToolFaq}
 				>
 					<div class="space-y-1">
 						<Label class="text-xs">FAQ ID</Label>
@@ -445,10 +419,13 @@
 			{#if state.relatedLinks}
 				<InlineArrayEditor
 					items={state.relatedLinks}
-					onAdd={addRelatedLink}
-					onRemove={removeRelatedLink}
-					onEdit={(idx, item) => setEditingRelatedLink({ idx, entry: { ...item } })}
-					onMove={moveRelatedLinks}
+					onAdd={toolDetail.addRelatedLink}
+					onRemove={toolDetail.removeRelatedLink}
+					onEdit={(idx, item) => toolDetail.setEditingRelatedLink({
+	idx,
+	entry: { ...item, i18n: { ja: { ...item.i18n?.ja }, en: { ...item.i18n?.en } } }
+})}
+	onMove={toolDetail.moveRelatedLinks}
 					itemLabel="Related Links"
 				>
 					{#snippet slotItem({ item }: { item: { type: string; toolId?: string; url?: string } })}
@@ -463,48 +440,71 @@
 				</InlineArrayEditor>
 			{/if}
 			{#if editingRelatedLink.entry.type || editingRelatedLink.idx !== null}
-				<EditPanel
-					title="Edit Related Link"
-					onCancel={() =>
-						setEditingRelatedLink({
-							idx: null,
-							entry: { type: '', url: '', toolId: '' }
-						})}
-					onSave={saveRelatedLinkEntry}
+		<EditPanel
+			title="Edit Related Link"
+			onCancel={() =>
+				toolDetail.setEditingRelatedLink({
+					idx: null,
+					entry: { type: '', url: '', toolId: '', i18n: { ja: {}, en: {} } }
+				})}
+			onSave={toolDetail.saveRelatedLinkEntry}
+		>
+			<div class="space-y-1">
+				<Label class="text-xs">Type</Label>
+				<select
+					oninput={(e) => {
+						editingRelatedLink.entry.type = (e.target as HTMLSelectElement).value;
+					}}
 				>
-					<div class="space-y-1">
-						<Label class="text-xs">Type</Label>
-						<select
-							oninput={(e) => {
-								editingRelatedLink.entry.type = (e.target as HTMLSelectElement).value;
-							}}
-						>
-							<option value="source" selected={editingRelatedLink.entry.type === 'source'}
-								>source</option
-							>
-							<option value="related-tool" selected={editingRelatedLink.entry.type === 'related-tool'}
-								>related-tool</option
-							>
-						</select>
-					</div>
-					{#if editingRelatedLink.entry.type === 'source' || editingRelatedLink.entry.type === ''}
-						<div class="space-y-1">
-							<Label class="text-xs">URL</Label>
-							<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
-						</div>
-					{/if}
-					{#if editingRelatedLink.entry.type === 'related-tool'}
-						<div class="space-y-1">
-							<Label class="text-xs">Tool ID</Label>
-							<Input
-								bind:value={editingRelatedLink.entry.toolId}
-								placeholder="Tool ID"
-								class="font-mono"
-							/>
-						</div>
-					{/if}
-				</EditPanel>
+					{#each RELATEDLINK as t}
+						<option value={t} selected={editingRelatedLink.entry.type === t}>{t}</option>
+					{/each}
+				</select>
+			</div>
+			{#if editingRelatedLink.entry.type !== 'related-tool' && editingRelatedLink.entry.type !== ''}
+				<div class="space-y-1">
+					<Label class="text-xs">URL</Label>
+					<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
+				</div>
 			{/if}
+			{#if editingRelatedLink.entry.type === 'related-tool'}
+				<div class="space-y-1">
+					<Label class="text-xs">Tool ID</Label>
+					<Input
+						bind:value={editingRelatedLink.entry.toolId}
+						placeholder="Tool ID"
+						class="font-mono"
+					/>
+				</div>
+			{/if}
+			{#if editingRelatedLink.entry.type === 'external'}
+				<div class="space-y-1">
+					<Label class="text-xs">Title (JA)</Label>
+					<Input bind:value={editingRelatedLink.entry.i18n.ja.title} placeholder="Title" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs">Description (JA)</Label>
+					<Textarea
+						bind:value={editingRelatedLink.entry.i18n.ja.description}
+						placeholder="Description"
+						rows={2}
+					/>
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs">Title (EN)</Label>
+					<Input bind:value={editingRelatedLink.entry.i18n.en.title} placeholder="Title" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs">Description (EN)</Label>
+					<Textarea
+						bind:value={editingRelatedLink.entry.i18n.en.description}
+						placeholder="Description"
+						rows={2}
+					/>
+				</div>
+			{/if}
+		</EditPanel>
+	{/if}
 		</div>
 
 		<Separator />

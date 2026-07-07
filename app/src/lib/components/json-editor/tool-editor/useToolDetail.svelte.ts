@@ -99,10 +99,18 @@ export function useToolDetail(initialTool: Tool | null) {
 
 	let editingRelatedLink = $state<{
 		idx: number | null;
-		entry: { type: string; url?: string; toolId?: string };
+		entry: {
+			type: string;
+			url?: string;
+			toolId?: string;
+			i18n: {
+				ja: { title?: string; description?: string };
+				en: { title?: string; description?: string };
+			};
+		};
 	}>({
 		idx: null,
-		entry: { type: '', url: '', toolId: '' }
+		entry: { type: '', url: '', toolId: '', i18n: { ja: {}, en: {} } }
 	});
 
 	let editingWhatsNew = $state<{
@@ -121,7 +129,7 @@ export function useToolDetail(initialTool: Tool | null) {
 
 	function updateField<K extends keyof Tool>(key: K, value: Tool[K]) {
 		if (!tool) return;
-		tool = { ...tool, [key]: value } as Tool;
+		(tool[key] as Tool[K]) = value;
 	}
 
 	// Screenshots
@@ -243,7 +251,7 @@ export function useToolDetail(initialTool: Tool | null) {
 		if (!tool) return;
 		const arr = [...tool.relatedLinks, { type: '', url: '', toolId: '' }];
 		tool.relatedLinks = arr;
-		editingRelatedLink = { idx: arr.length - 1, entry: { type: '', url: '', toolId: '' } };
+		editingRelatedLink = { idx: arr.length - 1, entry: { type: '', url: '', toolId: '', i18n: { ja: {}, en: {} } } };
 	}
 
 	function removeRelatedLink(idx: number) {
@@ -266,7 +274,7 @@ export function useToolDetail(initialTool: Tool | null) {
 			(item: { type: string; url?: string; toolId?: string }, i: number) =>
 				i === editingRelatedLink.idx ? { ...editingRelatedLink.entry } : item
 		);
-		editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '' } };
+		editingRelatedLink = { idx: null, entry: { type: '', url: '', toolId: '', i18n: { ja: {}, en: {} } } };
 	}
 
 	// WhatsNew
@@ -301,13 +309,13 @@ export function useToolDetail(initialTool: Tool | null) {
 	}
 
 	return {
-		tool,
+		get tool() { return tool; },
 		setTool,
 		updateField,
-		editingScreenshot,
+		get editingScreenshot() { return editingScreenshot; },
 		setEditingScreenshot: (v: typeof editingScreenshot) => { editingScreenshot = v; },
-		editingInlineScreenshotIdx,
-		inlineScreenshotValue,
+		get editingInlineScreenshotIdx() { return editingInlineScreenshotIdx; },
+		get inlineScreenshotValue() { return inlineScreenshotValue; },
 		setInlineScreenshotValue: (v: string) => { inlineScreenshotValue = v; },
 		addScreenshot,
 		startEditInlineScreenshot,
@@ -315,24 +323,24 @@ export function useToolDetail(initialTool: Tool | null) {
 		cancelEditInlineScreenshot,
 		removeScreenshot,
 		moveScreenshot,
-		editingUsedBy,
+		get editingUsedBy() { return editingUsedBy; },
 		setEditingUsedBy: (v: typeof editingUsedBy) => { editingUsedBy = v; },
 		addUsedBy,
 		removeUsedBy,
 		moveUsedBy,
-		editingToolFaq,
+		get editingToolFaq() { return editingToolFaq; },
 		setEditingToolFaq: (v: typeof editingToolFaq) => { editingToolFaq = v; },
 		addToolFaq,
 		removeToolFaq,
 		moveToolFaq,
 		saveToolFaq,
-		editingRelatedLink,
+		get editingRelatedLink() { return editingRelatedLink; },
 		setEditingRelatedLink: (v: typeof editingRelatedLink) => { editingRelatedLink = v; },
 		addRelatedLink,
 		removeRelatedLink,
 		moveRelatedLinks,
 		saveRelatedLinkEntry,
-		editingWhatsNew,
+		get editingWhatsNew() { return editingWhatsNew; },
 		setEditingWhatsNew: (v: typeof editingWhatsNew) => { editingWhatsNew = v; },
 		addWhatsNew,
 		removeWhatsNew,

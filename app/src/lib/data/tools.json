@@ -138,7 +138,17 @@
 		"websiteUrl": "",
 		"icon": "",
 		"screenshots": [],
-		"relatedLinks": [],
+		"relatedLinks": [
+			{
+				"type": "support",
+				"url": "https://example.com",
+				"toolId": "",
+				"i18n": {
+					"ja": {},
+					"en": {}
+				}
+			}
+		],
 		"i18n": {
 			"en": {
 				"name": "Bookmark Recovery Tool",
@@ -149,7 +159,7 @@
 			},
 			"ja": {
 				"name": "Bookmark Recovery Tool",
-				"description": "ダミーのいいかんじの説明文章だよ〜〜〜〜〜〜〜",
+				"description": "てｔ",
 				"tagline": "消えたブックマークリストを復元する",
 				"highlights": "",
 				"whatsNew": []
