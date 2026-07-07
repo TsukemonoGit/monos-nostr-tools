@@ -112,20 +112,39 @@
 		<div>
 			<Label class="font-bold mb-2 block">Japanese Content</Label>
 			<div class="space-y-2">
-				<Input bind:value={state.i18n.ja.name} placeholder="Name" />
-				<Input bind:value={state.i18n.ja.description} placeholder="Description" />
-				<Input bind:value={state.i18n.ja.tagline} placeholder="Tagline" />
-				<Textarea
-					bind:value={state.i18n.ja.highlights}
-					placeholder="Highlights (Markdown)"
-					rows={3}
-				/>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Name</Label>
+					<Input bind:value={state.i18n.ja.name} placeholder="Name" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Description</Label>
+					<Input bind:value={state.i18n.ja.description} placeholder="Description" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Tagline</Label>
+					<Input bind:value={state.i18n.ja.tagline} placeholder="Tagline" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Highlights (Markdown)</Label>
+					<Textarea
+						bind:value={state.i18n.ja.highlights}
+						placeholder="Highlights (Markdown)"
+						rows={3}
+					/>
+				</div>
 			</div>
 		</div>
 
 		<div>
 			<Label class="font-bold mb-2 block">WhatsNew (JA)</Label>
 			{#if state.i18n.ja.whatsNew}
+				{#if state.i18n.ja.whatsNew.length > 0}
+					<div class="flex gap-2 items-center mb-1 text-xs text-muted-foreground">
+						<span class="flex-1">Date</span>
+						<span class="flex-2">Title</span>
+						<span class="h-8 w-8 shrink-0"></span>
+					</div>
+				{/if}
 				{#each state.i18n.ja.whatsNew as entry, idx}
 					<div class="flex gap-2 items-center mb-1">
 						<Input
@@ -159,8 +178,14 @@
 						setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
 					onSave={saveWhatsNewEntry}
 				>
-					<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
-					<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+					<div class="space-y-1">
+						<Label class="text-xs">Date</Label>
+						<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+					</div>
+					<div class="space-y-1">
+						<Label class="text-xs">Title</Label>
+						<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+					</div>
 				</EditPanel>
 			{/if}
 		</div>
@@ -168,20 +193,39 @@
 		<div>
 			<Label class="font-bold mb-2 block">English Content</Label>
 			<div class="space-y-2">
-				<Input bind:value={state.i18n.en.name} placeholder="Name" />
-				<Input bind:value={state.i18n.en.description} placeholder="Description" />
-				<Input bind:value={state.i18n.en.tagline} placeholder="Tagline" />
-				<Textarea
-					bind:value={state.i18n.en.highlights}
-					placeholder="Highlights (Markdown)"
-					rows={3}
-				/>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Name</Label>
+					<Input bind:value={state.i18n.en.name} placeholder="Name" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Description</Label>
+					<Input bind:value={state.i18n.en.description} placeholder="Description" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Tagline</Label>
+					<Input bind:value={state.i18n.en.tagline} placeholder="Tagline" />
+				</div>
+				<div class="space-y-1">
+					<Label class="text-xs text-muted-foreground">Highlights (Markdown)</Label>
+					<Textarea
+						bind:value={state.i18n.en.highlights}
+						placeholder="Highlights (Markdown)"
+						rows={3}
+					/>
+				</div>
 			</div>
 		</div>
 
 		<div>
 			<Label class="font-bold mb-2 block">WhatsNew (EN)</Label>
 			{#if state.i18n.en.whatsNew}
+				{#if state.i18n.en.whatsNew.length > 0}
+					<div class="flex gap-2 items-center mb-1 text-xs text-muted-foreground">
+						<span class="flex-1">Date</span>
+						<span class="flex-2">Title</span>
+						<span class="h-8 w-8 shrink-0"></span>
+					</div>
+				{/if}
 				{#each state.i18n.en.whatsNew as entry, idx}
 					<div class="flex gap-2 items-center mb-1">
 						<Input
@@ -215,8 +259,14 @@
 						setEditingWhatsNew({ lang: null, idx: null, entry: { date: '', title: '' } })}
 					onSave={saveWhatsNewEntry}
 				>
-					<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
-					<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+					<div class="space-y-1">
+						<Label class="text-xs">Date</Label>
+						<Input bind:value={editingWhatsNew.entry.date} placeholder="Date" class="font-mono" />
+					</div>
+					<div class="space-y-1">
+						<Label class="text-xs">Title</Label>
+						<Input bind:value={editingWhatsNew.entry.title} placeholder="Title" />
+					</div>
 				</EditPanel>
 			{/if}
 		</div>
@@ -271,17 +321,20 @@
 				</InlineArrayEditor>
 			{/if}
 			{#if editingScreenshot?.idx === -1}
-				<div class="flex gap-2 items-center mt-2">
-					<Input
-						bind:value={editingScreenshot.url}
-						placeholder="Screenshot URL"
-						class="font-mono text-xs"
-						onkeydown={(e) => e.key === 'Enter' && addScreenshot()}
-					/>
-					<Button size="sm" onclick={addScreenshot}>Add</Button>
-					<Button size="sm" variant="outline" onclick={() => setEditingScreenshot(null)}
-						>Cancel</Button
-					>
+				<div class="mt-2 space-y-1">
+					<Label class="text-xs text-muted-foreground">Screenshot URL</Label>
+					<div class="flex gap-2 items-center">
+						<Input
+							bind:value={editingScreenshot.url}
+							placeholder="Screenshot URL"
+							class="font-mono text-xs"
+							onkeydown={(e) => e.key === 'Enter' && addScreenshot()}
+						/>
+						<Button size="sm" onclick={addScreenshot}>Add</Button>
+						<Button size="sm" variant="outline" onclick={() => setEditingScreenshot(null)}
+							>Cancel</Button
+						>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -313,9 +366,18 @@
 						onCancel={() => setEditingUsedBy({ idx: null, entry: { title: '', url: '' } })}
 						onSave={addUsedBy}
 					>
-						<Input bind:value={editingUsedBy.entry.title} placeholder="Title" />
-						<Input bind:value={editingUsedBy.entry.author} placeholder="Author (optional)" />
-						<Input bind:value={editingUsedBy.entry.url} placeholder="URL" class="font-mono" />
+						<div class="space-y-1">
+							<Label class="text-xs">Title</Label>
+							<Input bind:value={editingUsedBy.entry.title} placeholder="Title" />
+						</div>
+						<div class="space-y-1">
+							<Label class="text-xs">Author (optional)</Label>
+							<Input bind:value={editingUsedBy.entry.author} placeholder="Author (optional)" />
+						</div>
+						<div class="space-y-1">
+							<Label class="text-xs">URL</Label>
+							<Input bind:value={editingUsedBy.entry.url} placeholder="URL" class="font-mono" />
+						</div>
 					</EditPanel>
 				{/if}
 			</div>
@@ -348,21 +410,30 @@
 						})}
 					onSave={saveToolFaq}
 				>
-					<Input bind:value={editingToolFaq.entry.id} placeholder="FAQ ID" class="font-mono" />
+					<div class="space-y-1">
+						<Label class="text-xs">FAQ ID</Label>
+						<Input bind:value={editingToolFaq.entry.id} placeholder="FAQ ID" class="font-mono" />
+					</div>
 					{#each Object.keys(editingToolFaq.entry.i18n) as lang}
 						<div class="space-y-1">
 							<Label class="text-xs">{lang}</Label>
-							<Input
-								bind:value={editingToolFaq.entry.i18n[lang].question}
-								placeholder="Question"
-								class="text-sm"
-							/>
-							<Textarea
-								bind:value={editingToolFaq.entry.i18n[lang].answer}
-								placeholder="Answer"
-								rows={2}
-								class="text-sm"
-							/>
+							<div class="space-y-1">
+								<Label class="text-xs text-muted-foreground">Question</Label>
+								<Input
+									bind:value={editingToolFaq.entry.i18n[lang].question}
+									placeholder="Question"
+									class="text-sm"
+								/>
+							</div>
+							<div class="space-y-1">
+								<Label class="text-xs text-muted-foreground">Answer</Label>
+								<Textarea
+									bind:value={editingToolFaq.entry.i18n[lang].answer}
+									placeholder="Answer"
+									rows={2}
+									class="text-sm"
+								/>
+							</div>
 						</div>
 					{/each}
 				</EditPanel>
@@ -401,27 +472,36 @@
 						})}
 					onSave={saveRelatedLinkEntry}
 				>
-					<select
-						oninput={(e) => {
-							editingRelatedLink.entry.type = (e.target as HTMLSelectElement).value;
-						}}
-					>
-						<option value="source" selected={editingRelatedLink.entry.type === 'source'}
-							>source</option
+					<div class="space-y-1">
+						<Label class="text-xs">Type</Label>
+						<select
+							oninput={(e) => {
+								editingRelatedLink.entry.type = (e.target as HTMLSelectElement).value;
+							}}
 						>
-						<option value="related-tool" selected={editingRelatedLink.entry.type === 'related-tool'}
-							>related-tool</option
-						>
-					</select>
+							<option value="source" selected={editingRelatedLink.entry.type === 'source'}
+								>source</option
+							>
+							<option value="related-tool" selected={editingRelatedLink.entry.type === 'related-tool'}
+								>related-tool</option
+							>
+						</select>
+					</div>
 					{#if editingRelatedLink.entry.type === 'source' || editingRelatedLink.entry.type === ''}
-						<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
+						<div class="space-y-1">
+							<Label class="text-xs">URL</Label>
+							<Input bind:value={editingRelatedLink.entry.url} placeholder="URL" class="font-mono" />
+						</div>
 					{/if}
 					{#if editingRelatedLink.entry.type === 'related-tool'}
-						<Input
-							bind:value={editingRelatedLink.entry.toolId}
-							placeholder="Tool ID"
-							class="font-mono"
-						/>
+						<div class="space-y-1">
+							<Label class="text-xs">Tool ID</Label>
+							<Input
+								bind:value={editingRelatedLink.entry.toolId}
+								placeholder="Tool ID"
+								class="font-mono"
+							/>
+						</div>
 					{/if}
 				</EditPanel>
 			{/if}
