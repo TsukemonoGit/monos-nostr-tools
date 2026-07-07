@@ -1,0 +1,21 @@
+# jsonデータ作成状況
+
+- [ ] lumilumi
+- [ ] ngrid-art
+- [ ] luminostr
+- [ ] nostviewstr
+- [ ] nake
+- [ ] nostr-content-parser
+- [ ] shosai
+- [ ] makimono
+- [ ] nostr-share-component
+- [ ] nostr-web-component
+- [ ] moto-log
+- [ ] obsidian-nostr-plugin
+- [ ] HEllo nostr 3,4
+- [ ] NFO
+- [ ] Duplicater
+- [ ] bookmark-recovery
+- [ ] profile editor
+- [ ] nostr-login
+- [ ] M5MyRoomNostr
