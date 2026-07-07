@@ -28,23 +28,24 @@
 {#if libraryLocal.howtouse}
 	<LibraryHowtouse howtouse={libraryLocal.howtouse} />
 {/if}
-
-<Highlights highlights={libraryLocal.highlights} />
-
-<DetailCard title={m.detail_whatsNew()}>
-	<ul class="space-y-8 mx-4 mb-6">
-		{#each libraryLocal.whatsNew as entry (`${entry.date}-${entry.title}`)}
-			<li class="flex items-baseline gap-3 flex-wrap">
-				<span class="text-xs font-medium text-gray-700 bg-gray-50 rounded py-0.5 shrink-0"
-					>{entry.date}</span
-				>
-				<span>{entry.title}</span>
-			</li>
-		{/each}
-	</ul>
-</DetailCard>
-
-{#if tool.usedBy}
+{#if libraryLocal.highlights}
+	<Highlights highlights={libraryLocal.highlights} />
+{/if}
+{#if libraryLocal.whatsNew.length > 0}
+	<DetailCard title={m.detail_whatsNew()}>
+		<ul class="space-y-8 mx-4 mb-6">
+			{#each libraryLocal.whatsNew as entry (`${entry.date}-${entry.title}`)}
+				<li class="flex items-baseline gap-3 flex-wrap">
+					<span class="text-xs font-medium text-gray-700 bg-gray-50 rounded py-0.5 shrink-0"
+						>{entry.date}</span
+					>
+					<span>{entry.title}</span>
+				</li>
+			{/each}
+		</ul>
+	</DetailCard>
+{/if}
+{#if tool.usedBy.length > 0}
 	<DetailCard title={'Used By'}>
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-wrap">
 			{#each tool.usedBy as usedBy (usedBy.title)}

@@ -47,22 +47,23 @@
 	{/if}
 
 	<!-- FAQ -->
-	<DetailCard title="FAQ">
-		<div
-			class="divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full -mt-2"
-		>
-			<FaqAccordion faqs={tool.faqs} />
-		</div>
+	{#if tool.faqs.length > 0}
+		<DetailCard title="FAQ">
+			<div
+				class="divide-y divide-gray-500/20 bg-gray-50 flex flex-col items-center gap-2 w-full -mt-2"
+			>
+				<FaqAccordion faqs={tool.faqs} />
+			</div>
 
-		<a
-			href="/#faq"
-			class="w-fit ml-auto p-2 flex items-center gap-2 pl-4 mt-8 border-b border-b-gray-700 button-animation"
-		>
-			{m.faq_main()}
-			<ChevronRight class="text-gray-500" />
-		</a>
-	</DetailCard>
-
+			<a
+				href="/#faq"
+				class="w-fit ml-auto p-2 flex items-center gap-2 pl-4 mt-8 border-b border-b-gray-700 button-animation"
+			>
+				{m.faq_main()}
+				<ChevronRight class="text-gray-500" />
+			</a>
+		</DetailCard>
+	{/if}
 	{#if tool.relatedLinks.length > 0}
 		<DetailCard title={m.links_title()}>
 			<div class="flex flex-col gap-4">

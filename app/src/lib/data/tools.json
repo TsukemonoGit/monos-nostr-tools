@@ -300,15 +300,7 @@
 		"icon": "",
 		"screenshots": [],
 		"relatedLinks": [],
-		"faqs": [
-			{
-				"id": "",
-				"i18n": {
-					"ja": {},
-					"en": {}
-				}
-			}
-		],
+		"faqs": [],
 		"i18n": {
 			"ja": {
 				"name": "ngrid-art",
