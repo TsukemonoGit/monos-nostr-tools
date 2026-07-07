@@ -19,28 +19,29 @@
 </script>
 
 {#each faqs as faq, index (faq.id)}
-	{@const content = faq?.i18n[locale]}
-	{@const answer = md.render(content.answer)}
-	<div class="w-full">
-		<button
-			class="flex items-center justify-between w-full py-4 px-4 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-			onclick={() => toggleFaq(index)}
-		>
-			<span class=" font-medium pr-4">{content.question}</span>
-			<span class="shrink-0 text-gray-500">
-				<ChevronDown class={`${openIndex === index ? 'rotate-180' : ''} transition-all `} />
-			</span>
-		</button>
-		{#if openIndex === index}
-			<div
-				class="answer mx-7 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
-				transition:slide={{ duration: 200 }}
+	{#if faq}
+		{@const content = faq?.i18n[locale]}
+		{@const answer = md.render(content.answer)}
+		<div class="w-full">
+			<button
+				class="flex items-center justify-between w-full py-4 px-4 text-left rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+				onclick={() => toggleFaq(index)}
 			>
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				{@html answer}
-			</div>
-		{/if}
-	</div>
+				<span class=" font-medium pr-4">{content.question}</span>
+				<span class="shrink-0 text-gray-500">
+					<ChevronDown class={`${openIndex === index ? 'rotate-180' : ''} transition-all `} />
+				</span>
+			</button>
+			{#if openIndex === index}
+				<div
+					class="answer mx-7 px-4 mb-4 border-l-2 border-gray-500 text-gray-600 dark:text-gray-300"
+					transition:slide={{ duration: 200 }}
+				>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					{@html answer}
+				</div>
+			{/if}
+		</div>{/if}
 {/each}
 
 <style lang="postcss">

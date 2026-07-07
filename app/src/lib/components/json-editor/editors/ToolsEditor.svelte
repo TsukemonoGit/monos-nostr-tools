@@ -40,10 +40,17 @@
 			icon: '',
 			screenshots: [],
 			relatedLinks: [],
-			faqs: [{ id: '', i18n: { ja: {}, en: {} } }],
+			faqs: [],
 			i18n: {
 				ja: {
 					name: newToolKey.trim(),
+					description: '',
+					tagline: '',
+					highlights: '',
+					whatsNew: []
+				},
+				en: {
+					name: '',
 					description: '',
 					tagline: '',
 					highlights: '',

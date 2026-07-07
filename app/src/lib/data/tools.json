@@ -292,5 +292,38 @@
 				}
 			}
 		]
+	},
+	"ngrid-art": {
+		"category": "webapp",
+		"audience": "enduser",
+		"websiteUrl": "",
+		"icon": "",
+		"screenshots": [],
+		"relatedLinks": [],
+		"faqs": [
+			{
+				"id": "",
+				"i18n": {
+					"ja": {},
+					"en": {}
+				}
+			}
+		],
+		"i18n": {
+			"ja": {
+				"name": "ngrid-art",
+				"description": "",
+				"tagline": "",
+				"highlights": "",
+				"whatsNew": []
+			},
+			"en": {
+				"name": "ngrid-art",
+				"description": "",
+				"tagline": "",
+				"highlights": "",
+				"whatsNew": []
+			}
+		}
 	}
 }
